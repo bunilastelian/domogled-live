@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-07T18:02:24+00:00",
+  "generated": "2026-10-07T18:08:11+00:00",
   "verdict": "STAGNARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-07T18:02:19+00:00",
-    "hours_elapsed": 0.0,
+    "since": "2026-10-07T18:02:24+00:00",
+    "hours_elapsed": 0.09,
     "zones": {
       "domogled": {
         "total": 0.0,
@@ -36,7 +36,31 @@
       }
     }
   },
-  "vision": {},
-  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali\n**Data: 2026-10-07 18:02 UTC**\n\n## EVOLUȚIE: STAGNARE (ambele zone)\n\nDatele curente sunt **identice** cu ultimele 3 rulări (delta FRP24h = 0.0, delta det24h = 0.0, delta total = 0.0 pentru ambele zone). Monitorul nu s-a actualizat.\n\nPe trendul multi-zi:\n- **Domogled**: SCĂDERE clară – 637.6 MW (10-05) → 451.1 (10-06) → 221.2 MW (10-07), adică **-65% în 3 zile**. Focarul rank 1: 632.7 MW/123 det (24h anterioare) → 304.7 MW/59 det (ultimele 24h).\n- **Porțile de Fier**: STAGNARE – 166.6 → 142.4 MW (-15%), cu o ușoară revenire a FRP-ului pe focar (254.0 → 293.5 MW).\n\nNu apar focare noi; ambele focare rank 1 sunt active de 8 zile (din 09-30).\n\n## CE ARATĂ IMAGINILE\n**Lipsesc datele de imagine.** Nu există în input nicio descriere vizuală/satelit spectrală curentă. Cicatricea dNBR confirmă arsuri **moderate** (Domogled: 240 ha moderat+, doar 3 ha sever; Porțile de Fier: 77 ha moderat+, 5.6 ha sever) – semnal slab raportat la FRP-ul cumulat, ceea ce sugerează fie foc de suprafață cu consum redus, fie zgomot termic. **Nu pot confirma/infirma vizual fumul.**\n\n## RISC 24-48h\n- **Precipitații: 0 mm** în ambele zone, 48h.\n- **RH scăzută** (34-36%), **vânt slab** (3.7-6.2 km/h), rafale 9.7-16.6 km/h.\n- **VPD moderat** (0.84-1.02 kPa), **umezeala sol foarte mică** (0.094-0.118).\n- Angström scăzut (3.06-3.4), dar sol uscat.\n- **Direcție extindere**: Domogled – vânt din E → pană spre V, spre Colțu Pietrii (0.88 km). Porțile de Fier – vânt NV → pană spre SE, spre Orșova (7.51 km).\n- **Zone expuse**: Colțu Pietrii (1228 m, în parc), Orșova.\n\n## PREDICȚIE 24h\n- **Domogled**: SCĂDERE, probabilitate ~60% (trend clar descendent).\n- **Porțile de Fier**: STAGNARE, probabilitate ~55%, cu risc de creștere (FRP-ul pe focar a crescut).\n\n⚠️ **Estimare bazată pe trend istoric, NU pe model fizic de propagare.**\n\n## SEMNALE\n- **Monitor blocat**: 3 rulări identice – posibilă defecțiune sau absență date noi.\n- **Focar fără imagini**: nu există confirmare vizuală.\n- **FRP disproporționat** față de dNBR (suprafețe arse mici pentru 300+ MW cumulat) – posibil zgomot sau foc de subsol.\n- Lipsesc: AOI km², imagini curente, date sol detaliate.",
-  "state_updated": "2026-10-07T17:59:15+00:00"
+  "vision": {
+    "domogled": {
+      "zone": "domogled",
+      "ok": true,
+      "errors": [],
+      "current": "În imaginea Sentinel-2 se distinge un panou central de fum albicios, dens și compact, orientat dinspre centru spre nord-est, cu dispersie spre est. Nu se distinge clar o cicatrice de ardere (zonă neagră/maro-închis) — este mascată de fum. Vegetația apare ca padure densă verde (aproximativ 70-80% din suprafață), cu zone maronii de pășuni uscate pe versanți. Relieful este deluros-muntos, cu văi adânci și creste fragmentate. Vântul din E împinge fumul spre vest-nord-vest, dar imaginea arată o dispersie spre nord-est, posibil din cauza dinamicii locale.",
+      "current_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
+      "current_date": "2026-10-04T09:31:41.024000Z",
+      "comparison": "Fumul s-a extins și s-a mutat spre est, acoperind o suprafață mult mai mare în IMAGINEA 2 (2 octombrie). Cicatricea de ardere (zonele deschise la culoare) pare să se fi extins spre nord-est, vizibilă mai ales în partea centrală a măsurii. Vegetația din zonele neafectate de fum apare similară, fără diferențe notabile de uscăciune. Schimbarea majoră este reprezentată de extinderea semnificativă a fumului, nu de nori sau iluminare.",
+      "compared": [
+        "s2_S2C_MSIL2A_20261002T093031_N0513_R136_T34TFQ_20261002T130613.png",
+        "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
+      ],
+      "burn_scar": "Aproximativ 1% din imagine arată ca ars. Zona afectată este localizată în partea stângă și centrală a hărții."
+    },
+    "portiledefier": {
+      "zone": "portiledefier",
+      "ok": true,
+      "errors": [],
+      "current": "1. FUM: Se distinge clar un panou dens de fum alb-albăstrui în centru-stânga, dispersat pe o suprafață largă. Este împins spre sud și sud-vest de vântul din nord-vest.\n2. CICATRICE DE ARDERE: Nu se distinge o zonă arsă clară (maro-închis/negru) — fumul maschează zona afectată.\n3. VEGETATIE: Padure densa pe creste (verde închis), peste 70% verde. Zone uscate/maronii pe văi și versanți sudici, stâncărie vizibilă.\n4. RELIEF: Relieful este deluros-muntos, cu creste înalte, văi adânci și un platou fragmentat; Dunărea curge prin defileu în partea de jos.",
+      "current_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
+      "current_date": "2026-10-04T09:31:41.024000Z",
+      "burn_scar": "Zona arsă (pete roșii/portocalii) acoperă sub 5% din imagine, fiind localizată central și în partea dreaptă a hărții."
+    }
+  },
+  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali\n**Data: 2026-10-07 18:08 UTC**\n\n## 1. EVOLUȚIE: **STAGNARE TOTALĂ**\n\nAmbele zone sunt identice cu ultimele 4 rulări (delta FRP24h = +0.0, delta det24h = +0.0, delta total detecții = +0.0). Nu s-au înregistrat focare noi sau stinse în ultimele ~5 minute de monitorizare.\n\n- **Domogled:** FRP24h=309.9 MW, det24h=60, 1 focar activ. Trend 3 zile în scădere accentuată (-65%: 637.6→221.2 MW).\n- **Porțile de Fier:** FRP24h=293.5 MW, det24h=98, 1 focar. Trend staționar (-15%).\n\n## 2. CE ARATĂ IMAGINILE\n\nImaginile Sentinel-2 (02 și 04 oct) **confirmă parțial** cifrele: la Domogled, panoul dens de fum și extinderea lui spre est/NV e consistent cu cele 60 detecții/24h. La Porțile de Fier, fumul dispersat masiv spre SV e consistent cu 98 detecții/24h.\n\n**Contradicție importantă:** Ambele imagini arată cicatrice de ardere sub 1-5% din suprafață, în timp ce dNBR indică 3827 ha (Domogled) și 1223 ha (Porțile de Fier) cu semnal. Diferența se explică prin mascarea cicatricei de fum, **dar și prin faptul că dNBR-ul mediu pe focar (0.075 Domogled, 0.043 Porțile de Fier) e sub fundal** — adică semnalul dNBR e slab și posibil zgomot, nu suprafață arsă reală. Nu avem confirmare vizuală a unei cicatrices extinse.\n\n## 3. RISC 24-48h\n\n- **Vânt:** Domogled – E 6.2 km/h → fum spre V; Porțile de Fier – NV 3.5 km/h → fum spre SE.\n- **Umiditate:** RH 34-37%, VPD 0.81-1.01 kPa (moderat-ridicat), sol uscat (0.094-0.118).\n- **Precipitații: 0 mm în următoarele 48h.** Angström scăzut (3.07-3.48), dar minimul urcă la 3.62-4.02 (ușoară creștere a pericolului).\n\n**Zone expuse:** Domogled – Colțu Pietrii (0.88 km de focar). Porțile de Fier – Orșova (7.5 km, direcție SE sub vânt).\n\n## 4. PREDICȚIE 24h\n\n**Scădere lentă** pentru Domogled (probabilitate ~60%), **stagnare** pentru Porțile de Fier (~55%). Fără precipitații, scăderea depinde doar de epuizarea combustibilului. **Estimare pe trend istoric, NU model fizic de propagare.**\n\n## 5. SEMNALE\n\n- **Date lipsă:** AOI km² = None pentru ambele zone.\n- **Anomalie:** 4 rulări consecutive identice (18:01→18:08) sugerează fie stagnare reală, fie update blocat al monitorului automat — imposibil de distins din date.\n- **dNBR mediu pe focar < fundal** — semnal slab, posibil zgomot. Nu confirma suprafață arsă semnificativă.",
+  "state_updated": "2026-10-07T18:04:18+00:00"
 }
