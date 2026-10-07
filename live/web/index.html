@@ -167,6 +167,28 @@
   color:var(--dim);margin-top:2px;flex-wrap:wrap}
 .frp-legend .grad{height:9px;flex:1;min-width:70px;border-radius:2px;
   background:linear-gradient(90deg,#fef08a,#facc15,#f97316,#dc2626,#9d174d,#581c87)}
+
+/* ---------- treceri satelitare (S3 termic / S2 foto) ---------- */
+.tl-sep{width:1px;background:var(--line);margin:0 3px;align-self:stretch}
+.tl-passes{margin-top:6px}
+.tl-ptitle{font-size:10.5px;color:var(--dim);margin-bottom:4px;
+  text-transform:uppercase;letter-spacing:.04em}
+.tl-prow{display:flex;gap:5px;overflow-x:auto;padding-bottom:3px;
+  scrollbar-width:thin}
+.tl-prow::-webkit-scrollbar{height:5px}
+.tl-prow::-webkit-scrollbar-thumb{background:#2b3846;border-radius:3px}
+.tl-pass{flex:0 0 auto;background:#1c2430;border:1px solid var(--line);
+  color:var(--txt);border-radius:6px;padding:4px 7px;font-size:10.5px;
+  cursor:pointer;font-family:inherit;text-align:left;line-height:1.35;
+  transition:.15s;min-width:76px}
+.tl-pass:hover{background:#243040;border-color:#3b4a5e}
+.tl-pass.on{background:#1e3a5f;border-color:#60a5fa}
+.tl-pass.hot{border-color:#9d174d;background:#2a1524}
+.tl-pass.hot.on{background:#3b1a2c;border-color:#dc2626}
+.tl-pass span{color:var(--dim);font-size:9.5px}
+.tl-pass b{font-weight:600}
+.tl-pdot{display:inline-block;width:6px;height:6px;border-radius:50%;
+  margin-right:4px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -266,6 +288,9 @@
       <label class="chk"><input type="checkbox" id="l-park" checked> Conturul parcului național</label>
       <label class="chk"><input type="checkbox" id="l-tracks" checked> Linii de front pe trecere</label>
       <label class="chk"><input type="checkbox" id="l-burn" checked> Suprafață arsă (dNBR Sentinel-2)</label>
+      <div style="font-size:11px;color:var(--dim);margin:6px 0 2px">
+        imagine satelit: <span id="s-sat">—</span>
+      </div>
       <div style="margin-top:10px">
         <select id="tiles" aria-label="Fond de hartă">
           <option value="sat">Fond: satelit (Esri)</option>

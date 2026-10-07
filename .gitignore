@@ -5,13 +5,15 @@
 data/
 cache/
 *.nc
-*.zip
 *.SAFE/
 *.tif
 *.jp2
 
+# produsele SEN3 se pastreaza local pentru hartile termice,
+# dar ZIP-urile brute NU se comit (2MB bucata, se re-descarca)
+live/state/frp/*.zip
+
 # cache-urile produsului live (se refac la rulare)
-live/state/frp/
 live/state/burn/
 live/state/img/
 live/state/*.tmp

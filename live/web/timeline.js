@@ -81,9 +81,39 @@
     return `${p(dt.getUTCDate())}.${p(dt.getUTCMonth() + 1)} ${p(dt.getUTCHours())}:${p(dt.getUTCMinutes())}Z`;
   }
 
+  /* ---------- imagini termice Sentinel-3 pentru intervalul selectat --------
+     S3 SLSTR trece de 2-4 ori pe zi (S2 doar la 5 zile) si prinde 75% din
+     detectii noaptea. Fiecare trecere are o harta termica generata din
+     produsul SL_2_FRP - arata FRONTUL ACTIV, nu cicatricea. */
+  let s3Index = null;
+
+  async function loadS3() {
+    if (s3Index) return s3Index;
+    try {
+      const r = await fetch('state/s3_thermal.json');
+      s3Index = r.ok ? await r.json() : {};
+    } catch (e) { s3Index = {}; }
+    return s3Index;
+  }
+
+  function s3ForZone(list) {
+    if (!s3Index) return [];
+    return s3Index[window.__activeZone] || [];
+  }
+
   /* ---------- construire UI ---------- */
 
-  function build(container, state, onFilter) {
+  async function build(container, state, onFilter) {
+    // incarcam indexul S3 (o singura data) si expunem zonele S2 pentru modul foto
+    await loadS3();
+    window.__s2Scenes = window.__s2Scenes || {};
+    const zid0 = window.__activeZone;
+    if (state && state.imagery && zid0) {
+      window.__s2Scenes[zid0] = Object.values(state.imagery)
+        .map(v => ({ file: v.file, datetime: v.datetime, cloud: v.cloud }))
+        .sort((a, b) => (a.datetime || '').localeCompare(b.datetime || ''));
+    }
+
     detections = Object.values((state && state.detections) || {})
       .map(d => ({ ...d, _ms: stamp(d) }))
       .sort((a, b) => a._ms - b._ms);
@@ -117,6 +147,9 @@
           <button data-preset="48h" class="tl-btn">48h</button>
           <button data-preset="all" class="tl-btn">tot</button>
           <button data-preset="play" class="tl-btn tl-play" title="derulează zilele">▶</button>
+          <span class="tl-sep"></span>
+          <button data-imgs="s3" class="tl-btn on" title="hărți termice SLSTR, 2-4 treceri/zi">S3 termic</button>
+          <button data-imgs="s2" class="tl-btn" title="true color, la ~5 zile">S2 foto</button>
         </div>
 
         <div class="tl-days" id="tl-days"></div>
@@ -131,6 +164,8 @@
           <span id="tl-label"></span>
           <span id="tl-count" style="color:#8b98a5"></span>
         </div>
+
+        <div class="tl-passes" id="tl-passes"></div>
       </div>`;
 
     drawDays(byDay, dayFrp, maxFrp);
@@ -173,7 +208,19 @@
           if (inRange.length) setSel(dayKey(inRange[0]._ms), dayKey(last));
           else setSel(days[days.length - 1], days[days.length - 1]);
         }
+        container.querySelectorAll('[data-preset]').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
         paint(); onFilter(activeList());
+      });
+    });
+
+    // comutator S3 termic / S2 foto
+    container.querySelectorAll('[data-imgs]').forEach(b => {
+      b.addEventListener('click', () => {
+        imgMode = b.dataset.imgs;
+        container.querySelectorAll('[data-imgs]').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
+        renderPasses();
       });
     });
 
@@ -261,6 +308,85 @@
       `<b>${fmtDay(days[selFrom])}${selFrom !== selTo ? ' → ' + fmtDay(days[selTo]) : ''}</b>`;
     document.getElementById('tl-count').textContent =
       ` · ${a.length} detecții · ${frp.toFixed(0)} MW`;
+
+    renderPasses();
+  }
+
+  /* Banda cu trecerile satelitare din intervalul selectat. Fiecare buton
+     incarca o imagine pe harta (termica S3 sau true-color S2). */
+  let imgMode = 's3';
+
+  function renderPasses() {
+    const box = document.getElementById('tl-passes');
+    if (!box) return;
+    const z = window.__activeZone;
+    const list = (s3Index && s3Index[z]) || [];
+    if (!list.length) { box.innerHTML = ''; return; }
+
+    const k0 = days[selFrom], k1 = days[selTo];
+    const inRange = list.filter(e => {
+      const d = (e.datetime || '').slice(0, 10);
+      return d >= k0 && d <= k1;
+    }).sort((a, b) => (a.datetime || '').localeCompare(b.datetime || ''));
+
+    if (imgMode === 's2') {
+      // modul S2: imaginile true-color, pe zile distincte
+      const scenes = (window.__s2Scenes && window.__s2Scenes[z]) || [];
+      const sel = scenes.filter(e => {
+        const d = (e.datetime || '').slice(0, 10);
+        return d >= k0 && d <= k1;
+      });
+      if (!sel.length) {
+        box.innerHTML = '<div style="color:#8b98a5;font-size:11px;padding:6px 0">' +
+          'nicio scenă Sentinel-2 în interval</div>';
+        return;
+      }
+      box.innerHTML = '<div class="tl-ptitle">Sentinel-2 (true color, 60 m) — ' +
+        sel.length + ' scene</div><div class="tl-prow">' +
+        sel.map((e, i) => {
+          const d = (e.datetime || '').slice(0, 10);
+          const file = e.file || '';
+          return `<button class="tl-pass" data-img="${file}" data-label="S2 ${d}">` +
+                 `<span class="tl-pdot" style="background:#3b82f6"></span>` +
+                 `<b>${fmtDay(d)}</b><br><span>${e.cloud ?? '?'}% nori</span></button>`;
+        }).join('') + '</div>';
+      wirePassButtons();
+      return;
+    }
+
+    if (!inRange.length) {
+      box.innerHTML = '<div style="color:#8b98a5;font-size:11px;padding:6px 0">' +
+        'nicio trecere Sentinel-3 în interval</div>';
+      return;
+    }
+
+    box.innerHTML = '<div class="tl-ptitle">Sentinel-3 SLSTR (termic) — ' +
+      inRange.length + ' treceri</div><div class="tl-prow">' +
+      inRange.map(e => {
+        const d = (e.datetime || '').slice(0, 10);
+        const t = (e.datetime || '').slice(11, 16);
+        const night = e.daynight === 'N';
+        const hot = e.bt_max > 330;
+        return `<button class="tl-pass${hot ? ' hot' : ''}" data-img="${e.file}" ` +
+               `data-label="S3 ${d} ${t}Z">` +
+               `<span class="tl-pdot" style="background:${night ? '#6366f1' : '#facc15'}"></span>` +
+               `<b>${fmtDay(d)} ${t}</b><br>` +
+               `<span>${e.points}px · ${e.frp_sum.toFixed(0)}MW` +
+               (e.bt_max > 200 ? ` · ${e.bt_max.toFixed(0)}K` : '') + '</span></button>';
+      }).join('') + '</div>';
+
+    wirePassButtons();
+  }
+
+  function wirePassButtons() {
+    const mapImg = window.__showS3Image;
+    document.querySelectorAll('#tl-passes .tl-pass').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('#tl-passes .tl-pass').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
+        if (mapImg) mapImg(b.dataset.img, b.dataset.label);
+      });
+    });
   }
 
   /* ---------- API pentru renderDetections ---------- */

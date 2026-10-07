@@ -20,6 +20,7 @@ const RANGE_LABELS = { '24': 'ultimele 24 h', '72': 'ultimele 3 zile',
                        '168': 'ultimele 7 zile', '0': 'tot istoricul' };
 
 let map, tileLayers = {}, parkLayer, nasaLayer, esaLayer, trackLayer, burnLayer, windLayer, refLayer;
+let satLayer = null;       // overlay cu imaginea satelitara selectata (S3 termic / S2 foto)
 let fullState = null;      // toata starea, cu toate zonele
 let state = null;          // subarborele zonei active (.detections, .stats, .fires, .weather...)
 let currentZone = null;
@@ -130,6 +131,7 @@ function syncZones() {
   sel.value = currentZone;
 
   state = zones[currentZone] || null;
+  window.__activeZone = currentZone;      // folosit de timeline (S3/S2 per zona)
   const meta = list.find(z => z.id === currentZone) || {};
   loadPark(((meta.park || {}).geojson) || null);
   if (state && state.name) document.title = `${state.name} · incendii live`;
@@ -226,6 +228,47 @@ function renderBurn() {
     el.title = `dNBR corectat: scena ${b.post_date} față de ${b.base_date}. ` +
                `Total ≥0,10: ${b.ha_total} ha. ${b.nota || ''}`;
   }
+}
+
+/* --------- imaginea satelitara selectata din timeline (S3 termic / S2 foto) ----
+   Punem imaginea ca overlay pe AOI. S3 e harta termica (bbox din index),
+   S2 e decupajul true-color (bounds din state.burn sau AOI). */
+function showSatImage(file, label) {
+  if (!satLayer) satLayer = L.layerGroup().addTo(map);
+  satLayer.clearLayers();
+  if (!file) return;
+
+  let bounds = null;
+  const zid = window.__activeZone;
+  const s3 = (window.__s3Idx && window.__s3Idx[zid]) || [];
+  const hit = s3.find(e => e.file === file);
+  if (hit && hit.bbox) {
+    const [w, s, e, n] = hit.bbox;
+    bounds = [[s, w], [n, e]];
+  } else if (state && state.burn && state.burn.bounds) {
+    bounds = state.burn.bounds;
+  } else if (state && state.aoi && state.aoi.bounds) {
+    bounds = state.aoi.bounds;
+  }
+  if (!bounds) return;
+
+  // opacitate: termic peste harta = 0.85; foto true-color = 0.75
+  const op = file.startsWith('s3_') ? 0.85 : 0.75;
+  L.imageOverlay('img/' + file, bounds,
+    { opacity: op, interactive: false, className: 'sat-overlay' }).addTo(satLayer);
+
+  const el = document.getElementById('s-sat');
+  if (el) {
+    el.innerHTML = `<b>${label || file}</b> <span style="color:var(--dim)">` +
+      `(click din nou pe buton ca să scoți)</span>`;
+  }
+}
+
+/* curata overlay-ul cand se schimba zona sau intervalul */
+function clearSatImage() {
+  if (satLayer) satLayer.clearLayers();
+  const el = document.getElementById('s-sat');
+  if (el) el.textContent = '—';
 }
 
 // ------------------------------------------------------- grafic pe canvas
@@ -548,5 +591,10 @@ function bindControls() {
 
 initMap();
 bindControls();
+window.__showS3Image = showSatImage;   // timeline.js apeleaza asta la click pe o trecere
+fetch('state/s3_thermal.json')
+  .then(r => r.ok ? r.json() : {})
+  .then(d => { window.__s3Idx = d; })
+  .catch(() => { window.__s3Idx = {}; });
 refresh(true);
 setInterval(refresh, REFRESH_MS);
