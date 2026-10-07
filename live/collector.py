@@ -714,6 +714,15 @@ def cycle(state: dict, client: CDSE, first: bool) -> None:
     state["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     save_state(state)
 
+    # predictia urmatoarelor treceri satelit (countdown pe dashboard).
+    # O rulam aici, dupa ce state.json e la zi, ca predictorul sa vada
+    # ultimele produse FRP catalogate.
+    try:
+        import sat_passes
+        sat_passes.main()
+    except Exception as exc:  # noqa: BLE001
+        log(f"   [!] predictie treceri: {type(exc).__name__}: {exc}")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser()

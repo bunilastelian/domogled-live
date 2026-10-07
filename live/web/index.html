@@ -189,6 +189,24 @@
 .tl-pass b{font-weight:600}
 .tl-pdot{display:inline-block;width:6px;height:6px;border-radius:50%;
   margin-right:4px;vertical-align:middle}
+
+/* ---------- timer treceri satelit ---------- */
+.sat-box{margin-top:10px;padding:8px 9px;border:1px solid var(--line);
+  border-radius:7px;background:#141a23}
+.sat-title{font-size:9.5px;color:var(--dim);text-transform:uppercase;
+  letter-spacing:.05em;margin-bottom:5px}
+.sat-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.sat-head.soon .sat-cd{color:#fbbf24}
+.sat-sat{font-size:12px;font-weight:600;color:#e6edf3}
+.sat-cd{font-size:17px;font-weight:700;color:#60a5fa;font-variant-numeric:tabular-nums}
+.sat-sub{font-size:10.5px;color:var(--dim);margin-top:3px;line-height:1.45}
+.sat-sub b{color:#c9d4e0;font-weight:600}
+.sat-rest{display:flex;gap:8px;flex-wrap:wrap;margin-top:5px;
+  font-size:10px;color:#6b7785}
+.sat-age{margin-top:6px;padding-top:5px;border-top:1px solid #1f2933;
+  font-size:10px;color:#6b7785}
+.sat-age.ok{color:#4ade80}
+.sat-age.late{color:#fbbf24}
 </style>
 </head>
 <body>
@@ -288,6 +306,10 @@
       <label class="chk"><input type="checkbox" id="l-park" checked> Conturul parcului național</label>
       <label class="chk"><input type="checkbox" id="l-tracks" checked> Linii de front pe trecere</label>
       <label class="chk"><input type="checkbox" id="l-burn" checked> Suprafață arsă (dNBR Sentinel-2)</label>
+      <div class="sat-box">
+        <div class="sat-title">Următoarea trecere satelit</div>
+        <div id="sat-timer"><span style="color:#8b98a5">se încarcă…</span></div>
+      </div>
       <div style="font-size:11px;color:var(--dim);margin:6px 0 2px">
         imagine satelit: <span id="s-sat">—</span>
       </div>
@@ -321,8 +343,9 @@
   </aside>
 </div>
 
-<script src="app.js?v=5"></script>
-<script src="timeline.js?v=2"></script>
+<script src="app.js?v=6"></script>
+<script src="timeline.js?v=3"></script>
+<script src="sat_timer.js?v=1"></script>
 <script>
 // Anti-cache: index.html nu are versiune in URL, deci CDN-ul GitHub Pages
 // si browserul il tin in cache pana la 10 min. Dupa un deploy, utilizatorul
