@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 4,
+ "cycles": 5,
  "zones": {
   "domogled": {
    "detections": {
@@ -5141,7 +5141,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-07T12:46:50+00:00"
     },
-    "updated": "2026-10-07T14:20:47+00:00"
+    "updated": "2026-10-07T14:25:13+00:00"
    },
    "alerts": [],
    "imagery": {
@@ -5259,7 +5259,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-07T14:20:46+00:00",
+    "updated": "2026-10-07T14:25:13+00:00",
     "time": "2026-10-07T14:15",
     "temp_c": 18.0,
     "humidity_pct": 22,
@@ -5536,7 +5536,7 @@
     "S3B_SL_2_FRP____20261006T201628_20261006T201928_20261006T210223_0179_125_228______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 19,
+   "cycles": 20,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -10675,7 +10675,7 @@
     "S3B_SL_2_FRP____20261006T201628_20261006T201928_20261006T210223_0179_125_228______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 4,
+   "cycles": 5,
    "fires": [
     {
      "id": "portiledefier-44.767-22.325",
@@ -10706,7 +10706,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-07T14:20:49+00:00",
+    "updated": "2026-10-07T14:25:20+00:00",
     "time": "2026-10-07T14:15",
     "temp_c": 19.8,
     "humidity_pct": 23,
@@ -10729,16 +10729,7 @@
      "formula": "I = (H/20) + (27-T)/10; mai mic = mai periculos",
      "next48_min": 3.62
     },
-    "terrain": {
-     "elevation_m": 678.0,
-     "mean_ring_m": 600.8,
-     "span_km": 2.0,
-     "on_summit": false,
-     "upslope_deg": 330.2,
-     "upslope_compass": "NV",
-     "slope_pct": 13.6,
-     "steepest_down_deg": 150.2
-    },
+    "terrain": {},
     "series": [
      {
       "t": "2026-10-07T00:00",
@@ -11061,7 +11052,7 @@
      "bt_k": 318.0,
      "first_seen": "2026-10-07T14:10:41+00:00"
     },
-    "updated": "2026-10-07T14:20:50+00:00"
+    "updated": "2026-10-07T14:26:05+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -11174,6 +11165,10 @@
      44.9036,
      22.3667
     ]
+   },
+   "park": {
+    "name": "Parcul Național Domogled – Valea Cernei",
+    "geojson": "domogled.geojson"
    }
   },
   {
@@ -11204,9 +11199,13 @@
      44.6258,
      22.6532
     ]
+   },
+   "park": {
+    "name": "Parcul Natural Porțile de Fier",
+    "geojson": "portiledefier.geojson"
    }
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-07T14:20:50+00:00"
+ "updated": "2026-10-07T14:26:05+00:00"
 }
