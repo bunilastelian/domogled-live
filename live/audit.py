@@ -28,7 +28,28 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 DEFAULT_BASE = "https://bunilastelian.github.io/domogled-live/"
 UA = {"User-Agent": "audit/1.0", "Accept-Encoding": "gzip"}
 
-ASSETS = ["", "app.js", "state/state.json", "domogled.geojson", "img/arsura.png"]
+ASSETS = ["", "app.js", "state/state.json", "domogled.geojson", "portiledefier.geojson"]
+
+
+def zone_assets(state: dict) -> list[str]:
+    """Fisierele per zona, luate din stare — nu hardcodate.
+
+    Dupa trecerea la multi-zona, numele imaginilor contin prefixul zonei
+    (`domogled_arsura.png`), deci o lista fixa ajunge sa raporteze 404.
+    """
+    out = []
+    for _zid, z in (state.get("zones") or {}).items():
+        if not isinstance(z, dict):
+            continue
+        b = (z.get("burn") or {}).get("png")
+        if b:
+            out.append(f"img/{b}")
+        for it in list((z.get("imagery") or {}).values())[:1]:
+            if it.get("file"):
+                out.append(f"img/{it['file']}")
+    return out
+
+ASSETS = ["", "app.js", "state/state.json", "domogled.geojson", "portiledefier.geojson"]
 
 
 def fetch(url: str) -> tuple[int, int, bytes, dict]:
@@ -89,7 +110,14 @@ def main() -> int:
     html = ""
     state_raw = b""
     state_wire = 0
-    for a in ASSETS:
+    try:
+        _w0, _d0, _raw0, _h0 = fetch(base + "state/state.json")
+        _state0 = json.loads(_raw0)
+    except Exception:
+        _state0 = {}
+    assets = ASSETS + [a for a in zone_assets(_state0) if a not in ASSETS]
+    print(f"  fisiere verificate: {len(assets)}")
+    for a in assets:
         try:
             wire, dec, raw, h = fetch(base + a)
             enc = h.get("Content-Encoding", "fara")
