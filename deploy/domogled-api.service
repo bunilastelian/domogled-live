@@ -1,0 +1,31 @@
+[Unit]
+Description=Domogled - API si dashboard (server.py)
+Documentation=https://github.com/bunilastelian/domogled-live
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=domogled
+Group=domogled
+WorkingDirectory=/opt/domogled/live
+
+# Asculta doar pe localhost. Accesul din exterior trece prin Caddy, care pune HTTPS.
+# Nu expune direct pe 0.0.0.0: serverul nu are autentificare.
+ExecStart=/opt/domogled/.venv/bin/python /opt/domogled/live/server.py --host 127.0.0.1 --port 8777
+
+Restart=always
+RestartSec=10
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/domogled/live/state
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=domogled-api
+
+[Install]
+WantedBy=multi-user.target

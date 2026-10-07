@@ -1,0 +1,34 @@
+[Unit]
+Description=Domogled - colector de date satelitare (FIRMS, Sentinel-3 FRP, Sentinel-2)
+Documentation=https://github.com/bunilastelian/domogled-live
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=domogled
+Group=domogled
+WorkingDirectory=/opt/domogled/live
+
+# 5 minute: cat de des se actualizeaza sursele. FIRMS isi reimprospateaza fisierul
+# orar, iar zona are ~4 treceri de satelit pe zi, deci sub 5 minute nu aduce nimic nou.
+ExecStart=/opt/domogled/.venv/bin/python /opt/domogled/live/collector.py --interval 300
+
+# Colectorul isi ia singur un lock si refuza sa porneasca daca ruleaza altul.
+# Restart=always il readuce dupa o eroare de retea, dar nu in bucla stransa.
+Restart=always
+RestartSec=30
+
+# Fara privilegii inutile
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/domogled/live/state /opt/domogled/live/web
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=domogled-collector
+
+[Install]
+WantedBy=multi-user.target

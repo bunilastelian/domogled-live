@@ -1,0 +1,36 @@
+[Unit]
+Description=Domogled - consola de analiza Streamlit
+Documentation=https://github.com/bunilastelian/domogled-live
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=domogled
+Group=domogled
+WorkingDirectory=/opt/domogled
+
+# Doar pe localhost: consola nu are autentificare. Accesul din exterior, prin Caddy,
+# cu autentificare sau pe un subdomeniu protejat.
+ExecStart=/opt/domogled/.venv/bin/python -m streamlit run streamlit_app.py \
+    --server.port 8501 \
+    --server.address 127.0.0.1 \
+    --server.headless true \
+    --browser.gatherUsageStats false
+
+# Streamlit citeste starea la fiecare 60 s, deci nu are nevoie de restart
+Restart=always
+RestartSec=15
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/domogled/live/state
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=domogled-streamlit
+
+[Install]
+WantedBy=multi-user.target

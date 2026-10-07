@@ -1,0 +1,44 @@
+# Caddyfile - HTTPS automat, fara sa configurezi tu certificate.
+#
+# Inlocuieste domogled.exemplu.ro cu domeniul tau si asigura-te ca A/AAAA
+# al domeniului arata spre IP-ul VPS-ului. Caddy obtine singur certificatul
+# Let's Encrypt si il reinnoieste.
+#
+#   sudo cp deploy/Caddyfile /etc/caddy/Caddyfile
+#   sudo nano /etc/caddy/Caddyfile        # pune domeniul
+#   sudo systemctl reload caddy
+
+domogled.exemplu.ro {
+	encode gzip zstd
+
+	# API-ul si dashboard-ul static
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8777
+	}
+	handle {
+		reverse_proxy 127.0.0.1:8777
+	}
+
+	header {
+		# datele se schimba la 15 minute; un minut de cache e suficient
+		# si evita sa lovim aplicatia la fiecare reincarcare
+		-Cache-Control
+		Cache-Control "public, max-age=60"
+		Referrer-Policy "no-referrer"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+	}
+
+	log {
+		output file /var/log/caddy/domogled.log
+	}
+}
+
+# Consola Streamlit, pe subdomeniu separat si cu autentificare de baza.
+# Parola o generezi cu:  caddy hash-password --plaintext 'parola-ta'
+analiza.domogled.exemplu.ro {
+	basic_auth {
+		admin $2a$14$INLOCUIESTE_CU_HASH_DE_LA_caddy_hash-password
+	}
+	reverse_proxy 127.0.0.1:8501
+}
