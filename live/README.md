@@ -125,6 +125,35 @@ Secrete necesare în repo (Settings → Secrets → Actions): `CDSE_CLIENT_ID`, 
 Dashboard-ul citește starea prin `/api/state` când rulează local și cade automat pe
 `state/state.json` când e servit ca fișiere statice — deci același cod merge în ambele moduri.
 
+## Audit: ce am măsurat și ce am reparat
+
+`audit.py` măsoară site-ul public. Rulează `python audit.py` (sau cu un URL, pentru build-ul local).
+Rezultatele la prima rulare, înainte de reparații:
+
+| constatare | dovadă | ce am făcut |
+|---|---|---|
+| **0 media queries** — layout rupt pe telefon | grilă `1fr 400px` fixă, fără nicio adaptare | 3 media queries: sub 900 px devine o coloană, harta 62dvh, antet lipicios |
+| **Chart.js: 68 KB pe fir** pentru un singur grafic cu bare | 40% din tot ce se încarcă | grafic desenat direct pe `<canvas>`, biblioteca eliminată |
+| **conturul parcului: 43 KB pe fir** | 6436 de puncte, 70% din payload-ul propriu | simplificare Douglas-Peucker → 580 de puncte, 4,3 KB |
+| **fără metadate de partajare** | linkul apărea gol pe Facebook/WhatsApp | `og:*`, `twitter:card`, descriere, favicon SVG, imagine 1200×630 generată |
+| **prag de prospețime greșit** | CI rulează la 15 min, pragul era tot 15 min → badge „întârziat" fals la fiecare ciclu | praguri la 25 min (avertizare) și 60 min (oprit) |
+| **379 de markere fără filtru de timp** | 8 zile de detecții pe o hartă = pată | selector 24 h / 3 zile / 7 zile / tot, cu numărul de puncte afișat |
+| **re-randare completă la fiecare minut** | ~758 de obiecte recreate chiar dacă datele nu se schimbau | semnătură de stare: se re-randează doar când se schimbă datele |
+| **serverul local nu comprima** | verificam local altceva decât se servea în producție | gzip și local |
+
+**Rezultat la prima încărcare: 178 KB → 73 KB pe fir (−59%).**
+
+### O greșeală de măsurare pe care am făcut-o și am corectat-o
+
+Prima versiune a auditului decomprima răspunsul înainte de a măsura, dar GitHub Pages
+servește gzip. A raportat **1,78 GB/lună** de trafic; valoarea reală este **0,15 GB/lună** —
+de 11 ori mai mică. Acum `audit.py` raportează separat „pe fir" și „brut", iar calculul de
+transfer folosește mărimea de pe fir.
+
+Ce **nu** am schimbat, pentru că beneficiul real e mic: cheile din `detections` (54 de bytes
+fiecare, 15% din JSON) dublează datele, dar după gzip costul pe fir e neglijabil. Le-am lăsat —
+prioritatea era altundeva.
+
 ## Setări
 
 În capul `collector.py`:

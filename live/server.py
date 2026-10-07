@@ -12,7 +12,9 @@ Rulare:  python server.py [--port 8777]
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
+import mimetypes
 import shutil
 import sys
 from datetime import datetime, timezone
@@ -24,6 +26,10 @@ HERE = Path(__file__).resolve().parent
 WEB = HERE / "web"
 STATE_FILE = HERE / "state" / "state.json"
 PARK_SRC = HERE.parent / "fire" / "cache" / "osm_park_domogled.json"
+
+# fisierele care merita comprimate (GitHub Pages face asta in productie, deci facem
+# si local — altfel testam un comportament nereprezentativ)
+COMPRESSIBLE = {".json", ".js", ".html", ".geojson", ".css", ".svg", ".txt", ".map"}
 
 for _s in (sys.stdout, sys.stderr):
     try:
@@ -62,6 +68,37 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _send(self, body: bytes, ctype: str, encoding: str | None = None) -> None:
+        self.send_response(200)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        if encoding:
+            self.send_header("Content-Encoding", encoding)
+        self.send_header("Cache-Control", "no-store" if ctype.startswith("application/json") else "max-age=60")
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _serve_static_compressed(self, url_path: str) -> bool:
+        """Serveste un fisier static, comprimat cu gzip daca se poate."""
+        rel = url_path.lstrip("/") or "index.html"
+        f = (WEB / rel).resolve()
+        if WEB not in f.parents and f != WEB:            # fara iesire din director
+            return False
+        if not f.is_file():
+            return False
+        suffix = f.suffix.lower()
+        ctype = mimetypes.guess_type(str(f))[0] or "application/octet-stream"
+        if "charset" not in ctype and ctype.startswith(("text/", "application/json", "image/svg")):
+            ctype += "; charset=utf-8"
+        data = f.read_bytes()
+        if suffix in COMPRESSIBLE and "gzip" in (self.headers.get("Accept-Encoding") or ""):
+            gz = gzip.compress(data, 6)
+            if len(gz) < len(data):
+                self._send(gz, ctype, "gzip")
+                return True
+        self._send(data, ctype)
+        return True
+
     def do_GET(self):  # noqa: N802
         path = (self.path or "/").split("?")[0]
 
@@ -87,7 +124,9 @@ class Handler(SimpleHTTPRequestHandler):
                                "ultima_actualizare": upd, "varsta_secunde": age,
                                "detectii": len(st.get("detections", {}))})
 
-        return super().do_GET()
+        if self._serve_static_compressed(path):
+            return
+        self.send_error(404, "Not Found")
 
 
 def main() -> int:

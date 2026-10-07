@@ -2,79 +2,128 @@
 <html lang="ro">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Domogled – Valea Cernei · monitorizare live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Incendiul din Domogled – Valea Cernei · monitorizare satelitară live</title>
+<meta name="description" content="Hartă live cu detecțiile termice NASA FIRMS și ESA Sentinel-3 pentru incendiul din Parcul Național Domogled – Valea Cernei, suprafața arsă estimată din Sentinel-2 și imagini satelitare recente.">
+<meta name="theme-color" content="#0e1116">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://bunilastelian.github.io/domogled-live/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:title" content="România arde — incendiul din Domogled – Valea Cernei, live">
+<meta property="og:description" content="Detecții termice NASA și ESA, suprafață arsă estimată și imagini Sentinel-2, actualizate automat la fiecare 15 minute.">
+<meta property="og:url" content="https://bunilastelian.github.io/domogled-live/">
+<meta property="og:image" content="https://bunilastelian.github.io/domogled-live/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="România arde — incendiul din Domogled – Valea Cernei, live">
+<meta name="twitter:description" content="Detecții termice NASA și ESA, suprafață arsă și imagini Sentinel-2, actualizate automat.">
+<meta name="twitter:image" content="https://bunilastelian.github.io/domogled-live/og.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e1116'/%3E%3Cpath d='M16 5c1 4-3 5.5-3 9a3 3 0 0 0 6 .3c2 1.6 3 3.4 3 5.4a6 6 0 1 1-12 0c0-4.6 4-6.4 6-14.7z' fill='%23f76b15'/%3E%3C/svg%3E">
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
 <style>
   :root{
     --bg:#0e1116; --panel:#161b22; --line:#26303d; --txt:#e6edf3; --dim:#8b98a5;
     --red:#e5484d; --orange:#f76b15; --yellow:#f5d90a; --grey:#6b7684; --blue:#3b82f6; --green:#30a46c;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--txt);
-       font:14px/1.45 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-  header{display:flex;align-items:center;gap:18px;padding:10px 18px;background:var(--panel);
-         border-bottom:1px solid var(--line);flex-wrap:wrap}
+  html,body{margin:0;background:var(--bg);color:var(--txt);
+       font:14px/1.45 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-text-size-adjust:100%}
+  a{color:var(--blue)}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+
+  header{display:flex;align-items:center;gap:10px 16px;padding:9px 16px;background:var(--panel);
+         border-bottom:1px solid var(--line);flex-wrap:wrap;min-height:52px}
   header h1{margin:0;font-size:16px;font-weight:650;letter-spacing:.2px}
   .badge{font-size:12px;padding:3px 9px;border-radius:20px;background:#1f2937;color:var(--dim);
-         border:1px solid var(--line)}
+         border:1px solid var(--line);white-space:nowrap}
   .badge.ok{color:#7ee2b8;border-color:#1d4d38}
   .badge.warn{color:#ffd479;border-color:#5c4718}
   .badge.err{color:#ff9c9c;border-color:#5c2020}
   .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);
        margin-right:6px;animation:pulse 2s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion: reduce){.dot{animation:none}}
 
-  #wrap{display:grid;grid-template-columns:1fr 400px;height:calc(100vh - 52px)}
-  #map{height:100%}
-  aside{border-left:1px solid var(--line);overflow-y:auto;background:var(--panel)}
+  #wrap{display:grid;grid-template-columns:1fr 400px;height:calc(100vh - 52px);height:calc(100dvh - 52px)}
+  #map{height:100%;background:#0b0e13}
+  aside{border-left:1px solid var(--line);overflow-y:auto;background:var(--panel);
+        overscroll-behavior:contain}
   .card{border-bottom:1px solid var(--line);padding:14px 16px}
   .card h2{margin:0 0 10px;font-size:12px;text-transform:uppercase;letter-spacing:.9px;color:var(--dim);
            font-weight:600}
   .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .kpi{background:#0d1117;border:1px solid var(--line);border-radius:9px;padding:9px 11px}
-  .kpi b{display:block;font-size:21px;font-weight:680;line-height:1.2}
+  .kpi b{display:block;font-size:21px;font-weight:680;line-height:1.2;font-variant-numeric:tabular-nums}
   .kpi span{font-size:11px;color:var(--dim)}
   .kpi.hot b{color:var(--orange)}
-  table{width:100%;border-collapse:collapse;font-size:12.5px}
-  td{padding:4px 0;vertical-align:top}
-  td:last-child{text-align:right;color:var(--dim);white-space:nowrap}
+  table.kv{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.kv td{padding:4px 0;vertical-align:top}
+  table.kv td:last-child{text-align:right;color:var(--dim);white-space:nowrap;
+                         font-variant-numeric:tabular-nums}
   .alert{background:#1b1410;border-left:3px solid var(--orange);border-radius:5px;
          padding:8px 10px;margin-bottom:7px;font-size:12.5px}
   .alert.new{border-left-color:var(--red);background:#1e1213}
   .alert time{color:var(--dim);font-size:11px;display:block}
   .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .thumb{position:relative;border:1px solid var(--line);border-radius:7px;overflow:hidden;
-         cursor:pointer;background:#0d1117}
+         cursor:pointer;background:#0d1117;padding:0;display:block;width:100%}
   .thumb img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
   .thumb span{position:absolute;left:0;right:0;bottom:0;font-size:10.5px;padding:3px 5px;
-              background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff}
+              background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff;text-align:left}
   .empty{color:var(--dim);font-size:12.5px;font-style:italic}
   label.chk{display:flex;align-items:center;gap:7px;font-size:12.5px;margin:5px 0;cursor:pointer}
-  input[type=checkbox]{accent-color:var(--blue);width:15px;height:15px}
-  #chart{display:block;width:100%!important;height:100%!important}
-  footer{padding:10px 16px;color:var(--dim);font-size:11px;line-height:1.6}
-  a{color:var(--blue)}
-  #tileswitcher{margin-top:8px;font-size:12.5px}
+  input[type=checkbox]{accent-color:var(--blue);width:15px;height:15px;flex:0 0 auto}
   select{background:#0d1117;color:var(--txt);border:1px solid var(--line);border-radius:6px;
-         padding:4px 7px;font-size:12.5px;width:100%}
+         padding:5px 7px;font-size:12.5px;width:100%}
   .legendrow{display:flex;align-items:center;gap:8px;font-size:12px;margin:4px 0;color:var(--dim)}
   .swatch{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  #chartwrap{position:relative;height:170px}
+  #chart{display:block;width:100%;height:100%}
+  .chartlegend{display:flex;gap:14px;font-size:11px;color:var(--dim);margin-bottom:6px}
+  .chartlegend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+  footer{padding:12px 16px 20px;color:var(--dim);font-size:11px;line-height:1.6}
+  .note{color:var(--dim);font-size:11px;margin-top:6px;line-height:1.5}
+  .leaflet-tooltip.reflabel{background:rgba(22,27,34,.82);border:1px solid var(--line);
+        color:#dfe7ef;font-size:11px;padding:1px 5px;box-shadow:none}
+  .leaflet-tooltip.reflabel::before{display:none}
+
+  /* ---------- mobil ---------- */
+  @media (max-width: 900px){
+    #wrap{grid-template-columns:1fr;height:auto}
+    #map{height:62vh;height:62dvh}
+    aside{border-left:0;border-top:1px solid var(--line);overflow:visible}
+    header{position:sticky;top:0;z-index:800}
+    header h1{font-size:14px;order:-1;width:100%}
+    .badge{font-size:11px}
+    .kpis{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 380px){
+    .kpi b{font-size:18px}
+  }
 </style>
 </head>
 <body>
+
 <header>
   <h1>🔥 Domogled – Valea Cernei · monitorizare live</h1>
-  <span class="badge" id="b-status"><span class="dot"></span>se încarcă…</span>
+  <span class="badge" id="b-status" role="status" aria-live="polite"><span class="dot"></span>se încarcă…</span>
   <span class="badge" id="b-updated">—</span>
   <span class="badge" id="b-aoi">—</span>
   <span class="badge" id="b-next">—</span>
 </header>
 
 <div id="wrap">
-  <div id="map"></div>
+  <div id="map" role="application" aria-label="Hartă cu focarele detectate în Parcul Național Domogled – Valea Cernei"></div>
+
   <aside>
     <div class="card">
       <h2>Situația acum</h2>
@@ -84,7 +133,7 @@
         <div class="kpi"><b id="k-total">–</b><span>detecții în total</span></div>
         <div class="kpi"><b id="k-days">–</b><span>zile cu foc</span></div>
       </div>
-      <table style="margin-top:10px">
+      <table class="kv" style="margin-top:10px">
         <tr><td>Cea mai recentă detecție</td><td id="s-latest">–</td></tr>
         <tr><td>Suprafață arsă (dNBR)</td><td id="s-burn">–</td></tr>
         <tr><td>Surse</td><td id="s-src">–</td></tr>
@@ -94,12 +143,20 @@
 
     <div class="card">
       <h2>Intensitate pe zile (FRP cumulat)</h2>
-      <div style="position:relative;height:190px"><canvas id="chart"></canvas></div>
+      <div class="chartlegend">
+        <span><i style="background:#f76b15"></i>NASA FIRMS</span>
+        <span><i style="background:#3b82f6"></i>ESA Sentinel-3</span>
+      </div>
+      <div id="chartwrap"><canvas id="chart" role="img"
+           aria-label="Grafic cu puterea radiativă cumulată pe zile, separat NASA și ESA"></canvas></div>
+      <p class="note" id="chart-note">–</p>
     </div>
 
     <div class="card">
       <h2>Alerte</h2>
-      <div id="alerts"><div class="empty">Nicio alertă încă. Colectorul ridică alertă când apar detecții noi.</div></div>
+      <div id="alerts" role="log" aria-live="polite" aria-relevant="additions">
+        <div class="empty">Nicio alertă încă. Colectorul ridică alertă când apar detecții noi.</div>
+      </div>
       <label class="chk" style="margin-top:10px">
         <input type="checkbox" id="notif"> Notificări în browser la detecții noi
       </label>
@@ -111,15 +168,24 @@
     </div>
 
     <div class="card">
-      <h2>Straturi hartă</h2>
+      <h2>Hartă</h2>
+      <label class="chk" style="margin-bottom:8px">
+        <span style="color:var(--dim);min-width:64px">Interval:</span>
+        <select id="range">
+          <option value="24">ultimele 24 h</option>
+          <option value="72" selected>ultimele 3 zile</option>
+          <option value="168">ultimele 7 zile</option>
+          <option value="0">tot istoricul</option>
+        </select>
+      </label>
       <label class="chk"><input type="checkbox" id="l-nasa" checked> NASA FIRMS (VIIRS/MODIS)</label>
       <label class="chk"><input type="checkbox" id="l-esa" checked> ESA Sentinel-3 SLSTR</label>
       <label class="chk"><input type="checkbox" id="l-strong"> Doar FRP ≥ 5 MW</label>
       <label class="chk"><input type="checkbox" id="l-park" checked> Conturul parcului național</label>
-      <label class="chk"><input type="checkbox" id="l-tracks" checked> Trasee de detecție (linii pe oră)</label>
+      <label class="chk"><input type="checkbox" id="l-tracks" checked> Linii de front pe trecere</label>
       <label class="chk"><input type="checkbox" id="l-burn" checked> Suprafață arsă (dNBR Sentinel-2)</label>
-      <div id="tileswitcher">
-        <select id="tiles">
+      <div style="margin-top:10px">
+        <select id="tiles" aria-label="Fond de hartă">
           <option value="sat">Fond: satelit (Esri)</option>
           <option value="osm">Fond: hartă (OSM)</option>
           <option value="dark">Fond: întunecat</option>
@@ -131,7 +197,7 @@
         <div class="legendrow"><span class="swatch" style="background:var(--yellow)"></span> ultimele 3 zile</div>
         <div class="legendrow"><span class="swatch" style="background:var(--grey)"></span> mai vechi</div>
         <div class="legendrow" style="margin-top:8px">mărimea cercului = FRP (MW)</div>
-        <div class="legendrow" style="margin-top:10px;color:var(--txt)">Cicatrice de incendiu (dNBR corectat):</div>
+        <div class="legendrow" style="margin-top:10px;color:var(--txt)">Cicatrice de incendiu (dNBR):</div>
         <div class="legendrow"><span class="swatch" style="background:#f57c00;border-radius:2px"></span> moderat-scăzut (≥0,27)</div>
         <div class="legendrow"><span class="swatch" style="background:#e5484d;border-radius:2px"></span> moderat-ridicat (≥0,44)</div>
         <div class="legendrow"><span class="swatch" style="background:#8c3cbe;border-radius:2px"></span> ridicat (≥0,66)</div>
@@ -139,9 +205,10 @@
     </div>
 
     <footer>
-      Date: NASA FIRMS (VIIRS 375 m, MODIS 1 km) și ESA Copernicus Sentinel-3 SLSTR FRP,
-      plus Sentinel-2 L2A pentru imagini.<br>
-      Reîmprospătare interfață: 60 s · colector: 5 min · date noi reale: la fiecare trecere de satelit (~6 h).
+      Date: NASA FIRMS (VIIRS 375 m, MODIS 1 km) și ESA Copernicus Sentinel-3 SLSTR FRP;
+      imagini și suprafață arsă din Sentinel-2 L2A.<br>
+      Interfață: reîmprospătare la 60 s · colector: 15 min · date noi reale: la fiecare trecere de satelit (~6 h).
+      <br>Suprafața arsă este o estimare proprie din dNBR, nu o delimitare oficială.
     </footer>
   </aside>
 </div>
