@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 74,
+ "cycles": 75,
  "zones": {
   "domogled": {
    "detections": {
@@ -5594,7 +5594,7 @@
      "bt_k": 303.6,
      "first_seen": "2026-10-07T22:22:02+00:00"
     },
-    "updated": "2026-10-07T22:57:02+00:00"
+    "updated": "2026-10-07T23:02:03+00:00"
    },
    "alerts": [
     {
@@ -5761,12 +5761,12 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-07T22:57:02+00:00",
-    "time": "2026-10-07T22:45",
+    "updated": "2026-10-07T23:02:03+00:00",
+    "time": "2026-10-07T23:00",
     "temp_c": 8.5,
     "humidity_pct": 47,
     "wind_kmh": 6.2,
-    "gust_kmh": 22.7,
+    "gust_kmh": 23.0,
     "wind_from_deg": 69,
     "wind_from_compass": "E",
     "downwind_deg": 249,
@@ -6025,6 +6025,7 @@
     "S3A_SL_2_FRP____20261005T081727_20261005T082027_20261005T101817_0179_144_349______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261005T194021_20261005T194321_20261005T215703_0179_144_356______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261007T090604_20261007T090904_20261007T110756_0180_144_378______MAR_O_NR_003.SEN3",
+    "S3A_SL_2_FRP____20261007T202858_20261007T203158_20261007T224300_0179_144_385______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20260930T193134_20260930T193434_20260930T214706_0180_125_142______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T092328_20261001T092628_20261001T112458_0179_125_150______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T204623_20261001T204923_20261001T213116_0179_125_157______MAR_O_NR_003.SEN3",
@@ -6039,7 +6040,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 89,
+   "cycles": 90,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -11566,9 +11567,118 @@
      "satellite": "S3B",
      "bt_k": 0.0,
      "first_seen": "2026-10-07T22:22:07+00:00"
+    },
+    "ESA|SLSTR MWIR1km-standard|2026-10-07|2029|44.7664|22.3506": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.76645,
+     "lon": 22.35058,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 12.19,
+     "confidence": 81,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 300.3,
+     "first_seen": "2026-10-07T23:02:07+00:00"
+    },
+    "ESA|SLSTR MWIR1km-standard|2026-10-07|2029|44.7914|22.2987": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.79144,
+     "lon": 22.29869,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 13.53,
+     "confidence": 83,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 301.7,
+     "first_seen": "2026-10-07T23:02:07+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-07|2029|44.7664|22.3506": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.76645,
+     "lon": 22.35058,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 12.19,
+     "confidence": 0,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 286.0,
+     "first_seen": "2026-10-07T23:02:07+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-07|2029|44.7914|22.2987": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.79144,
+     "lon": 22.29869,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 13.53,
+     "confidence": 0,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 286.2,
+     "first_seen": "2026-10-07T23:02:07+00:00"
+    },
+    "ESA|SLSTR SWIR500m|2026-10-07|2029|44.7628|22.3388": {
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.76277,
+     "lon": 22.33879,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 5.25,
+     "confidence": 0,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-07T23:02:07+00:00"
+    },
+    "ESA|SLSTR SWIR500m|2026-10-07|2029|44.7963|22.2987": {
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.79629,
+     "lon": 22.29868,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 1.71,
+     "confidence": 100,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-07T23:02:07+00:00"
+    },
+    "ESA|SLSTR SWIR500m|2026-10-07|2029|44.7937|22.2933": {
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.79368,
+     "lon": 22.29326,
+     "date": "2026-10-07",
+     "time": "2029",
+     "frp": 2.24,
+     "confidence": 100,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-07T23:02:07+00:00"
     }
    },
    "alerts": [
+    {
+     "at": "2026-10-07T23:02:08+00:00",
+     "count": 7,
+     "max_frp": 13.53,
+     "lat": 44.79144,
+     "lon": 22.29869,
+     "when": "2026-10-07 2029Z",
+     "source": "ESA SLSTR MWIR1km-standard",
+     "telegram": false,
+     "label": "7 detecții noi · max 13.5 MW · 2026-10-07 2029Z"
+    },
     {
      "at": "2026-10-07T22:22:08+00:00",
      "count": 24,
@@ -11628,6 +11738,7 @@
     "S3A_SL_2_FRP____20261005T081727_20261005T082027_20261005T101817_0179_144_349______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261005T194021_20261005T194321_20261005T215703_0179_144_356______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261007T090604_20261007T090904_20261007T110756_0180_144_378______MAR_O_NR_003.SEN3",
+    "S3A_SL_2_FRP____20261007T202858_20261007T203158_20261007T224300_0179_144_385______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20260930T193134_20260930T193434_20260930T214706_0180_125_142______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T092328_20261001T092628_20261001T112458_0179_125_150______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T204623_20261001T204923_20261001T213116_0179_125_157______MAR_O_NR_003.SEN3",
@@ -11642,40 +11753,40 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 74,
+   "cycles": 75,
    "fires": [
     {
      "id": "portiledefier-44.767-22.325",
      "zone": "portiledefier",
-     "lat": 44.76716,
-     "lon": 22.32501,
-     "points": 410,
+     "lat": 44.7674,
+     "lon": 22.3249,
+     "points": 417,
      "days": 8,
      "first": "2026-09-30T10:58+00:00",
-     "last": "2026-10-07T19:51+00:00",
+     "last": "2026-10-07T20:29+00:00",
      "frp_max": 18.66,
-     "frp_sum": 1199.2,
-     "frp_last24": 247.7,
+     "frp_sum": 1259.9,
+     "frp_last24": 308.4,
      "frp_prev24": 337.8,
-     "det_last24": 90,
+     "det_last24": 97,
      "det_prev24": 98,
-     "trend": "în scădere",
-     "trend_color": "#30a46c",
-     "extent_km": 7.67,
+     "trend": "staționar",
+     "trend_color": "#f5d90a",
+     "extent_km": 7.9,
      "nasa": 262,
-     "esa": 148,
+     "esa": 155,
      "in_park": true,
      "nearest_place": "Orșova",
-     "nearest_km": 7.55,
+     "nearest_km": 7.58,
      "elev_span_m": null,
      "rank": 1
     }
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-07T22:57:06+00:00",
-    "time": "2026-10-07T22:45",
-    "temp_c": 11.5,
+    "updated": "2026-10-07T23:02:08+00:00",
+    "time": "2026-10-07T23:00",
+    "temp_c": 11.4,
     "humidity_pct": 42,
     "wind_kmh": 4.6,
     "gust_kmh": 16.2,
@@ -11685,11 +11796,11 @@
     "downwind_compass": "E",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0,
-    "vpd_kpa": 0.79,
+    "vpd_kpa": 0.78,
     "soil_moisture": 0.118,
     "elevation_m": 678.0,
     "danger": {
-     "index": 3.65,
+     "index": 3.66,
      "name": "Angström",
      "class": "scăzut",
      "color": "#30a46c",
@@ -11926,11 +12037,11 @@
     ]
    },
    "stats": {
-    "total": 412,
+    "total": 419,
     "nasa": 262,
-    "esa": 150,
-    "last24_count": 90,
-    "last24_frp": 247.7,
+    "esa": 157,
+    "last24_count": 97,
+    "last24_frp": 308.4,
     "last24_max": 13.7,
     "days": [
      {
@@ -12005,30 +12116,30 @@
      },
      {
       "date": "2026-10-07",
-      "count": 90,
-      "frp": 247.7,
+      "count": 97,
+      "frp": 308.4,
       "max": 13.7,
       "nasa": 61,
-      "esa": 29,
+      "esa": 36,
       "frp_nasa": 105.5,
-      "frp_esa": 142.2
+      "frp_esa": 202.8
      }
     ],
     "latest": {
      "src": "ESA",
      "sensor": "SLSTR MWIR1km-standard",
-     "lat": 44.74216,
-     "lon": 22.33084,
+     "lat": 44.76645,
+     "lon": 22.35058,
      "date": "2026-10-07",
-     "time": "1951",
-     "frp": 7.89,
-     "confidence": 88,
+     "time": "2029",
+     "frp": 12.19,
+     "confidence": 81,
      "daynight": "N",
-     "satellite": "S3B",
-     "bt_k": 305.6,
-     "first_seen": "2026-10-07T22:22:07+00:00"
+     "satellite": "S3A",
+     "bt_k": 300.3,
+     "first_seen": "2026-10-07T23:02:07+00:00"
     },
-    "updated": "2026-10-07T22:57:07+00:00"
+    "updated": "2026-10-07T23:02:09+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -12183,5 +12294,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-07T22:57:07+00:00"
+ "updated": "2026-10-07T23:02:09+00:00"
 }
