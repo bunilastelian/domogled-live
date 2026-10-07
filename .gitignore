@@ -27,6 +27,9 @@ __pycache__/
 .venv/
 venv/
 
+# log-uri de rulare (se scriu la fiecare ciclu, n-au ce cauta in git)
+logs/
+
 # ce trebuie COMIS (pentru GitHub Pages):
 #   live/state/state.json
 #   live/web/state/state.json

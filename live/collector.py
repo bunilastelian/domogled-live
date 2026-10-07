@@ -29,7 +29,7 @@ import sys
 import time
 import traceback
 import urllib.request
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, date
 from pathlib import Path
 
 from PIL import Image
@@ -152,9 +152,20 @@ def save_state(state: dict) -> None:
 
 
 def http_get(url: str, timeout: int = 90) -> str:
+    """GET cu retry. Un timeout izolat nu trebuie sa coste un ciclu intreg:
+    NASA FIRMS si CDSE au momente de indisponibilitate scurta, iar fara retry
+    pierdem fereastra de 24h pana la urmatorul ciclu (5 min mai tarziu)."""
     req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.read().decode("utf-8", "replace")
+    last = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", "replace")
+        except Exception as exc:  # noqa: BLE001
+            last = exc
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))   # 2s, apoi 4s
+    raise last  # type: ignore[misc]
 
 
 # --------------------------------------------------------------------- lock
@@ -622,6 +633,59 @@ def cycle_zone(state: dict, client: CDSE, first: bool) -> None:
     log(f"   gata: {s['total']} detectii, {s['last24_count']} in 24h, FRP 24h {s['last24_frp']} MW")
 
 
+# ------------------------------------------------------------------ retentie
+# Fara curatare, state.json creste la infinit: fiecare detectie rămâne pe
+# vecie, fisierul se rescrie la 5 minute si se publica pe Pages. Dupa o luna
+# ajunge la cativa MB, deci il incarcam degeaba pe telefon la fiecare refresh.
+#
+# Pastram RETENTION_DAYS zile de istoric (implicit 21). Un foc activ are
+# zeci-sute de detectii pe zi, deci 21 de zile acopera cu varf orice incendiu
+# real si tot lasa graficul FRP pe ultimele 3 saptamani.
+#
+# Atentie: nu taiem din focarele active — o detectie veche care face parte
+# dintr-un foc inca aprins se pastreaza, altfel pierdem numaratoarea corecta.
+RETENTION_DAYS = int(os.getenv("DOMOGLED_RETENTION_DAYS", "21"))
+
+
+def prune_detections(state: dict) -> int:
+    """Scoate detectiile mai vechi de RETENTION_DAYS. Returneaza cate a sters."""
+    dets = state.get("detections") or {}
+    if not dets:
+        return 0
+
+    # limitele focarelor active: orice detectie care contribuie la un foc
+    # raportat acum rămâne, oricat de veche ar fi.
+    active_first = set()
+    for f in (state.get("fires") or []):
+        first = (f.get("first") or "")[:10]
+        if first:
+            active_first.add(first)
+
+    # data de referinta = acum (UTC), nu ultima detectie — altfel un import
+    # de istoric vechi ar pastra tot pentru ca "acum" ar fi tot vechi.
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).date()
+
+    drop = []
+    for key, d in dets.items():
+        dtxt = (d.get("date") or "")[:10]
+        if not dtxt:
+            continue
+        try:
+            dday = date.fromisoformat(dtxt)
+        except ValueError:
+            continue
+        if dday >= cutoff:
+            continue
+        # pastreaza daca apartine unui foc activ
+        if dtxt in active_first:
+            continue
+        drop.append(key)
+
+    for key in drop:
+        dets.pop(key, None)
+    return len(drop)
+
+
 def cycle(state: dict, client: CDSE, first: bool) -> None:
     """Un ciclu pentru toate zonele, apoi o singura scriere de stare."""
     zones = state.setdefault("zones", {})
@@ -639,6 +703,13 @@ def cycle(state: dict, client: CDSE, first: bool) -> None:
         except Exception:  # noqa: BLE001
             log(f"[!] zona {z['id']} a eșuat:\n" + traceback.format_exc())
         save_state(state)          # scriem dupa fiecare zona, ca un eșec sa nu piarda restul
+        # curatam istoricul prea vechi (vezi prune_detections)
+        try:
+            n = prune_detections(zs)
+            if n:
+                log(f"   retentie: sterse {n} detectii mai vechi de {RETENTION_DAYS} zile")
+        except Exception as exc:  # noqa: BLE001
+            log(f"   [!] retentie: {type(exc).__name__}: {exc}")
     state["cycles"] = state.get("cycles", 0) + 1
     state["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     save_state(state)
