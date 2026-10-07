@@ -148,6 +148,20 @@ def _nbr(client: CDSE, scene: dict, cache: Path, win) -> np.ndarray:
         return np.where(denom > 0, (nir - swir) / denom, np.nan)
 
 
+def _clamp_window(win, size: tuple[int, int], minima: int = 200):
+    """Aduce fereastra in limitele imaginii.
+
+    Fara asta, o zona aproape de marginea tile-ului da un crop gol si esueaza
+    cu "height and width must be > 0".
+    """
+    w, h = size
+    left = max(0, min(win[0], w - minima))
+    top = max(0, min(win[1], h - minima))
+    right = min(w, max(win[2], left + minima))
+    bottom = min(h, max(win[3], top + minima))
+    return (left, top, right, bottom)
+
+
 def compute(client: CDSE, center: tuple[float, float], out_png: Path, cache: Path,
             post: dict | None = None) -> dict:
     """Calculeaza dNBR si scrie PNG-ul georeferentiat. Intoarce statisticile.
@@ -164,6 +178,18 @@ def compute(client: CDSE, center: tuple[float, float], out_png: Path, cache: Pat
         raise CDSEError("scena de referinta si cea recenta coincid")
 
     win, geo = _window(post, center, BOX_KM)
+    with Image.open(_bands(client, post, "B8A_20m", cache)) as im:
+        size = im.size
+    clamped = _clamp_window(win, size)
+    if clamped != win:
+        eff_km = round((clamped[2] - clamped[0]) * PIX / 1000, 1)
+        if eff_km < 6:
+            raise CDSEError(
+                f"zona iese din scena Sentinel-2: fereastra de {BOX_KM:.0f} km se reduce "
+                f"la {eff_km:.1f} km. Muta centrul zonei sau alege alta scena."
+            )
+        print(f"      [i] fereastra ajustata la marginile scenei: {eff_km} km")
+    win = clamped
     nbr_pre = _nbr(client, base, cache, win)
     nbr_post = _nbr(client, post, cache, win)
     if nbr_pre.shape != nbr_post.shape:

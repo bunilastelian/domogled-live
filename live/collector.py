@@ -48,9 +48,9 @@ from cdse import CDSE, CDSEError, normalize_stac  # noqa: E402
 # ----------------------------------------------------------------- configurare
 # Zonele vin din zones.json — adaugi o zona noua acolo, fara sa schimbi codul.
 ZONES_FILE = HERE / "zones.json"
-_zcfg = json.loads(ZONES_FILE.read_text(encoding="utf-8"))
-ZONES: list[dict] = _zcfg["zones"]
-ZONE: dict = next((z for z in ZONES if z["id"] == _zcfg.get("default_zone")), ZONES[0])
+ZONE_CFG = json.loads(ZONES_FILE.read_text(encoding="utf-8"))
+ZONES: list[dict] = ZONE_CFG["zones"]
+ZONE: dict = next((z for z in ZONES if z["id"] == ZONE_CFG.get("default_zone")), ZONES[0])
 
 AOI = {
     "name": ZONE["name"],
@@ -63,6 +63,33 @@ POLL_SECONDS = 300
 FRP_LOOKBACK_HOURS = 6            # cat de des cautam produse FRP noi
 IMAGERY_CLOUD_MAX = 60            # % acoperire cu nori acceptata pentru preview
 UA = {"User-Agent": "copernicus-domogled-live/2.0"}
+
+
+def set_zone(zone: dict) -> None:
+    """Leaga modulele de zona care se proceseaza acum.
+
+    Colectorul merge secvential prin zone, intr-un singur fir, deci reasignarea
+    variabilelor de modul e sigura si evita sa ducem `zone` prin toate functiile.
+    Fisierele de iesire primesc prefixul zonei, ca doua zone sa nu se calce.
+    """
+    global ZONE
+    ZONE = zone
+    AOI.update({
+        "name": zone["name"],
+        "bbox": zone["bbox"],
+        "center": zone["center"],
+        "zoom": zone.get("zoom", 12),
+        "park_file": (zone.get("park") or {}).get("geojson", ""),
+    })
+
+
+def zone_image(name: str) -> Path:
+    """Nume de fisier unic pe zona (doua zone pot partaja aceeasi scena Sentinel-2)."""
+    return IMG / f"{ZONE['id']}_{name}"
+
+
+def zone_burn_cache() -> Path:
+    return STATE / "burn" / ZONE["id"]
 
 STATE = HERE / "state"
 WEB = HERE / "web"
@@ -104,7 +131,7 @@ def load_state() -> dict:
             return json.loads(STATE_FILE.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             log("[!] state.json corupt, pornesc de la zero")
-    return {"detections": {}, "frp_products": [], "imagery": {}, "alerts": [], "cycles": 0}
+    return {"version": 2, "cycles": 0, "zones": {}}
 
 
 def save_state(state: dict) -> None:
@@ -366,7 +393,7 @@ def fetch_imagery(client: CDSE, state: dict) -> int:
                 continue
             crop = im.crop((left, top, right, bottom)).convert("RGB")
 
-        out = IMG / f"s2_{rec['id']}.png"
+        out = zone_image(f"s2_{rec['id']}.png")
         crop.save(out)
         state["imagery"][rec["id"]] = {
             "file": out.name,
@@ -412,7 +439,7 @@ def raise_alerts(state: dict, new_dets: list[dict]) -> None:
     dets = strong or new_dets
     d = max(dets, key=lambda x: x["frp"])
     ce = "focar puternic" if d["frp"] >= 20 else ("focar moderat" if d["frp"] >= 5 else "detecție slabă")
-    text = (f"🔥 Domogled – Valea Cernei: {len(new_dets)} detecție/detecții noi\n"
+    text = (f"🔥 {ZONE['name']}: {len(new_dets)} detecție/detecții noi\n"
             f"cea mai puternică: {d['frp']:.1f} MW ({ce})\n"
             f"la {d['lat']:.4f}, {d['lon']:.4f} — {d['date']} {d['time']} UTC\n"
             f"sursa: {d['src']} {d['sensor']}")
@@ -450,7 +477,7 @@ def update_burn(client: CDSE, state: dict) -> None:
 
     log(f"   arsura: scena noua {post['id'][:44]} (nori {post['properties'].get('eo:cloud_cover')}%) "
         f"— recalculez dNBR (descarc ~120 MB)")
-    info = burn_scar.compute(client, center, IMG / "arsura.png", STATE / "burn", post=post)
+    info = burn_scar.compute(client, center, zone_image("arsura.png"), zone_burn_cache(), post=post)
     state["burn"] = info
     log(f"   arsura: {info['ha_moderat_plus']} ha peste pragul moderat, "
         f"{info['ha_total']} ha peste pragul slab (scena {info['post_date']})")
@@ -533,11 +560,12 @@ def compute_stats(dets: dict) -> dict:
 
 
 # ---------------------------------------------------------------------- ciclu
-def cycle(state: dict, client: CDSE, first: bool) -> None:
+def cycle_zone(state: dict, client: CDSE, first: bool) -> None:
+    """Un ciclu pentru o singura zona. `state` e subarborele zonei."""
     dets: dict = state["detections"]
     before = set(dets)
 
-    log("ciclul incepe")
+    log(f"ciclul incepe — {ZONE['name']}")
     # 1. FIRMS
     window = FIRMS_SEED if first else "24h"
     for d in fetch_firms(window):
@@ -586,11 +614,33 @@ def cycle(state: dict, client: CDSE, first: bool) -> None:
 
     state["cycles"] = state.get("cycles", 0) + 1
     state["stats"] = compute_stats(dets)
-    state["aoi"] = AOI
-    save_state(state)
+    state["aoi"] = dict(AOI)
+    state["id"] = ZONE["id"]
+    state["name"] = ZONE["name"]
+    state["short"] = ZONE.get("short") or ZONE["name"]
     s = state["stats"]
-    log(f"ciclul s-a incheiat: {s['total']} detectii totale, {s['last24_count']} in ultimele 24h, "
-        f"FRP 24h {s['last24_frp']} MW")
+    log(f"   gata: {s['total']} detectii, {s['last24_count']} in 24h, FRP 24h {s['last24_frp']} MW")
+
+
+def cycle(state: dict, client: CDSE, first: bool) -> None:
+    """Un ciclu pentru toate zonele, apoi o singura scriere de stare."""
+    zones = state.setdefault("zones", {})
+    state["zone_list"] = [{k: z.get(k) for k in ("id", "name", "short", "bbox", "center", "zoom", "places")}
+                          for z in ZONES]
+    state["default_zone"] = ZONE_CFG.get("default_zone") or ZONES[0]["id"]
+    for z in ZONES:
+        set_zone(z)
+        zs = zones.setdefault(z["id"], {"detections": {}, "alerts": [], "imagery": {},
+                                        "frp_products": [], "cycles": 0})
+        empty = not zs["detections"]
+        try:
+            cycle_zone(zs, client, first or empty)
+        except Exception:  # noqa: BLE001
+            log(f"[!] zona {z['id']} a eșuat:\n" + traceback.format_exc())
+        save_state(state)          # scriem dupa fiecare zona, ca un eșec sa nu piarda restul
+    state["cycles"] = state.get("cycles", 0) + 1
+    state["updated"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    save_state(state)
 
 
 def main() -> int:
@@ -603,9 +653,10 @@ def main() -> int:
     acquire_lock(args.interval, args.force)
     state = load_state()
     client = CDSE()
-    first = not state["detections"]
-    log(f"pornire collector — zona {AOI['name']}, {len(state['detections'])} detectii in stare, "
-        f"chei CDSE: {'da' if client.configured else 'NU'}")
+    first = not any((state.get("zones") or {}).get(z["id"], {}).get("detections") for z in ZONES)
+    n_det = sum(len((state.get("zones") or {}).get(z["id"], {}).get("detections") or {}) for z in ZONES)
+    log(f"pornire collector — {len(ZONES)} zone {[z['id'] for z in ZONES]}, "
+        f"{n_det} detectii in stare, chei CDSE: {'da' if client.configured else 'NU'}")
 
     try:
         while True:

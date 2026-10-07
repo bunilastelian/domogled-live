@@ -127,6 +127,12 @@ Dashboard-ul citește starea prin `/api/state` când rulează local și cade aut
 
 ## Module (v2)
 
+Colectorul ridică **toate zonele** din `zones.json` la fiecare ciclu și scrie stare separată
+pentru fiecare. Interfața are un selector de zonă; la schimbare, harta se recentrează și
+încarcă conturul parcului corespunzător. Fișierele de ieșire au prefixul zonei
+(`domogled_arsura.png`, `portiledefier_s2_...png`), ca două zone care partajează aceeași
+scenă Sentinel-2 să nu se calce.
+
 | fișier | rol |
 |---|---|
 | `zones.json` | zonele monitorizate. Adaugi o zonă copiind un bloc — codul nu se atinge. |
@@ -134,6 +140,16 @@ Dashboard-ul citește starea prin `/api/state` când rulează local și cade aut
 | `fires.py` | grupare automată a detecțiilor în **focare distincte**, cu tendință pe 24 h, întindere, apartenență la parc și distanța la cel mai apropiat reper |
 | `audit.py` | audit măsurat al site-ului public |
 | `simplify_polygon.py` | reduce contururile de parc (Douglas-Peucker) + validare de structură GeoJSON |
+
+### Zone monitorizate acum
+
+| zonă | detecții | focar | suprafață arsă (≥0,27) |
+|---|---|---|---|
+| Domogled – Valea Cernei | 379 | 44,8980 / 22,4783 · în scădere | 240 ha |
+| Porțile de Fier – nord de Orșova | 380 | 44,7666 / 22,3253 · staționar | 77 ha |
+
+Al doilea focar nu apare în raportul de presă consultat și nu l-am regăsit în relatările
+verificate — l-am găsit doar în date.
 
 ### Indicele de pericol
 

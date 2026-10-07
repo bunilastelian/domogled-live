@@ -19,7 +19,10 @@ const RANGE_LABELS = { '24': 'ultimele 24 h', '72': 'ultimele 3 zile',
                        '168': 'ultimele 7 zile', '0': 'tot istoricul' };
 
 let map, tileLayers = {}, parkLayer, nasaLayer, esaLayer, trackLayer, burnLayer, windLayer, refLayer;
-let state = null;
+let fullState = null;      // toata starea, cu toate zonele
+let state = null;          // subarborele zonei active (.detections, .stats, .fires, .weather...)
+let currentZone = null;
+let parkGeomFile = null;
 let staticMode = false;
 let lastRenderSig = '';
 let lastBurnSig = '';
@@ -64,10 +67,7 @@ function initMap() {
   windLayer = L.layerGroup().addTo(map);
   refLayer = L.layerGroup().addTo(map);
 
-  fetch('domogled.geojson').then(r => r.json()).then(geom => {
-    L.geoJSON(geom, { style: { color: '#3b82f6', weight: 2, fill: false, opacity: 0.85, dashArray: '6 4' } })
-      .addTo(parkLayer);
-  }).catch(() => {});
+  loadPark(null);
 
   [['Cascada Cociului', 44.91838, 22.46485, '★'],
    ['Colțu Pietrii 1228 m', 44.90550, 22.48217, '▲'],
@@ -79,6 +79,54 @@ function initMap() {
         iconSize: [18, 18] })
     }).bindTooltip(name, { permanent: true, direction: 'right', className: 'reflabel' }).addTo(refLayer);
   });
+}
+
+// conturul parcului depinde de zona activa
+function loadPark(file) {
+  const f = file || 'domogled.geojson';
+  if (f === parkGeomFile) return;
+  parkGeomFile = f;
+  parkLayer.clearLayers();
+  fetch(f).then(r => r.json()).then(geom => {
+    L.geoJSON(geom, { style: { color: '#3b82f6', weight: 2, fill: false, opacity: 0.85, dashArray: '6 4' } })
+      .addTo(parkLayer);
+  }).catch(() => {});
+}
+
+// ---------------------------------------------------------------- zone
+function syncZones() {
+  const sel = document.getElementById('zone');
+  const list = (fullState && fullState.zone_list) || [];
+  if (!sel || !list.length) return;
+
+  const sig = list.map(z => z.id).join(',');
+  if (sel.dataset.sig !== sig) {
+    sel.dataset.sig = sig;
+    sel.innerHTML = list.map(z => `<option value="${z.id}">${z.name}</option>`).join('');
+    currentZone = currentZone || fullState.default_zone || list[0].id;
+  }
+  const zones = (fullState && fullState.zones) || {};
+  if (!zones[currentZone]) currentZone = fullState.default_zone || list[0].id;
+  sel.value = currentZone;
+
+  state = zones[currentZone] || null;
+  const meta = list.find(z => z.id === currentZone) || {};
+  loadPark(((meta.park || {}).geojson) || null);
+  if (state && state.name) document.title = `${state.name} · incendii live`;
+}
+
+function switchZone(id) {
+  currentZone = id;
+  const zones = (fullState && fullState.zones) || {};
+  state = zones[id] || null;
+  lastRenderSig = ''; lastBurnSig = ''; lastAlertKey = null;
+  for (const el of document.querySelectorAll('#fires, #thumbs, #alerts')) delete el.dataset.sig;
+  const aoi = (state && state.aoi) || {};
+  if (aoi.center) map.setView(aoi.center, aoi.zoom || 12);
+  loadPark(null);                       // forteaza reincarcarea pentru zona noua
+  parkGeomFile = null;
+  syncZones();
+  refresh(true);
 }
 
 function ageHours(d) {
@@ -396,7 +444,8 @@ async function refresh(force) {
       document.getElementById('b-status').textContent = st.error;
       return;
     }
-    state = st;
+    fullState = st;
+    syncZones();
     const rangeH = +document.getElementById('range').value;
     const sig = `${(st.stats || {}).updated}|${rangeH}|${document.getElementById('l-strong').checked}`;
     const changed = force || sig !== lastRenderSig;
@@ -421,6 +470,7 @@ async function refresh(force) {
 }
 
 function bindControls() {
+  document.getElementById('zone').addEventListener('change', e => switchZone(e.target.value));
   document.getElementById('range').addEventListener('change', () => refresh(true));
   document.getElementById('l-strong').addEventListener('change', () => refresh(true));
   ['l-nasa', 'l-esa', 'l-park', 'l-tracks', 'l-burn'].forEach(id => {

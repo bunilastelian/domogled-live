@@ -119,12 +119,16 @@
   @media (max-width: 380px){
     .kpi b{font-size:18px}
   }
+  .zonesel{background:#0d1117;color:var(--txt);border:1px solid var(--line);border-radius:7px;
+           padding:5px 9px;font-size:13px;font-weight:600;max-width:15rem}
+  @media (max-width: 900px){ .zonesel{width:100%;max-width:none;order:-1} }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🔥 Domogled – Valea Cernei · monitorizare live</h1>
+  <h1>🔥 Monitorizare incendii · Copernicus</h1>
+  <select id="zone" class="zonesel" aria-label="Zona monitorizată"><option value="">se încarcă…</option></select>
   <span class="badge" id="b-status" role="status" aria-live="polite"><span class="dot"></span>se încarcă…</span>
   <span class="badge" id="b-updated">—</span>
   <span class="badge" id="b-aoi">—</span>
