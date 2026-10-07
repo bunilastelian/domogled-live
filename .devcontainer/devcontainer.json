@@ -1,0 +1,30 @@
+{
+  "name": "Domogled Live",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+
+  // 2 nuclee = 120 ore de nucleu/luna din planul gratuit se transforma in 60 de ore de lucru
+  "hostRequirements": { "cpus": 2 },
+
+  "postCreateCommand": "python -m pip install -r live/requirements.txt",
+
+  "forwardPorts": [8777],
+  "portsAttributes": {
+    "8777": { "label": "Dashboard Domogled", "onAutoForward": "openPreview" }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance"],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "files.eol": "\n"
+      }
+    }
+  },
+
+  "remoteEnv": {
+    // Cheile vin din Codespaces secrets (Settings -> Secrets and variables -> Codespaces).
+    // Nu se pun niciodata in repo.
+    "COPERNICUS_DATA_DIR": "data"
+  }
+}
