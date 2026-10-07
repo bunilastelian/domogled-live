@@ -52,6 +52,40 @@ pentru că Pages servește starea ca fișier static.
 Un Codespace se **oprește singur după 30 de minute de inactivitate** (implicit). Deci
 Codespaces e pentru dezvoltare și rulări manuale, nu pentru producție 24/7.
 
+## 4. Google Colab: bun pentru analiză, NU pentru monitorizare
+
+Colab pare soluția gratuită pentru „rulat în cloud", dar nu e potrivit pentru un serviciu
+care trebuie să meargă încontinuu. Google o spune explicit în
+[FAQ-ul lor](https://research.google.com/colaboratory/faq.html), citat textual:
+
+> „Runtimes will time out if you are idle."
+
+> „In the version of Colab that is free of charge notebooks can run for at most 12 hours"
+
+> „Virtual machines are deleted when idle for a while, and have a maximum lifetime enforced by the Colab service."
+
+> „Colab does not publish these limits, in part because they can vary over time."
+
+În plus, **execuția în fundal e o funcție plătită** — FAQ-ul o listează la „additional
+capabilities" ale planurilor superioare.
+
+Deci un colector care trebuie să ruleze la fiecare 5 minute nu poate sta pe Colab.
+Nici serverul, nici Streamlit.
+
+### Dar pentru analiză, Colab e chiar bun
+
+`analiza.ipynb` din rădăcina repo-ului rulează în Colab **fără instalare locală și fără
+nicio cheie API**: citește datele publice ale monitorului și reproduce cifrele.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bunilastelian/domogled-live/blob/main/analiza.ipynb)
+
+De ce contează: notebook-ul poate fi deschis și rulat de **oricine** — jurnalist, ONG,
+funcționar — ca să verifice singur cifrele, nu să le creadă pe cuvânt. Pentru un subiect
+aflat în atenția publică, asta valorează mai mult decât încă un loc unde rulează cod.
+
+Verificat cu `test_notebook.py`, care compilează și execută toate cele 8 celule: reproduce
+ambele focare, cu 378 de puncte fiecare, tendințele și reperele.
+
 ## Limitele, pe scurt
 
 | | limită | sursa |

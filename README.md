@@ -4,6 +4,18 @@ Client Python minimal pentru [Copernicus Data Space Ecosystem](https://dataspace
 autentificare OAuth2, cautare in catalog (STAC + OData), descarcare de produse si de benzi
 individuale, previzualizare PNG.
 
+## Analiza incendiilor
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bunilastelian/domogled-live/blob/main/analiza.ipynb)
+
+`analiza.ipynb` reproduce, fara instalare locala si fara chei API, cifrele despre incendiile
+din Parcul National Domogled – Valea Cernei si din Parcul Natural Portile de Fier: cate focare
+distincte sunt (nu cate puncte de detectie), intensitatea in timp, unde anume, suprafata arsa
+estimata din Sentinel-2 si directia de propagare.
+
+Monitorul care alimenteaza notebook-ul ruleaza la 15 minute:
+<https://bunilastelian.github.io/domogled-live/>
+
 ## Instalare
 
 Mediul virtual e deja creat in `.venv` (Python 3.12, `requests`, `python-dotenv`, `pillow`).
