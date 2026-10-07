@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 34,
+ "cycles": 35,
  "zones": {
   "domogled": {
    "detections": {
@@ -5271,7 +5271,7 @@
      "satellite": "A",
      "first_seen": "2026-10-07T17:22:43+00:00"
     },
-    "updated": "2026-10-07T19:39:10+00:00"
+    "updated": "2026-10-07T19:44:11+00:00"
    },
    "alerts": [
     {
@@ -5384,9 +5384,9 @@
      "frp_max": 97.36,
      "frp_sum": 1725.8,
      "frp_last24": 270.8,
-     "frp_prev24": 666.6,
+     "frp_prev24": 432.1,
      "det_last24": 55,
-     "det_prev24": 127,
+     "det_prev24": 96,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 8.32,
@@ -5401,7 +5401,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-07T19:39:10+00:00",
+    "updated": "2026-10-07T19:44:11+00:00",
     "time": "2026-10-07T19:30",
     "temp_c": 9.5,
     "humidity_pct": 42,
@@ -5678,7 +5678,7 @@
     "S3B_SL_2_FRP____20261006T201628_20261006T201928_20261006T210223_0179_125_228______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 49,
+   "cycles": 50,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -10933,7 +10933,7 @@
     "S3B_SL_2_FRP____20261006T201628_20261006T201928_20261006T210223_0179_125_228______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 34,
+   "cycles": 35,
    "fires": [
     {
      "id": "portiledefier-44.767-22.325",
@@ -10947,9 +10947,9 @@
      "frp_max": 18.66,
      "frp_sum": 1093.9,
      "frp_last24": 245.2,
-     "frp_prev24": 302.3,
+     "frp_prev24": 248.1,
      "det_last24": 92,
-     "det_prev24": 91,
+     "det_prev24": 75,
      "trend": "staționar",
      "trend_color": "#f5d90a",
      "extent_km": 7.67,
@@ -10964,7 +10964,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-07T19:39:16+00:00",
+    "updated": "2026-10-07T19:44:16+00:00",
     "time": "2026-10-07T19:30",
     "temp_c": 12.6,
     "humidity_pct": 36,
@@ -11318,7 +11318,7 @@
      "satellite": "N",
      "first_seen": "2026-10-07T17:22:49+00:00"
     },
-    "updated": "2026-10-07T19:39:16+00:00"
+    "updated": "2026-10-07T19:44:17+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -11473,5 +11473,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-07T19:39:16+00:00"
+ "updated": "2026-10-07T19:44:17+00:00"
 }
