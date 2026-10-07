@@ -1,0 +1,9 @@
+# Dependinte pentru consola Streamlit (streamlit_app.py).
+#
+# Streamlit Community Cloud citeste acest fisier din radacina repo-ului.
+# Colectorul are dependintele lui, in live/requirements.txt.
+
+streamlit>=1.40
+folium>=0.17
+streamlit-folium>=0.20
+pandas>=2.2
