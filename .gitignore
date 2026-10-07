@@ -1,0 +1,34 @@
+# secrete — niciodata in git
+.env
+
+# date descarcate
+data/
+cache/
+*.nc
+*.zip
+*.SAFE/
+*.tif
+*.jp2
+
+# cache-urile produsului live (se refac la rulare)
+live/state/frp/
+live/state/burn/
+live/state/img/
+live/state/*.tmp
+live/state/collector.lock
+live/web/state/*.tmp
+
+# analiza de incendiu: doar cache-ul, rezultatele CSV se comit
+fire/cache/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ce trebuie COMIS (pentru GitHub Pages):
+#   live/state/state.json
+#   live/web/state/state.json
+#   live/web/img/*.png
+#   live/web/domogled.geojson

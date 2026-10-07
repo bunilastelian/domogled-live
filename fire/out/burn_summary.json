@@ -1,0 +1,9 @@
+{
+  "fundal_dnbr_median": 0.0761,
+  "fundal_dnbr_mad": 0.033,
+  "ha_brut_dnbr_027": 596.36,
+  "ha_corectat_dnbr_027": 232.4,
+  "dnbr_mediu_zona_focar": 0.1539,
+  "scena_pre": "S2A_MSIL2A_20260802T092051_N0512_R093_T34TFQ_20260802T155719",
+  "scena_post": "S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711"
+}

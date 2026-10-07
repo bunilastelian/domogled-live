@@ -1,0 +1,6 @@
+# dependinte pentru produsul live Domogled
+requests
+python-dotenv
+pillow
+pyproj
+numpy

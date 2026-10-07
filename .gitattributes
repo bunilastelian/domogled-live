@@ -1,0 +1,16 @@
+# Normalizeaza terminatorii de linie.
+#
+# Important pentru CI: pasii `run: |` din workflow-ul GitHub Actions sunt executati
+# cu bash pe Linux. Daca fisierul YAML ajunge cu CRLF, bash primeste `\r` la sfarsitul
+# fiecarei linii si comenzile esueaza in moduri greu de depistat.
+* text=auto eol=lf
+
+# scripturile PowerShell sunt mai fericite cu CRLF
+*.ps1 text eol=crlf
+
+# binare - fara nicio conversie
+*.png binary
+*.jpg binary
+*.jp2 binary
+*.zip binary
+*.nc binary

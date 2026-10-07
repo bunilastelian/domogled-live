@@ -1,0 +1,28 @@
+{
+  "total_ha": 48400.0,
+  "afectat_ha": 16970.92,
+  "clase": [
+    {
+      "clasa": "nears / regenerat",
+      "ha": 29285.04
+    },
+    {
+      "clasa": "severitate scăzută",
+      "ha": 16374.56
+    },
+    {
+      "clasa": "moderat-scăzută",
+      "ha": 542.88
+    },
+    {
+      "clasa": "moderat-ridicată",
+      "ha": 48.800000000000004
+    },
+    {
+      "clasa": "ridicată",
+      "ha": 4.68
+    }
+  ],
+  "scena_pre": "S2A_MSIL2A_20260802T092051_N0512_R093_T34TFQ_20260802T155719",
+  "scena_post": "S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711"
+}

@@ -1,0 +1,69 @@
+name: colectare live Domogled
+
+# Ruleaza colectorul la fiecare 15 minute, comite starea si publica dashboard-ul
+# pe GitHub Pages. Datele noi reale apar la fiecare trecere de satelit (~6 h),
+# deci rularea la 15 minute e suficienta si ieftina.
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:        # pornire manuala din tab-ul Actions
+
+permissions:
+  contents: write           # ca sa poata comite state.json + imaginile noi
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Instaleaza dependintele
+        run: pip install -r live/requirements.txt
+
+      - name: Scrie cheile CDSE din secrete
+        run: |
+          echo "CDSE_CLIENT_ID=${{ secrets.CDSE_CLIENT_ID }}" > .env
+          echo "CDSE_CLIENT_SECRET=${{ secrets.CDSE_CLIENT_SECRET }}" >> .env
+          echo "COPERNICUS_DATA_DIR=data" >> .env
+
+      - name: Un ciclu de colectare
+        run: python live/collector.py --once
+
+      - name: Comite starea noua
+        run: |
+          git config user.name  "domogled-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add live/state/state.json live/web/
+          if git diff --staged --quiet; then
+            echo "nimic nou de comis"
+          else
+            git commit -m "date live $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: Pregateste artefactul pentru Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: live/web
+
+  deploy:
+    needs: collect
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
