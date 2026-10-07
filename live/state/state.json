@@ -5096,7 +5096,7 @@
   }
  },
  "alerts": [],
- "cycles": 14,
+ "cycles": 15,
  "stats": {
   "total": 379,
   "nasa": 272,
@@ -5199,7 +5199,7 @@
    "satellite": "N20",
    "first_seen": "2026-10-07T12:46:50+00:00"
   },
-  "updated": "2026-10-07T13:15:52+00:00"
+  "updated": "2026-10-07T13:25:13+00:00"
  },
  "aoi": {
   "name": "Domogled – Valea Cernei",
