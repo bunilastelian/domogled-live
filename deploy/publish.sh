@@ -56,6 +56,7 @@ REMOTE="https://${GITHUB_TOKEN}@github.com/bunilastelian/domogled-live.git"
 git add -f \
   live/state/state.json \
   live/web/state/state.json \
+  live/web/state/harness.json \
   live/web/img \
   live/web/domogled.geojson \
   live/web/portiledefier.geojson 2>/dev/null

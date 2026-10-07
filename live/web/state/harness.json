@@ -1,0 +1,42 @@
+{
+  "generated": "2026-10-07T18:02:24+00:00",
+  "verdict": "STAGNARE",
+  "comparison": {
+    "first_run": false,
+    "since": "2026-10-07T18:02:19+00:00",
+    "hours_elapsed": 0.0,
+    "zones": {
+      "domogled": {
+        "total": 0.0,
+        "last24_count": 0.0,
+        "last24_frp": 0.0,
+        "last24_max": 0.0,
+        "burn_ha": 0.0,
+        "burn_ha_mod": 0.0,
+        "new_fires": [],
+        "gone_fires": [],
+        "frp_changes": [],
+        "new_scene": false,
+        "prev_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
+        "cur_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
+      },
+      "portiledefier": {
+        "total": 0.0,
+        "last24_count": 0.0,
+        "last24_frp": 0.0,
+        "last24_max": 0.0,
+        "burn_ha": 0.0,
+        "burn_ha_mod": 0.0,
+        "new_fires": [],
+        "gone_fires": [],
+        "frp_changes": [],
+        "new_scene": false,
+        "prev_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
+        "cur_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
+      }
+    }
+  },
+  "vision": {},
+  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali\n**Data: 2026-10-07 18:02 UTC**\n\n## EVOLUȚIE: STAGNARE (ambele zone)\n\nDatele curente sunt **identice** cu ultimele 3 rulări (delta FRP24h = 0.0, delta det24h = 0.0, delta total = 0.0 pentru ambele zone). Monitorul nu s-a actualizat.\n\nPe trendul multi-zi:\n- **Domogled**: SCĂDERE clară – 637.6 MW (10-05) → 451.1 (10-06) → 221.2 MW (10-07), adică **-65% în 3 zile**. Focarul rank 1: 632.7 MW/123 det (24h anterioare) → 304.7 MW/59 det (ultimele 24h).\n- **Porțile de Fier**: STAGNARE – 166.6 → 142.4 MW (-15%), cu o ușoară revenire a FRP-ului pe focar (254.0 → 293.5 MW).\n\nNu apar focare noi; ambele focare rank 1 sunt active de 8 zile (din 09-30).\n\n## CE ARATĂ IMAGINILE\n**Lipsesc datele de imagine.** Nu există în input nicio descriere vizuală/satelit spectrală curentă. Cicatricea dNBR confirmă arsuri **moderate** (Domogled: 240 ha moderat+, doar 3 ha sever; Porțile de Fier: 77 ha moderat+, 5.6 ha sever) – semnal slab raportat la FRP-ul cumulat, ceea ce sugerează fie foc de suprafață cu consum redus, fie zgomot termic. **Nu pot confirma/infirma vizual fumul.**\n\n## RISC 24-48h\n- **Precipitații: 0 mm** în ambele zone, 48h.\n- **RH scăzută** (34-36%), **vânt slab** (3.7-6.2 km/h), rafale 9.7-16.6 km/h.\n- **VPD moderat** (0.84-1.02 kPa), **umezeala sol foarte mică** (0.094-0.118).\n- Angström scăzut (3.06-3.4), dar sol uscat.\n- **Direcție extindere**: Domogled – vânt din E → pană spre V, spre Colțu Pietrii (0.88 km). Porțile de Fier – vânt NV → pană spre SE, spre Orșova (7.51 km).\n- **Zone expuse**: Colțu Pietrii (1228 m, în parc), Orșova.\n\n## PREDICȚIE 24h\n- **Domogled**: SCĂDERE, probabilitate ~60% (trend clar descendent).\n- **Porțile de Fier**: STAGNARE, probabilitate ~55%, cu risc de creștere (FRP-ul pe focar a crescut).\n\n⚠️ **Estimare bazată pe trend istoric, NU pe model fizic de propagare.**\n\n## SEMNALE\n- **Monitor blocat**: 3 rulări identice – posibilă defecțiune sau absență date noi.\n- **Focar fără imagini**: nu există confirmare vizuală.\n- **FRP disproporționat** față de dNBR (suprafețe arse mici pentru 300+ MW cumulat) – posibil zgomot sau foc de subsol.\n- Lipsesc: AOI km², imagini curente, date sol detaliate.",
+  "state_updated": "2026-10-07T17:59:15+00:00"
+}
