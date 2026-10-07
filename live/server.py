@@ -115,14 +115,22 @@ class Handler(SimpleHTTPRequestHandler):
             if not STATE_FILE.exists():
                 return self._json({"collector": "nu a rulat niciodata"})
             st = json.loads(STATE_FILE.read_text(encoding="utf-8"))
-            upd = (st.get("stats") or {}).get("updated")
+            # `updated` si `cycles` stau in radacina state.json, nu sub `stats`.
+            # Citirea veche (st["stats"]["updated"]) dadea mereu None si raporta
+            # 0 detectii, desi fisierul era plin — health arata "ok" cu date goale.
+            upd = st.get("updated")
             age = None
             if upd:
                 age = round((datetime.now(timezone.utc)
                              - datetime.fromisoformat(upd)).total_seconds())
+            detectii = sum(
+                len((z or {}).get("detections") or {})
+                for z in (st.get("zones") or {}).values()
+            )
             return self._json({"collector": "ok", "cicluri": st.get("cycles"),
+                               "zone": len(st.get("zones") or {}),
                                "ultima_actualizare": upd, "varsta_secunde": age,
-                               "detectii": len(st.get("detections", {}))})
+                               "detectii": detectii})
 
         if self._serve_static_compressed(path):
             return
