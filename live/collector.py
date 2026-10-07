@@ -46,17 +46,23 @@ for _s in (sys.stdout, sys.stderr):
 from cdse import CDSE, CDSEError, normalize_stac  # noqa: E402
 
 # ----------------------------------------------------------------- configurare
+# Zonele vin din zones.json — adaugi o zona noua acolo, fara sa schimbi codul.
+ZONES_FILE = HERE / "zones.json"
+_zcfg = json.loads(ZONES_FILE.read_text(encoding="utf-8"))
+ZONES: list[dict] = _zcfg["zones"]
+ZONE: dict = next((z for z in ZONES if z["id"] == _zcfg.get("default_zone")), ZONES[0])
+
 AOI = {
-    "name": "Domogled – Valea Cernei",
-    "bbox": [22.30, 44.80, 22.62, 44.98],     # W, S, E, N
-    "center": [44.8982, 22.4785],
-    "zoom": 12,
-    "park_file": "domogled.geojson",
+    "name": ZONE["name"],
+    "bbox": ZONE["bbox"],                     # W, S, E, N
+    "center": ZONE["center"],
+    "zoom": ZONE.get("zoom", 12),
+    "park_file": (ZONE.get("park") or {}).get("geojson", ""),
 }
 POLL_SECONDS = 300
 FRP_LOOKBACK_HOURS = 6            # cat de des cautam produse FRP noi
 IMAGERY_CLOUD_MAX = 60            # % acoperire cu nori acceptata pentru preview
-UA = {"User-Agent": "copernicus-domogled-live/1.0"}
+UA = {"User-Agent": "copernicus-domogled-live/2.0"}
 
 STATE = HERE / "state"
 WEB = HERE / "web"
@@ -450,6 +456,43 @@ def update_burn(client: CDSE, state: dict) -> None:
         f"{info['ha_total']} ha peste pragul slab (scena {info['post_date']})")
 
 
+# ------------------------------------------------- 6. focare si meteo
+def load_park_geojson() -> dict | None:
+    p = WEB / (AOI.get("park_file") or "")
+    if not p or not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return None
+
+
+def update_fires(state: dict, dets: dict) -> None:
+    """Grupeaza detectiile in focare distincte, cu tendinta pe 24 h."""
+    import fires as fires_mod
+    found = fires_mod.find_fires(dets, ZONE, load_park_geojson())
+    state["fires"] = found
+    if found:
+        f = found[0]
+        log(f"   focare: {len(found)} · principalul la {f['lat']:.4f},{f['lon']:.4f} "
+            f"({f['points']} puncte, {f['days']} zile, FRP 24h {f['frp_last24']} MW, {f['trend']}, "
+            f"{f['nearest_place']} {f['nearest_km']} km)")
+    else:
+        log("   focare: niciunul cu suficiente detectii")
+
+
+def update_weather(state: dict) -> None:
+    """Meteo curent, indice de pericol de incendiu, vant si directie de propagare."""
+    from weather import zone_weather
+    w = zone_weather(tuple(AOI["center"]))
+    state["weather"] = w
+    d = w.get("danger") or {}
+    log(f"   meteo: {w.get('temp_c')}°C, {w.get('humidity_pct')}% RH, vant {w.get('wind_kmh')} km/h "
+        f"din {w.get('wind_from_compass')} -> pana spre {w.get('downwind_compass')}; "
+        f"pericol {d.get('class')} (Angström {d.get('index')}); "
+        f"precipitatii 48h: {w.get('precip_next48_mm')} mm")
+
+
 # ------------------------------------------------------------------- statistici
 def compute_stats(dets: dict) -> dict:
     rows = list(dets.values())
@@ -528,6 +571,18 @@ def cycle(state: dict, client: CDSE, first: bool) -> None:
         raise_alerts(state, new_dets)
     elif first:
         log(f"   prima rulare: import istoric, fara alerte ({len(new_dets)} detectii incarcate)")
+
+    # 5. focare distincte
+    try:
+        update_fires(state, dets)
+    except Exception as exc:  # noqa: BLE001
+        log(f"   [!] focare: {type(exc).__name__}: {exc}")
+
+    # 6. meteo si pericol de incendiu
+    try:
+        update_weather(state)
+    except Exception as exc:  # noqa: BLE001
+        log(f"   [!] meteo: {type(exc).__name__}: {exc}")
 
     state["cycles"] = state.get("cycles", 0) + 1
     state["stats"] = compute_stats(dets)

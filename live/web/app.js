@@ -18,7 +18,7 @@ const NASA_C = '#f76b15', ESA_C = '#3b82f6';
 const RANGE_LABELS = { '24': 'ultimele 24 h', '72': 'ultimele 3 zile',
                        '168': 'ultimele 7 zile', '0': 'tot istoricul' };
 
-let map, tileLayers = {}, parkLayer, nasaLayer, esaLayer, trackLayer, burnLayer, refLayer;
+let map, tileLayers = {}, parkLayer, nasaLayer, esaLayer, trackLayer, burnLayer, windLayer, refLayer;
 let state = null;
 let staticMode = false;
 let lastRenderSig = '';
@@ -61,6 +61,7 @@ function initMap() {
   burnLayer = L.layerGroup().addTo(map);
   nasaLayer = L.layerGroup().addTo(map);
   esaLayer = L.layerGroup().addTo(map);
+  windLayer = L.layerGroup().addTo(map);
   refLayer = L.layerGroup().addTo(map);
 
   fetch('domogled.geojson').then(r => r.json()).then(geom => {
@@ -221,6 +222,108 @@ function drawChart(days) {
 // ------------------------------------------------------------------ restul
 function set(id, txt) { const e = document.getElementById(id); if (e) e.textContent = txt; }
 
+function renderWeather() {
+  const w = state && state.weather;
+  const box = document.getElementById('w-danger');
+  if (!box) return;
+  if (!w) { box.textContent = 'meteo indisponibil (Open-Meteo nu a răspuns)'; return; }
+
+  set('w-temp', w.temp_c ?? '–');
+  set('w-rh', w.humidity_pct ?? '–');
+  set('w-wind', w.wind_kmh ?? '–');
+  set('w-precip', w.precip_next48_mm ?? '–');
+  set('w-from', w.wind_from_deg != null ? `${w.wind_from_compass} (${w.wind_from_deg}°)` : '–');
+  set('w-to', w.downwind_deg != null ? `${w.downwind_compass} (${w.downwind_deg}°)` : '–');
+
+  const bits = [];
+  if (w.gust_kmh != null) bits.push(`rafale ${w.gust_kmh} km/h`);
+  if (w.vpd_kpa != null) bits.push(`VPD ${w.vpd_kpa} kPa`);
+  if (w.soil_moisture != null) bits.push(`sol ${w.soil_moisture}`);
+  set('w-extra', bits.join(' · ') || '–');
+
+  const t = w.terrain || {};
+  set('w-terrain', t.elevation_m != null
+    ? `${t.elevation_m} m${t.on_summit ? ' · pe vârf/creastă'
+        : ` · pantă ${t.slope_pct}% spre ${t.upslope_compass || '?'}`}`
+    : '–');
+
+  const d = w.danger || {};
+  set('w-src', w.source ? `${w.source} · ${(w.time || '').slice(11, 16)}Z` : '–');
+  box.innerHTML = `<span style="color:${d.color || '#6b7684'}">● Pericol ${d.class || '?'}</span>` +
+    `<small>${d.name || ''} ${d.index ?? ''}` +
+    `${d.next48_min != null ? ` · min. 48 h ${d.next48_min}` : ''}</small>`;
+
+  const note = document.getElementById('w-note');
+  if (note) {
+    let msg = 'Indicele Angström se calculează din temperatură și umiditate. Mai mic = mai periculos.';
+    msg += (w.precip_next48_mm || 0) === 0
+      ? ' Nu se anunță precipitații în 48 h.'
+      : ` Se anunță ${w.precip_next48_mm} mm în 48 h.`;
+    if (t.on_summit) {
+      msg += ' Focarul e pe un vârf, deci panta nu determină direcția de propagare; vântul rămâne factorul principal.';
+    }
+    note.textContent = msg;
+  }
+}
+
+function renderFires() {
+  const box = document.getElementById('fires');
+  if (!box) return;
+  const fires = (state && state.fires) || [];
+  const sig = JSON.stringify(fires.map(f => [f.id, f.points, f.trend, f.frp_last24]));
+  if (box.dataset.sig === sig) return;
+  box.dataset.sig = sig;
+
+  if (!fires.length) {
+    box.innerHTML = '<div class="empty">Niciun focar cu suficiente detecții.</div>';
+    return;
+  }
+  box.innerHTML = fires.slice(0, 5).map(f => `
+    <div class="firecard ${f.rank === 1 ? 'lead' : ''}">
+      <b>#${f.rank} ${f.lat.toFixed(4)}, ${f.lon.toFixed(4)}</b>
+      <div class="row"><span>${f.points} detecții în ${f.days} zile</span>
+        <span class="trend" style="color:${f.trend_color}">${f.trend}</span></div>
+      <div class="row"><span>FRP max ${f.frp_max} MW</span><span>24 h: ${f.frp_last24} MW</span></div>
+      <div class="row"><span>întindere ${f.extent_km} km</span>
+        <span>${f.in_park === true ? 'în parc' : f.in_park === false ? 'în afara parcului' : ''}</span></div>
+      <div class="row"><span>cel mai aproape: ${f.nearest_place || '–'}</span><span>${f.nearest_km} km</span></div>
+    </div>`).join('');
+}
+
+// con de propagare: din focarul principal, pe direcția vântului
+function renderWindCone() {
+  windLayer.clearLayers();
+  const w = state && state.weather;
+  const fires = (state && state.fires) || [];
+  if (!w || w.downwind_deg == null || !fires.length) return;
+
+  const src = [fires[0].lat, fires[0].lon];
+  const bearing = w.downwind_deg * Math.PI / 180;
+  const R = 6371.0, LEN = 12, spread = 26 * Math.PI / 180;
+
+  const pt = (brg, km) => {
+    const d = km / R;
+    const lat1 = src[0] * Math.PI / 180, lon1 = src[1] * Math.PI / 180;
+    const lat2 = Math.asin(Math.sin(lat1) * Math.cos(d) +
+                           Math.cos(lat1) * Math.sin(d) * Math.cos(brg));
+    const lon2 = lon1 + Math.atan2(Math.sin(brg) * Math.sin(d) * Math.cos(lat1),
+                                   Math.cos(d) - Math.sin(lat1) * Math.sin(lat2));
+    return [lat2 * 180 / Math.PI, lon2 * 180 / Math.PI];
+  };
+
+  const poly = [src];
+  for (let i = 0; i <= 8; i++) poly.push(pt(bearing - spread / 2 + spread * i / 8, LEN));
+  L.polygon(poly, { color: '#22d3ee', weight: 1, opacity: 0.5, fillColor: '#22d3ee',
+                    fillOpacity: 0.10, dashArray: '4 4', interactive: false }).addTo(windLayer);
+  L.polyline([src, pt(bearing, LEN)], { color: '#22d3ee', weight: 2, opacity: 0.85,
+                                        dashArray: '6 4', interactive: false }).addTo(windLayer);
+  L.marker(pt(bearing, LEN), {
+    icon: L.divIcon({ className: '', iconSize: [0, 0], html:
+      `<div style="transform:translate(-50%,-50%);color:#22d3ee;font-size:11px;white-space:nowrap;
+                   text-shadow:0 0 4px #000,0 0 2px #000">pană spre ${w.downwind_compass}</div>` })
+  }).addTo(windLayer);
+}
+
 function renderStats() {
   const st = state && state.stats;
   if (!st) return;
@@ -305,6 +408,9 @@ async function refresh(force) {
       drawChart((st.stats || {}).days || []);
       renderAlerts();
       renderImagery();
+      renderWeather();
+      renderFires();
+      renderWindCone();
     }
     renderBurn();
     lastUpdated = new Date();

@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "comment": "Zonele monitorizate. Adaugi o zona noua copiind un bloc si schimband id-ul, bbox-ul si centerul. 'places' sunt reperele fata de care se raporteaza distantele.",
+  "default_zone": "domogled",
+  "zones": [
+    {
+      "id": "domogled",
+      "name": "Domogled – Valea Cernei",
+      "short": "Domogled",
+      "bbox": [22.30, 44.80, 22.62, 44.98],
+      "center": [44.8982, 22.4785],
+      "zoom": 12,
+      "park": {
+        "name": "Parcul Național Domogled – Valea Cernei",
+        "geojson": "domogled.geojson"
+      },
+      "places": {
+        "Băile Herculane": [44.8785, 22.4144],
+        "Pecinișca": [44.8712, 22.4187],
+        "Cascada Cociului": [44.91838, 22.46485],
+        "Colțu Pietrii (1228 m)": [44.9055, 22.48217],
+        "Domogledul Mare (1105 m)": [44.87161, 22.44364],
+        "Mehadia": [44.9036, 22.3667]
+      }
+    },
+    {
+      "id": "portiledefier",
+      "name": "Porțile de Fier – nord de Orșova",
+      "short": "Porțile de Fier",
+      "bbox": [22.20, 44.68, 22.50, 44.87],
+      "center": [44.7661, 22.3259],
+      "zoom": 12,
+      "park": {
+        "name": "Parcul Natural Porțile de Fier",
+        "geojson": "portiledefier.geojson"
+      },
+      "places": {
+        "Orșova": [44.7235, 22.3983],
+        "Băile Herculane": [44.8785, 22.4144],
+        "Drobeta-Turnu Severin": [44.6258, 22.6532]
+      }
+    }
+  ]
+}

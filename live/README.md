@@ -125,6 +125,38 @@ Secrete necesare în repo (Settings → Secrets → Actions): `CDSE_CLIENT_ID`, 
 Dashboard-ul citește starea prin `/api/state` când rulează local și cade automat pe
 `state/state.json` când e servit ca fișiere statice — deci același cod merge în ambele moduri.
 
+## Module (v2)
+
+| fișier | rol |
+|---|---|
+| `zones.json` | zonele monitorizate. Adaugi o zonă copiind un bloc — codul nu se atinge. |
+| `weather.py` | meteo (Open-Meteo, fără cheie), indice de pericol **Angström**, direcție de propagare, pantă/expoziție din elevație |
+| `fires.py` | grupare automată a detecțiilor în **focare distincte**, cu tendință pe 24 h, întindere, apartenență la parc și distanța la cel mai apropiat reper |
+| `audit.py` | audit măsurat al site-ului public |
+| `simplify_polygon.py` | reduce contururile de parc (Douglas-Peucker) + validare de structură GeoJSON |
+
+### Indicele de pericol
+
+Folosim **Angström**, formă clasică și verificabilă din datele brute:
+
+```
+I = (H / 20) + (27 - T) / 10      H = umiditate %, T = temperatură °C
+I < 2  foarte ridicat · 2-2,5 ridicat · 2,5-3 moderat · 3-4 scăzut · > 4 fără pericol
+```
+
+**Nu** folosim indicele canadian FWI: nu e disponibil pe API-ul gratuit, iar o implementare
+parțială ar produce un număr care pare oficial fără să fie.
+
+### Direcția de propagare
+
+Vântul vine *din* `wind_direction`; pana de fum merge *spre* `wind_direction + 180°`.
+Pe hartă se desenează un con de 12 km pe acea direcție, pornind din focarul principal.
+
+Panta se calculează din 8 puncte de elevație la 2 km în jurul focarului. Dacă toate sunt mai
+jos decât centrul (`on_summit`), focarul e pe un vârf sau o creastă, **panta nu determină
+direcția de propagare**, iar interfața spune asta explicit în loc să afișeze o direcție
+înșelătoare.
+
 ## Audit: ce am măsurat și ce am reparat
 
 `audit.py` măsoară site-ul public. Rulează `python audit.py` (sau cu un URL, pentru build-ul local).

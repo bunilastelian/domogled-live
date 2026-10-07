@@ -240,6 +240,30 @@ def main() -> int:
     for d in sorted(domains):
         print(f"     {d}")
     print("  -> daca pica domeniul Leaflet, pagina rămâne fara harta")
+
+    # ------------------------------------------------ 8. structura geometriilor
+    print("\n" + "=" * 74)
+    print("8. STRUCTURA GEOJSON (un nivel in plus = poligon care nu se deseneaza)")
+    print("=" * 74)
+    for name in ("domogled.geojson", "portiledefier.geojson"):
+        try:
+            _w, _d, raw, _h = fetch(base + name)
+        except Exception:  # noqa: BLE001
+            continue
+        g = json.loads(raw)
+        t, c = g.get("type"), g.get("coordinates")
+        ok, detail = False, "structura neasteptata"
+        if t == "Polygon" and isinstance(c, list) and c and isinstance(c[0], list) and c[0]:
+            p0 = c[0][0]
+            ok = isinstance(p0, list) and len(p0) == 2 and isinstance(p0[0], (int, float))
+            detail = f"{len(c)} inele, primul cu {len(c[0])} puncte"
+            if ok and c[0][0] != c[0][-1]:
+                ok, detail = False, detail + " (inel neinchis)"
+        elif t == "MultiPolygon" and isinstance(c, list) and c:
+            ok, detail = True, f"{len(c)} poligoane"
+        print(f"  [{'x' if ok else ' '}] {name:<24} {t}, {detail}")
+        if not ok:
+            print("      [!] structura nu corespunde tipului — conturul nu se deseneaza pe harta")
     return 0
 
 
