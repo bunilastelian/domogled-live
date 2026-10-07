@@ -7,6 +7,7 @@
 const API = '/api/state';
 const STATIC_STATE = 'state/state.json';
 const REFRESH_MS = 60000;
+const BUILD = 'v3.1 · 2026-10-07';
 
 // praguri de prospetime: CI-ul ruleaza la 15 min, deci peste 25 min e intarziere reala
 const STALE_WARN_MIN = 25;
@@ -96,8 +97,27 @@ function loadPark(file) {
 // ---------------------------------------------------------------- zone
 function syncZones() {
   const sel = document.getElementById('zone');
+  const ver = document.getElementById('build');
+  if (ver) ver.textContent = BUILD;
+
+  // Toleranta la formatul vechi de stare (o singura zona, fara cheia 'zones').
+  // Fara asta, un client nou peste o stare veche (sau invers) afiseaza pagina goala
+  // in loc sa dea o eroare vizibila.
+  if (fullState && !fullState.zones && fullState.detections) {
+    const nume = (fullState.aoi || {}).name || 'zonă';
+    fullState = {
+      zones: { legacy: Object.assign({}, fullState, { id: 'legacy', name: nume, short: nume }) },
+      zone_list: [{ id: 'legacy', name: nume, park: {} }],
+      default_zone: 'legacy',
+      cycles: fullState.cycles,
+    };
+  }
+
   const list = (fullState && fullState.zone_list) || [];
-  if (!sel || !list.length) return;
+  if (!sel || !list.length) {
+    if (sel && fullState && !list.length) sel.innerHTML = '<option value="">fără zone în date</option>';
+    return;
+  }
 
   const sig = list.map(z => z.id).join(',');
   if (sel.dataset.sig !== sig) {

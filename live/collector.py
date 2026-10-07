@@ -625,7 +625,8 @@ def cycle_zone(state: dict, client: CDSE, first: bool) -> None:
 def cycle(state: dict, client: CDSE, first: bool) -> None:
     """Un ciclu pentru toate zonele, apoi o singura scriere de stare."""
     zones = state.setdefault("zones", {})
-    state["zone_list"] = [{k: z.get(k) for k in ("id", "name", "short", "bbox", "center", "zoom", "places")}
+    state["zone_list"] = [{k: z.get(k) for k in ("id", "name", "short", "bbox", "center",
+                                                 "zoom", "places", "park")}
                           for z in ZONES]
     state["default_zone"] = ZONE_CFG.get("default_zone") or ZONES[0]["id"]
     for z in ZONES:
