@@ -163,48 +163,53 @@ function renderDetections() {
   esaLayer.clearLayers();
   trackLayer.clearLayers();
 
-  const rangeH = +document.getElementById('range').value;   // 0 = tot
   const onlyStrong = document.getElementById('l-strong').checked;
+  const showContext = document.getElementById('l-context')
+    ? document.getElementById('l-context').checked : true;
+  const tl = window.TIMELINE;
+  const rng = tl ? tl.ranges() : null;   // {from, to} pe zile, sau null
   const groups = {};
   let shown = 0;
 
   for (const d of Object.values((state && state.detections) || {})) {
-    const h = ageHours(d);
-    if (rangeH && h > rangeH) continue;
     if (onlyStrong && (d.frp || 0) < 5) continue;
-    shown++;
 
-    const esa = d.src === 'ESA';
-    L.circleMarker([d.lat, d.lon], {
+    // Filtrul temporal: daca timeline-ul e activ, punctele din afara
+    // intervalului se deseneaza estompat (context) sau deloc.
+    const key = (d.date || '');
+    const inRange = !rng || (key >= rng.from && key <= rng.to);
+    if (!inRange && !showContext) continue;
+    if (inRange) shown++;
+
+    const st = tl ? tl.style(d, inRange) : {
       radius: radiusOf(d.frp),
-      color: esa ? '#22d3ee' : '#ffffff',
-      weight: esa ? 1.8 : 1,
-      opacity: 0.9,
-      fillColor: ageColor(h),
-      fillOpacity: 0.55
-    }).bindPopup(
+      color: d.src === 'ESA' ? '#22d3ee' : '#ffffff',
+      weight: 1.8, opacity: 0.9,
+      fillColor: ageColor(ageHours(d)), fillOpacity: 0.55
+    };
+
+    L.circleMarker([d.lat, d.lon], st).bindPopup(
       `<b>${d.sensor}</b><br>FRP: <b>${(d.frp || 0).toFixed(2)} MW</b><br>` +
       (d.bt_k ? `temperatură: ${d.bt_k} K<br>` : '') +
       `încredere: ${d.confidence}%<br>${d.lat.toFixed(4)}, ${d.lon.toFixed(4)}<br>` +
-      `achiziție: ${d.date} ${d.time}Z (${h.toFixed(1)} h în urmă)<br>` +
-      `zi/noapte: ${d.daynight === 'D' ? 'zi' : 'noapte'}`
-    ).addTo(esa ? esaLayer : nasaLayer);
+      `achiziție: ${d.date} ${d.time}Z (${ageHours(d).toFixed(1)} h în urmă)<br>` +
+      `zi/noapte: ${d.daynight === 'D' ? 'zi' : 'noapte'}` +
+      (inRange ? '' : '<br><i style="color:#8b98a5">în afara intervalului selectat</i>')
+    ).addTo(d.src === 'ESA' ? esaLayer : nasaLayer);
 
-    (groups[`${d.date} ${d.time}`] = groups[`${d.date} ${d.time}`] || []).push(d);
+    if (inRange) {
+      (groups[`${d.date} ${d.time}`] = groups[`${d.date} ${d.time}`] || []).push(d);
+    }
   }
 
   for (const pts of Object.values(groups)) {
     if (pts.length < 3) continue;
     const s = pts.slice().sort((a, b) => a.lon - b.lon);
     L.polyline(s.map(p => [p.lat, p.lon]),
-      { color: ageColor(ageHours(s[0])), weight: 1.4, opacity: 0.5, dashArray: '4 3' }).addTo(trackLayer);
+      { color: '#f97316', weight: 1.4, opacity: 0.55, dashArray: '4 3' }).addTo(trackLayer);
   }
-  renderedRange = rangeH;
 
-  // punem numarul afisat in eticheta, pornind mereu de la textul de baza
-  const sel = document.getElementById('range');
-  const base = RANGE_LABELS[String(rangeH)] || sel.options[sel.selectedIndex].textContent;
-  sel.options[sel.selectedIndex].textContent = `${base} (${shown})`;
+  return shown;
 }
 
 function renderBurn() {
@@ -466,13 +471,13 @@ async function refresh(force) {
     }
     fullState = st;
     syncZones();
-    const rangeH = +document.getElementById('range').value;
-    const sig = `${(st.stats || {}).updated}|${rangeH}|${document.getElementById('l-strong').checked}`;
+    const sig = `${(st.stats || {}).updated}|${document.getElementById('l-strong').checked}`;
     const changed = force || sig !== lastRenderSig;
 
     renderStats();          // mereu: badge-ul de prospetime trebuie actualizat
     if (changed) {
       lastRenderSig = sig;
+      buildTimeline();      // reconstruim timeline-ul pe zona/noile date
       renderDetections();
       drawChart((st.stats || {}).days || []);
       renderAlerts();
@@ -489,10 +494,25 @@ async function refresh(force) {
   }
 }
 
+/* Timeline-ul temporal. Se reconstruieste la schimbarea zonei sau cand apar
+   detectii noi, dar PAsTRAM selectia curenta daca perioada exista inca -
+   altfel filtrul s-ar reseta singur la fiecare refresh de 5 minute. */
+function buildTimeline() {
+  const box = document.getElementById('timeline');
+  if (!box || !window.TIMELINE) return;
+  const prev = window.TIMELINE.ranges();
+  window.TIMELINE.build(box, state, () => { renderDetections(); renderFires(); });
+  if (prev && prev.from) {
+    const has = window.TIMELINE.restore && window.TIMELINE.restore(prev.from, prev.to);
+    if (has) { renderDetections(); }
+  }
+}
+
 function bindControls() {
   document.getElementById('zone').addEventListener('change', e => switchZone(e.target.value));
-  document.getElementById('range').addEventListener('change', () => refresh(true));
   document.getElementById('l-strong').addEventListener('change', () => refresh(true));
+  const ctxBox = document.getElementById('l-context');
+  if (ctxBox) ctxBox.addEventListener('change', () => renderDetections());
   ['l-nasa', 'l-esa', 'l-park', 'l-tracks', 'l-burn'].forEach(id => {
     document.getElementById(id).addEventListener('change', e => {
       const on = e.target.checked;
