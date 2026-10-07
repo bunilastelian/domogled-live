@@ -321,7 +321,27 @@
   </aside>
 </div>
 
-<script src="app.js?v=4"></script>
-<script src="timeline.js?v=1"></script>
+<script src="app.js?v=5"></script>
+<script src="timeline.js?v=2"></script>
+<script>
+// Anti-cache: index.html nu are versiune in URL, deci CDN-ul GitHub Pages
+// si browserul il tin in cache pana la 10 min. Dupa un deploy, utilizatorul
+// vede HTML-ul vechi (fara butoanele noi) desi JS-ul e proaspat - exact
+// confuzia pe care am avut-o. Verificam daca versiunea din HTML corespunde
+// cu cea servita si reincarcam fortat o singura data.
+(function () {
+  const V = 'v2';                       // creste la fiecare schimbare de layout
+  if (sessionStorage.getItem('dv') === V) return;
+  sessionStorage.setItem('dv', V);
+  if (!document.querySelector('[data-imgs="s3"]')) {
+    // HTML vechi din cache -> reincarcam cu parametru de cache-bust
+    const u = new URL(location.href);
+    if (!u.searchParams.has('_v')) {
+      u.searchParams.set('_v', V);
+      location.replace(u.toString());
+    }
+  }
+})();
+</script>
 </body>
 </html>
