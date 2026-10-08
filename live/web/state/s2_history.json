@@ -5,329 +5,376 @@
       "datetime": "2026-04-15T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260415T093031_N0512_R136_T34TFQ_20260415T130515",
       "cloud": 19.28,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260415.jpg"
     },
     {
       "date": "2026-04-22",
       "datetime": "2026-04-22T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260422T092031_N0512_R093_T34TEQ_20260422T130522",
       "cloud": 10.53,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260422.jpg"
     },
     {
       "date": "2026-04-24",
       "datetime": "2026-04-24T09:20:51.024000Z",
       "id": "S2A_MSIL2A_20260424T092051_N0512_R093_T34TEQ_20260424T125914",
       "cloud": 17.7,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260424.jpg"
     },
     {
       "date": "2026-04-25",
       "datetime": "2026-04-25T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260425T093031_N0512_R136_T34TEQ_20260425T131210",
       "cloud": 13.78,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260425.jpg"
     },
     {
       "date": "2026-04-27",
       "datetime": "2026-04-27T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260427T092029_N0512_R093_T34TEQ_20260427T114120",
       "cloud": 14.61,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260427.jpg"
     },
     {
       "date": "2026-04-30",
       "datetime": "2026-04-30T09:30:29.025000Z",
       "id": "S2B_MSIL2A_20260430T093029_N0512_R136_T34TEQ_20260430T114148",
       "cloud": 34.68,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260430.jpg"
     },
     {
       "date": "2026-05-04",
       "datetime": "2026-05-04T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260504T092231_N0512_R093_T34TEQ_20260504T145514",
       "cloud": 1.94,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260504.jpg"
     },
     {
       "date": "2026-05-05",
       "datetime": "2026-05-05T09:30:41.025000Z",
       "id": "S2C_MSIL2A_20260505T093041_N0512_R136_T34TFQ_20260505T153420",
       "cloud": 0.26,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260505.jpg"
     },
     {
       "date": "2026-05-10",
       "datetime": "2026-05-10T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260510T093029_N0512_R136_T34TFQ_20260510T114017",
       "cloud": 24.17,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260510.jpg"
     },
     {
       "date": "2026-05-24",
       "datetime": "2026-05-24T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260524T092231_N0512_R093_T34TFQ_20260524T143414",
       "cloud": 15.51,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260524.jpg"
     },
     {
       "date": "2026-05-25",
       "datetime": "2026-05-25T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260525T093031_N0512_R136_T34TEQ_20260525T130809",
       "cloud": 10.16,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260525.jpg"
     },
     {
       "date": "2026-05-27",
       "datetime": "2026-05-27T09:30:51.024000Z",
       "id": "S2A_MSIL2A_20260527T093051_N0512_R136_T34TEQ_20260527T161704",
       "cloud": 3.4,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260527.jpg"
     },
     {
       "date": "2026-06-09",
       "datetime": "2026-06-09T09:30:29.025000Z",
       "id": "S2B_MSIL2A_20260609T093029_N0512_R136_T34TFQ_20260609T115355",
       "cloud": 2.46,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260609.jpg"
     },
     {
       "date": "2026-06-11",
       "datetime": "2026-06-11T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260611T092031_N0512_R093_T34TFQ_20260611T125218",
       "cloud": 26.87,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260611.jpg"
     },
     {
       "date": "2026-06-14",
       "datetime": "2026-06-14T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260614T093031_N0512_R136_T34TEQ_20260614T125713",
       "cloud": 9.54,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260614.jpg"
     },
     {
       "date": "2026-06-16",
       "datetime": "2026-06-16T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260616T092029_N0512_R093_T34TFQ_20260616T114123",
       "cloud": 0.9,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260616.jpg"
     },
     {
       "date": "2026-06-19",
       "datetime": "2026-06-19T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260619T093029_N0512_R136_T34TFQ_20260619T115015",
       "cloud": 3.08,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260619.jpg"
     },
     {
       "date": "2026-06-21",
       "datetime": "2026-06-21T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260621T092031_N0512_R093_T34TFQ_20260621T125713",
       "cloud": 6.44,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260621.jpg"
     },
     {
       "date": "2026-06-24",
       "datetime": "2026-06-24T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260624T093031_N0512_R136_T34TEQ_20260624T140509",
       "cloud": 23.76,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260624.jpg"
     },
     {
       "date": "2026-06-26",
       "datetime": "2026-06-26T09:31:51.024000Z",
       "id": "S2A_MSIL2A_20260626T093151_N0512_R136_T34TEQ_20260626T143708",
       "cloud": 0.46,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260626.jpg"
     },
     {
       "date": "2026-06-29",
       "datetime": "2026-06-29T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260629T093029_N0512_R136_T34TEQ_20260629T114905",
       "cloud": 0.07,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260629.jpg"
     },
     {
       "date": "2026-07-03",
       "datetime": "2026-07-03T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260703T092231_N0512_R093_T34TFQ_20260703T143313",
       "cloud": 31.69,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260703.jpg"
     },
     {
       "date": "2026-07-06",
       "datetime": "2026-07-06T09:20:29.025000Z",
       "id": "S2B_MSIL2A_20260706T092029_N0512_R093_T34TFQ_20260706T114131",
       "cloud": 1.95,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260706.jpg"
     },
     {
       "date": "2026-07-11",
       "datetime": "2026-07-11T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260711T092031_N0512_R093_T34TEQ_20260711T125414",
       "cloud": 0.98,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260711.jpg"
     },
     {
       "date": "2026-07-14",
       "datetime": "2026-07-14T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260714T093031_N0512_R136_T34TFQ_20260714T130356",
       "cloud": 0.2,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260714.jpg"
     },
     {
       "date": "2026-07-19",
       "datetime": "2026-07-19T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260719T093029_N0512_R136_T34TFQ_20260719T115055",
       "cloud": 7.06,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260719.jpg"
     },
     {
       "date": "2026-07-21",
       "datetime": "2026-07-21T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260721T092031_N0512_R093_T34TEQ_20260721T125316",
       "cloud": 0.0,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260721.jpg"
     },
     {
       "date": "2026-07-23",
       "datetime": "2026-07-23T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260723T092231_N0512_R093_T34TEQ_20260723T142859",
       "cloud": 33.81,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260723.jpg"
     },
     {
       "date": "2026-07-26",
       "datetime": "2026-07-26T09:30:51.024000Z",
       "id": "S2A_MSIL2A_20260726T093051_N0512_R136_T34TEQ_20260726T161013",
       "cloud": 17.61,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260726.jpg"
     },
     {
       "date": "2026-07-29",
       "datetime": "2026-07-29T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260729T093029_N0512_R136_T34TEQ_20260729T115818",
       "cloud": 0.04,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260729.jpg"
     },
     {
       "date": "2026-07-31",
       "datetime": "2026-07-31T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260731T092031_N0512_R093_T34TEQ_20260731T124714",
       "cloud": 0.0,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260731.jpg"
     },
     {
       "date": "2026-08-02",
       "datetime": "2026-08-02T09:20:51.024000Z",
       "id": "S2A_MSIL2A_20260802T092051_N0512_R093_T34TFQ_20260802T155719",
       "cloud": 0.0,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260802.jpg"
     },
     {
       "date": "2026-08-03",
       "datetime": "2026-08-03T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260803T093031_N0512_R136_T34TFQ_20260803T155047",
       "cloud": 0.54,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260803.jpg"
     },
     {
       "date": "2026-08-05",
       "datetime": "2026-08-05T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260805T092029_N0512_R093_T34TEQ_20260805T114234",
       "cloud": 1.08,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260805.jpg"
     },
     {
       "date": "2026-08-08",
       "datetime": "2026-08-08T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260808T093029_N0512_R136_T34TEQ_20260808T114128",
       "cloud": 0.42,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260808.jpg"
     },
     {
       "date": "2026-08-10",
       "datetime": "2026-08-10T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260810T092031_N0512_R093_T34TEQ_20260810T125012",
       "cloud": 0.39,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260810.jpg"
     },
     {
       "date": "2026-08-13",
       "datetime": "2026-08-13T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260813T093031_N0512_R136_T34TEQ_20260813T125715",
       "cloud": 3.3,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260813.jpg"
     },
     {
       "date": "2026-08-15",
       "datetime": "2026-08-15T09:30:51.024000Z",
       "id": "S2A_MSIL2A_20260815T093051_N0512_R136_T34TEQ_20260815T131213",
       "cloud": 0.24,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260815.jpg"
     },
     {
       "date": "2026-08-20",
       "datetime": "2026-08-20T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260820T092031_N0512_R093_T34TFQ_20260820T124608",
       "cloud": 3.17,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260820.jpg"
     },
     {
       "date": "2026-08-22",
       "datetime": "2026-08-22T09:20:41.024000Z",
       "id": "S2A_MSIL2A_20260822T092041_N0512_R093_T34TFQ_20260822T155803",
       "cloud": 0.14,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260822.jpg"
     },
     {
       "date": "2026-08-25",
       "datetime": "2026-08-25T09:31:51.024000Z",
       "id": "S2A_MSIL2A_20260825T093151_N0512_R136_T34TEQ_20260825T160858",
       "cloud": 9.31,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260825.jpg"
     },
     {
       "date": "2026-08-28",
       "datetime": "2026-08-28T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260828T093029_N0512_R136_T34TEQ_20260828T115012",
       "cloud": 34.35,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260828.jpg"
     },
     {
       "date": "2026-08-30",
       "datetime": "2026-08-30T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260830T092031_N0512_R093_T34TEQ_20260830T125311",
       "cloud": 22.99,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260830.jpg"
     },
     {
       "date": "2026-09-01",
       "datetime": "2026-09-01T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260901T092231_N0512_R093_T34TEQ_20260901T160320",
       "cloud": 30.83,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_domogled_20260901.jpg"
     },
     {
       "date": "2026-09-02",
       "datetime": "2026-09-02T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260902T093031_N0512_R136_T34TEQ_20260902T125614",
       "cloud": 0.21,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_domogled_20260902.jpg"
     },
     {
       "date": "2026-09-04",
       "datetime": "2026-09-04T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260904T092029_N0512_R093_T34TFQ_20260904T132141",
       "cloud": 15.26,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260904.jpg"
     },
     {
       "date": "2026-09-07",
       "datetime": "2026-09-07T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260907T093029_N0512_R136_T34TEQ_20260907T114858",
       "cloud": 0.06,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_domogled_20260907.jpg"
     },
     {
       "date": "2026-09-09",
@@ -416,336 +463,384 @@
       "datetime": "2026-04-15T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260415T093031_N0512_R136_T34TFQ_20260415T130515",
       "cloud": 19.28,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260415.jpg"
     },
     {
       "date": "2026-04-22",
       "datetime": "2026-04-22T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260422T092031_N0512_R093_T34TEQ_20260422T130522",
       "cloud": 10.53,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260422.jpg"
     },
     {
       "date": "2026-04-24",
       "datetime": "2026-04-24T09:20:51.024000Z",
       "id": "S2A_MSIL2A_20260424T092051_N0512_R093_T34TEQ_20260424T125914",
       "cloud": 17.7,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260424.jpg"
     },
     {
       "date": "2026-04-25",
       "datetime": "2026-04-25T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260425T093031_N0512_R136_T34TEQ_20260425T131210",
       "cloud": 13.78,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260425.jpg"
     },
     {
       "date": "2026-04-27",
       "datetime": "2026-04-27T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260427T092029_N0512_R093_T34TEQ_20260427T114120",
       "cloud": 14.61,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260427.jpg"
     },
     {
       "date": "2026-04-30",
       "datetime": "2026-04-30T09:30:29.025000Z",
       "id": "S2B_MSIL2A_20260430T093029_N0512_R136_T34TEQ_20260430T114148",
       "cloud": 34.68,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260430.jpg"
     },
     {
       "date": "2026-05-04",
       "datetime": "2026-05-04T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260504T092231_N0512_R093_T34TEQ_20260504T145514",
       "cloud": 1.94,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260504.jpg"
     },
     {
       "date": "2026-05-05",
       "datetime": "2026-05-05T09:30:41.025000Z",
       "id": "S2C_MSIL2A_20260505T093041_N0512_R136_T34TFQ_20260505T153420",
       "cloud": 0.26,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260505.jpg"
     },
     {
       "date": "2026-05-10",
       "datetime": "2026-05-10T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260510T093029_N0512_R136_T34TFQ_20260510T114017",
       "cloud": 24.17,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260510.jpg"
     },
     {
       "date": "2026-05-14",
       "datetime": "2026-05-14T09:20:41.024000Z",
       "id": "S2A_MSIL2A_20260514T092041_N0512_R093_T34TEQ_20260514T143654",
       "cloud": 24.2,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": null
     },
     {
       "date": "2026-05-24",
       "datetime": "2026-05-24T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260524T092231_N0512_R093_T34TFQ_20260524T143414",
       "cloud": 15.51,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260524.jpg"
     },
     {
       "date": "2026-05-25",
       "datetime": "2026-05-25T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260525T093031_N0512_R136_T34TEQ_20260525T130809",
       "cloud": 10.16,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260525.jpg"
     },
     {
       "date": "2026-05-27",
       "datetime": "2026-05-27T09:30:51.024000Z",
       "id": "S2A_MSIL2A_20260527T093051_N0512_R136_T34TEQ_20260527T161704",
       "cloud": 3.4,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260527.jpg"
     },
     {
       "date": "2026-06-09",
       "datetime": "2026-06-09T09:30:29.025000Z",
       "id": "S2B_MSIL2A_20260609T093029_N0512_R136_T34TFQ_20260609T115355",
       "cloud": 2.46,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260609.jpg"
     },
     {
       "date": "2026-06-11",
       "datetime": "2026-06-11T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260611T092031_N0512_R093_T34TFQ_20260611T125218",
       "cloud": 26.87,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260611.jpg"
     },
     {
       "date": "2026-06-14",
       "datetime": "2026-06-14T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260614T093031_N0512_R136_T34TEQ_20260614T125713",
       "cloud": 9.54,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260614.jpg"
     },
     {
       "date": "2026-06-16",
       "datetime": "2026-06-16T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260616T092029_N0512_R093_T34TFQ_20260616T114123",
       "cloud": 0.9,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260616.jpg"
     },
     {
       "date": "2026-06-19",
       "datetime": "2026-06-19T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260619T093029_N0512_R136_T34TFQ_20260619T115015",
       "cloud": 3.08,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260619.jpg"
     },
     {
       "date": "2026-06-21",
       "datetime": "2026-06-21T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260621T092031_N0512_R093_T34TFQ_20260621T125713",
       "cloud": 6.44,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260621.jpg"
     },
     {
       "date": "2026-06-24",
       "datetime": "2026-06-24T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260624T093031_N0512_R136_T34TEQ_20260624T140509",
       "cloud": 23.76,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260624.jpg"
     },
     {
       "date": "2026-06-26",
       "datetime": "2026-06-26T09:31:51.024000Z",
       "id": "S2A_MSIL2A_20260626T093151_N0512_R136_T34TEQ_20260626T143708",
       "cloud": 0.46,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260626.jpg"
     },
     {
       "date": "2026-06-29",
       "datetime": "2026-06-29T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260629T093029_N0512_R136_T34TEQ_20260629T114905",
       "cloud": 0.07,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260629.jpg"
     },
     {
       "date": "2026-07-03",
       "datetime": "2026-07-03T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260703T092231_N0512_R093_T34TFQ_20260703T143313",
       "cloud": 31.69,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260703.jpg"
     },
     {
       "date": "2026-07-06",
       "datetime": "2026-07-06T09:20:29.025000Z",
       "id": "S2B_MSIL2A_20260706T092029_N0512_R093_T34TFQ_20260706T114131",
       "cloud": 1.95,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260706.jpg"
     },
     {
       "date": "2026-07-11",
       "datetime": "2026-07-11T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260711T092031_N0512_R093_T34TEQ_20260711T125414",
       "cloud": 0.98,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260711.jpg"
     },
     {
       "date": "2026-07-14",
       "datetime": "2026-07-14T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260714T093031_N0512_R136_T34TFQ_20260714T130356",
       "cloud": 0.2,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260714.jpg"
     },
     {
       "date": "2026-07-19",
       "datetime": "2026-07-19T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260719T093029_N0512_R136_T34TFQ_20260719T115055",
       "cloud": 7.06,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260719.jpg"
     },
     {
       "date": "2026-07-21",
       "datetime": "2026-07-21T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260721T092031_N0512_R093_T34TEQ_20260721T125316",
       "cloud": 0.0,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260721.jpg"
     },
     {
       "date": "2026-07-23",
       "datetime": "2026-07-23T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260723T092231_N0512_R093_T34TEQ_20260723T142859",
       "cloud": 33.81,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260723.jpg"
     },
     {
       "date": "2026-07-26",
       "datetime": "2026-07-26T09:30:51.024000Z",
       "id": "S2A_MSIL2A_20260726T093051_N0512_R136_T34TEQ_20260726T161013",
       "cloud": 17.61,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260726.jpg"
     },
     {
       "date": "2026-07-29",
       "datetime": "2026-07-29T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260729T093029_N0512_R136_T34TEQ_20260729T115818",
       "cloud": 0.04,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260729.jpg"
     },
     {
       "date": "2026-07-31",
       "datetime": "2026-07-31T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260731T092031_N0512_R093_T34TEQ_20260731T124714",
       "cloud": 0.0,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260731.jpg"
     },
     {
       "date": "2026-08-02",
       "datetime": "2026-08-02T09:20:51.024000Z",
       "id": "S2A_MSIL2A_20260802T092051_N0512_R093_T34TFQ_20260802T155719",
       "cloud": 0.0,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260802.jpg"
     },
     {
       "date": "2026-08-03",
       "datetime": "2026-08-03T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260803T093031_N0512_R136_T34TFQ_20260803T155047",
       "cloud": 0.54,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260803.jpg"
     },
     {
       "date": "2026-08-05",
       "datetime": "2026-08-05T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260805T092029_N0512_R093_T34TEQ_20260805T114234",
       "cloud": 1.08,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260805.jpg"
     },
     {
       "date": "2026-08-08",
       "datetime": "2026-08-08T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260808T093029_N0512_R136_T34TEQ_20260808T114128",
       "cloud": 0.42,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260808.jpg"
     },
     {
       "date": "2026-08-10",
       "datetime": "2026-08-10T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260810T092031_N0512_R093_T34TEQ_20260810T125012",
       "cloud": 0.39,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260810.jpg"
     },
     {
       "date": "2026-08-13",
       "datetime": "2026-08-13T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260813T093031_N0512_R136_T34TEQ_20260813T125715",
       "cloud": 3.3,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260813.jpg"
     },
     {
       "date": "2026-08-15",
       "datetime": "2026-08-15T09:30:51.024000Z",
       "id": "S2A_MSIL2A_20260815T093051_N0512_R136_T34TEQ_20260815T131213",
       "cloud": 0.24,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260815.jpg"
     },
     {
       "date": "2026-08-20",
       "datetime": "2026-08-20T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260820T092031_N0512_R093_T34TFQ_20260820T124608",
       "cloud": 3.17,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260820.jpg"
     },
     {
       "date": "2026-08-22",
       "datetime": "2026-08-22T09:20:41.024000Z",
       "id": "S2A_MSIL2A_20260822T092041_N0512_R093_T34TFQ_20260822T155803",
       "cloud": 0.14,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260822.jpg"
     },
     {
       "date": "2026-08-25",
       "datetime": "2026-08-25T09:31:51.024000Z",
       "id": "S2A_MSIL2A_20260825T093151_N0512_R136_T34TEQ_20260825T160858",
       "cloud": 9.31,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260825.jpg"
     },
     {
       "date": "2026-08-28",
       "datetime": "2026-08-28T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260828T093029_N0512_R136_T34TEQ_20260828T115012",
       "cloud": 34.35,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260828.jpg"
     },
     {
       "date": "2026-08-30",
       "datetime": "2026-08-30T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260830T092031_N0512_R093_T34TEQ_20260830T125311",
       "cloud": 22.99,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260830.jpg"
     },
     {
       "date": "2026-09-01",
       "datetime": "2026-09-01T09:22:31.024000Z",
       "id": "S2A_MSIL2A_20260901T092231_N0512_R093_T34TEQ_20260901T160320",
       "cloud": 30.83,
-      "platform": "sentinel-2a"
+      "platform": "sentinel-2a",
+      "file": "s2hist_portiledefier_20260901.jpg"
     },
     {
       "date": "2026-09-02",
       "datetime": "2026-09-02T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260902T093031_N0512_R136_T34TEQ_20260902T125614",
       "cloud": 0.21,
-      "platform": "sentinel-2c"
+      "platform": "sentinel-2c",
+      "file": "s2hist_portiledefier_20260902.jpg"
     },
     {
       "date": "2026-09-04",
       "datetime": "2026-09-04T09:20:29.024000Z",
       "id": "S2B_MSIL2A_20260904T092029_N0512_R093_T34TFQ_20260904T132141",
       "cloud": 15.26,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260904.jpg"
     },
     {
       "date": "2026-09-07",
       "datetime": "2026-09-07T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260907T093029_N0512_R136_T34TEQ_20260907T114858",
       "cloud": 0.06,
-      "platform": "sentinel-2b"
+      "platform": "sentinel-2b",
+      "file": "s2hist_portiledefier_20260907.jpg"
     },
     {
       "date": "2026-09-09",
