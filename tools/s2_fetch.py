@@ -17,6 +17,7 @@ Output: live/web/img/s2hist_{zona}_{data}.jpg + index actualizat
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -125,9 +126,12 @@ def main() -> int:
         if not (zid and bbox):
             continue
         scenes = hist.get(zid) or []
-        # doar scenele din ultimele 30 de zile care au deja id STAC
+        # fereastra: implicit ultimele 30 de zile (rulare de rutina in colector),
+        # dar BACKFILL_DAYS din mediu permite completarea istoricului vechi
+        # (ex. BACKFILL_DAYS=400 pentru toate scenele din catalog).
         from datetime import datetime, timedelta
-        cutoff = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
+        zile = int(os.environ.get("BACKFILL_DAYS", "30"))
+        cutoff = (datetime.now() - timedelta(days=zile)).strftime("%Y-%m-%d")
         recent = [s for s in scenes if s["date"] >= cutoff]
         print(f"\n=== {name}: {len(recent)} scene de la {cutoff} ===")
 

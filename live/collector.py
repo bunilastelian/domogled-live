@@ -62,6 +62,8 @@ AOI = {
 POLL_SECONDS = 300
 FRP_LOOKBACK_HOURS = 6            # cat de des cautam produse FRP noi
 IMAGERY_CLOUD_MAX = 60            # % acoperire cu nori acceptata pentru preview
+IMAGERY_MAX_AGE_H = 6             # dupa atatea ore regeneram imaginile chiar daca
+                                  # nu au aparut produse FRP noi (prinde intarzierile)
 UA = {"User-Agent": "copernicus-domogled-live/2.0"}
 
 
@@ -722,6 +724,77 @@ def cycle(state: dict, client: CDSE, first: bool) -> None:
         sat_passes.main()
     except Exception as exc:  # noqa: BLE001
         log(f"   [!] predictie treceri: {type(exc).__name__}: {exc}")
+
+    # Hartile termice S3 si fotografiile S2 se regenerau MANUAL, deci ramaneau
+    # in urma cu zile (pe 8 oct aveam ultima harta din 7 oct, desi produsele
+    # FRP de pe 8 erau deja descarcate). Le rulam automat, dar cu economie:
+    # doar cand au aparut produse FRP noi sau cand ultima imagine e veche.
+    refresh_imagery(state)
+
+
+def refresh_imagery(state: dict) -> None:
+    """Regenereaza hartile termice S3 si aduce fotografiile S2 noi.
+
+    ECONOMIE: sat_passes ruleaza la fiecare ciclu (ieftin), dar s3_thermal
+    deseneaza 20+ harti PNG si s2_fetch descarca de la CDSE - nu le vrem la
+    fiecare 5 minute. Le rulam doar daca:
+      - numarul de produse FRP s-a schimbat fata de ultima rulare, SAU
+      - ultima harta termica e mai veche de IMAGERY_MAX_AGE_H
+    """
+    # tools/ nu e pachet - il adaugam aici (nu la nivel de modul), ca sa
+    # functioneze si cand collector.py e importat, nu doar rulat direct
+    tools_dir = str(HERE.parent / "tools")
+    if tools_dir not in sys.path:
+        sys.path.insert(0, tools_dir)
+
+    # produsele FRP sunt in state["zones"][zid]["frp_products"], nu la radacina
+    prod = sum(len((z or {}).get("frp_products") or [])
+               for z in (state.get("zones") or {}).values())
+    marker = STATE / "imagery_marker.json"
+    try:
+        prev = json.loads(marker.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        prev = {}
+
+    ultima = prev.get("ultima_harta", "")
+    vechi = True
+    if ultima:
+        try:
+            t = datetime.fromisoformat(ultima.replace("Z", "+00:00"))
+            vechi = (datetime.now(timezone.utc) - t).total_seconds() > IMAGERY_MAX_AGE_H * 3600
+        except Exception:  # noqa: BLE001
+            vechi = True
+
+    if prod == prev.get("produse_frp") and not vechi:
+        return                      # nimic nou, nu consumam resurse
+
+    log(f"   imagini: {prod} produse FRP (era {prev.get('produse_frp')}), "
+        f"ultima harta {ultima or 'niciodata'} -> regenerez")
+
+    # 1. harti termice S3 (o harta PNG per trecere)
+    try:
+        import s3_thermal
+        s3_thermal.main()
+        log("   imagini: harti termice S3 regenerate")
+    except Exception as exc:  # noqa: BLE001
+        log(f"   [!] harti termice: {type(exc).__name__}: {exc}")
+
+    # 2. fotografii S2 noi (doar scenele curate, sar peste cele cu nori)
+    try:
+        import s2_history
+        s2_history.main()
+    except Exception as exc:  # noqa: BLE001
+        log(f"   [!] catalog S2: {type(exc).__name__}: {exc}")
+    try:
+        import s2_fetch
+        s2_fetch.main()
+    except Exception as exc:  # noqa: BLE001
+        log(f"   [!] fotografii S2: {type(exc).__name__}: {exc}")
+
+    marker.write_text(json.dumps({
+        "produse_frp": prod,
+        "ultima_harta": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+    }), encoding="utf-8")
 
 
 def main() -> int:

@@ -64,6 +64,14 @@ git add -f \
   live/web/domogled.geojson \
   live/web/portiledefier.geojson 2>/dev/null
 
+# Codul frontend: fara el, fix-urile rămân doar local (au fost urcate manual
+# de fiecare dată - sursa clasica de "am reparat dar pe telefon nu se vede").
+git add -f \
+  live/web/index.html \
+  live/web/app.js \
+  live/web/timeline.js \
+  live/web/sat_timer.js 2>/dev/null
+
 if git diff --staged --quiet; then
   log "nimic nou"
   exit 0

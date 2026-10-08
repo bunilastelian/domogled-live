@@ -45,6 +45,10 @@ STAMP_RE = re.compile(r"(\d{8})T(\d{6})")
 ROOT = Path("/home/lili/projects/domogled-live")
 FRP_CACHE = ROOT / "live" / "state" / "frp"
 IMG_DIR = ROOT / "live" / "web" / "img"
+STATE_DIR = ROOT / "live" / "web" / "state"
+STATE = ROOT / "live" / "state"
+INDEX = STATE_DIR / "s3_thermal.json"
+ZONES_FILE = ROOT / "live" / "zones.json"
 
 # schemele pe care le desenam. alternative e duplicatul standard-ului cu alt
 # filtru -> il sari ca sa nu dublam punctele.
@@ -253,3 +257,35 @@ def build_index(bbox: tuple[float, float, float, float],
         })
 
     return index
+
+
+def main(zone_list: list | None = None) -> int:
+    """Regenereaza toate hartile termice + indexul JSON.
+
+    Apelata din collector.py (refresh_imagery) ca imaginile sa nu mai ramana
+    in urma cu zile. Daca zone_list e dat, il folosim direct (evita o citire
+    in plus si tine zona sincronizata cu collectorul).
+    """
+    if zone_list is None:
+        cfg = json.loads(ZONES_FILE.read_text(encoding="utf-8"))
+        zone_list = cfg.get("zones") or cfg.get("zone_list") or []
+
+    index_all: dict[str, list] = {}
+    n_img = 0
+    for z in zone_list:
+        zid, bbox = z.get("id"), z.get("bbox")
+        if not (zid and bbox):
+            continue
+        idx = build_index(tuple(bbox), zid)
+        index_all[zid] = idx
+        n_img += len(idx)
+
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    INDEX.write_text(json.dumps(index_all, indent=2, ensure_ascii=False),
+                     encoding="utf-8")
+    print(f"scris {INDEX} — {n_img} harti termice ({len(index_all)} zone)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

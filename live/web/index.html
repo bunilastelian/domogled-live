@@ -73,6 +73,15 @@
          padding:8px 10px;margin-bottom:7px;font-size:12.5px}
   .alert.new{border-left-color:var(--red);background:#1e1213}
   .alert time{color:var(--dim);font-size:11px;display:block}
+  /* alertele cu coordonate duc harta la locul focarului la click */
+  .alert.clickable{cursor:pointer;transition:background .14s,border-color .14s,transform .1s}
+  .alert.clickable:hover{background:#231a12;border-left-color:#fbbf24}
+  .alert.clickable:active{transform:scale(.985)}
+  .alert.clickable:focus-visible{outline:2px solid #fbbf24;outline-offset:2px}
+  .alert.clickable time b{color:#fbbf24;font-weight:600}
+  .alert-pin{font-size:11px;margin-right:3px;opacity:.85}
+  /* markerul temporar care arata unde a fost alerta */
+  .alert-marker{filter:drop-shadow(0 0 6px rgba(251,191,36,.9))}
   .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .thumb{position:relative;border:1px solid var(--line);border-radius:7px;overflow:hidden;
          cursor:pointer;background:#0d1117;padding:0;display:block;width:100%}
@@ -350,7 +359,7 @@
   </aside>
 </div>
 
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 <script src="timeline.js?v=4"></script>
 <script src="sat_timer.js?v=2"></script>
 <script>
@@ -360,7 +369,7 @@
 // confuzia pe care am avut-o. Verificam daca versiunea din HTML corespunde
 // cu cea servita si reincarcam fortat o singura data.
 (function () {
-  const V = 'v4';                       // creste la fiecare schimbare de layout
+  const V = 'v5';                       // creste la fiecare schimbare de layout
   if (sessionStorage.getItem('dv') === V) return;
   sessionStorage.setItem('dv', V);
   if (!document.querySelector('[data-imgs="s3"]')) {
