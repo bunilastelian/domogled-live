@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-08T11:37:09+00:00",
+  "generat": "2026-10-08T11:42:11+00:00",
   "latenta_publicare_min": {
     "medie": 73,
     "p10": 49,
@@ -12,7 +12,7 @@
       "satelit": "S3A",
       "fereastra": "noapte",
       "ora_estimata_utc": "2026-10-08T20:04:40+00:00",
-      "peste_minute": 508,
+      "peste_minute": 502,
       "variatie_min": 24,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-08T21:17:40+00:00",
@@ -24,7 +24,7 @@
       "satelit": "S3B",
       "fereastra": "noapte",
       "ora_estimata_utc": "2026-10-08T20:16:00+00:00",
-      "peste_minute": 519,
+      "peste_minute": 514,
       "variatie_min": 26,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-08T21:29:00+00:00",
@@ -36,7 +36,7 @@
       "satelit": "S3A",
       "fereastra": "zi",
       "ora_estimata_utc": "2026-10-09T08:40:40+00:00",
-      "peste_minute": 1264,
+      "peste_minute": 1258,
       "variatie_min": 24,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-09T09:53:40+00:00",
@@ -48,7 +48,7 @@
       "satelit": "S3B",
       "fereastra": "zi",
       "ora_estimata_utc": "2026-10-09T08:53:00+00:00",
-      "peste_minute": 1276,
+      "peste_minute": 1271,
       "variatie_min": 26,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-09T10:06:00+00:00",
@@ -60,8 +60,8 @@
     "achizitie_utc": "2026-10-08T08:39:53+00:00",
     "satelit": "S3A",
     "publicat_asteptat_utc": "2026-10-08T09:52:53+00:00",
-    "intarziere_min": 104,
-    "vechime_min": 177
+    "intarziere_min": 109,
+    "vechime_min": 182
   },
   "total_achizitii_istoric": 26,
   "nota": "Orele de trecere sunt estimate din achizitiile reale din ultimele 3 zile (orbita heliosincrona = ora stabila). Variatie = jumatate din intervalul observat."
