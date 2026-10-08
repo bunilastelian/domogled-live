@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 227,
+ "cycles": 228,
  "zones": {
   "domogled": {
    "detections": {
@@ -5879,8 +5879,8 @@
     "total": 441,
     "nasa": 304,
     "esa": 137,
-    "last24_count": 62,
-    "last24_frp": 291.7,
+    "last24_count": 56,
+    "last24_frp": 265.4,
     "last24_max": 24.5,
     "days": [
      {
@@ -5988,7 +5988,7 @@
      "bt_k": 320.7,
      "first_seen": "2026-10-08T11:12:01+00:00"
     },
-    "updated": "2026-10-08T11:42:04+00:00"
+    "updated": "2026-10-08T11:47:05+00:00"
    },
    "alerts": [
     {
@@ -6144,10 +6144,10 @@
      "last": "2026-10-08T08:42+00:00",
      "frp_max": 97.36,
      "frp_sum": 1944.9,
-     "frp_last24": 273.9,
-     "frp_prev24": 374.3,
-     "det_last24": 57,
-     "det_prev24": 58,
+     "frp_last24": 247.6,
+     "frp_prev24": 400.6,
+     "det_last24": 51,
+     "det_prev24": 64,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 8.89,
@@ -6188,23 +6188,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T11:42:04+00:00",
-    "time": "2026-10-08T11:30",
-    "temp_c": 19.5,
+    "updated": "2026-10-08T11:47:04+00:00",
+    "time": "2026-10-08T11:45",
+    "temp_c": 19.6,
     "humidity_pct": 26,
-    "wind_kmh": 10.5,
+    "wind_kmh": 10.4,
     "gust_kmh": 31.0,
-    "wind_from_deg": 121,
+    "wind_from_deg": 124,
     "wind_from_compass": "SE",
-    "downwind_deg": 301,
+    "downwind_deg": 304,
     "downwind_compass": "NV",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0,
-    "vpd_kpa": 1.68,
+    "vpd_kpa": 1.69,
     "soil_moisture": 0.094,
     "elevation_m": 1026.0,
     "danger": {
-     "index": 2.05,
+     "index": 2.04,
      "name": "Angström",
      "class": "ridicat",
      "color": "#f76b15",
@@ -6468,7 +6468,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 242,
+   "cycles": 243,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -12464,7 +12464,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 227,
+   "cycles": 228,
    "fires": [
     {
      "id": "portiledefier-44.768-22.325",
@@ -12477,12 +12477,12 @@
      "last": "2026-10-08T02:49+00:00",
      "frp_max": 18.66,
      "frp_sum": 1300.2,
-     "frp_last24": 239.1,
-     "frp_prev24": 294.0,
-     "det_last24": 57,
-     "det_prev24": 96,
-     "trend": "staționar",
-     "trend_color": "#f5d90a",
+     "frp_last24": 206.2,
+     "frp_prev24": 326.8,
+     "det_last24": 49,
+     "det_prev24": 104,
+     "trend": "în scădere",
+     "trend_color": "#30a46c",
      "extent_km": 7.9,
      "nasa": 280,
      "esa": 155,
@@ -12521,23 +12521,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T11:42:10+00:00",
-    "time": "2026-10-08T11:30",
-    "temp_c": 20.6,
+    "updated": "2026-10-08T11:47:10+00:00",
+    "time": "2026-10-08T11:45",
+    "temp_c": 20.7,
     "humidity_pct": 25,
-    "wind_kmh": 12.5,
-    "gust_kmh": 37.1,
-    "wind_from_deg": 136,
+    "wind_kmh": 12.0,
+    "gust_kmh": 36.7,
+    "wind_from_deg": 139,
     "wind_from_compass": "SE",
-    "downwind_deg": 316,
+    "downwind_deg": 319,
     "downwind_compass": "NV",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0,
-    "vpd_kpa": 1.82,
+    "vpd_kpa": 1.83,
     "soil_moisture": 0.125,
     "elevation_m": 678.0,
     "danger": {
-     "index": 1.89,
+     "index": 1.88,
      "name": "Angström",
      "class": "foarte ridicat",
      "color": "#e5484d",
@@ -12777,8 +12777,8 @@
     "total": 439,
     "nasa": 282,
     "esa": 157,
-    "last24_count": 59,
-    "last24_frp": 240.6,
+    "last24_count": 51,
+    "last24_frp": 207.8,
     "last24_max": 13.5,
     "days": [
      {
@@ -12885,7 +12885,7 @@
      "satellite": "A",
      "first_seen": "2026-10-08T05:52:04+00:00"
     },
-    "updated": "2026-10-08T11:42:11+00:00"
+    "updated": "2026-10-08T11:47:10+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -13040,5 +13040,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-08T11:42:11+00:00"
+ "updated": "2026-10-08T11:47:10+00:00"
 }
