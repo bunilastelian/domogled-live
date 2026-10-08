@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 269,
+ "cycles": 270,
  "zones": {
   "domogled": {
    "detections": {
@@ -6234,7 +6234,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-08T14:47:00+00:00"
     },
-    "updated": "2026-10-08T15:12:04+00:00"
+    "updated": "2026-10-08T15:17:05+00:00"
    },
    "alerts": [
     {
@@ -6456,23 +6456,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T15:12:04+00:00",
-    "time": "2026-10-08T15:00",
-    "temp_c": 17.6,
-    "humidity_pct": 27,
-    "wind_kmh": 5.8,
-    "gust_kmh": 27.0,
-    "wind_from_deg": 120,
+    "updated": "2026-10-08T15:17:04+00:00",
+    "time": "2026-10-08T15:15",
+    "temp_c": 17.1,
+    "humidity_pct": 28,
+    "wind_kmh": 5.1,
+    "gust_kmh": 26.3,
+    "wind_from_deg": 129,
     "wind_from_compass": "SE",
-    "downwind_deg": 300,
+    "downwind_deg": 309,
     "downwind_compass": "NV",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0,
-    "vpd_kpa": 1.47,
+    "vpd_kpa": 1.41,
     "soil_moisture": 0.094,
     "elevation_m": 1026.0,
     "danger": {
-     "index": 2.29,
+     "index": 2.39,
      "name": "Angström",
      "class": "ridicat",
      "color": "#f76b15",
@@ -6600,111 +6600,111 @@
      },
      {
       "t": "2026-10-08T12:00",
-      "temp": 19.3,
-      "rh": 26,
-      "wind": 9.4,
-      "dir": 122,
+      "temp": 19.5,
+      "rh": 24,
+      "wind": 8.2,
+      "dir": 131,
       "precip": 0.0,
-      "angstrom": 2.07
+      "angstrom": 1.95
      },
      {
       "t": "2026-10-08T13:00",
-      "temp": 19.2,
-      "rh": 25,
-      "wind": 10.2,
-      "dir": 132,
+      "temp": 19.5,
+      "rh": 23,
+      "wind": 8.7,
+      "dir": 138,
       "precip": 0.0,
-      "angstrom": 2.03
+      "angstrom": 1.9
      },
      {
       "t": "2026-10-08T14:00",
-      "temp": 18.6,
-      "rh": 25,
-      "wind": 7.4,
-      "dir": 133,
+      "temp": 19.0,
+      "rh": 23,
+      "wind": 8.3,
+      "dir": 146,
       "precip": 0.0,
-      "angstrom": 2.09
+      "angstrom": 1.95
      },
      {
       "t": "2026-10-08T15:00",
-      "temp": 17.6,
-      "rh": 27,
-      "wind": 5.8,
-      "dir": 120,
+      "temp": 17.8,
+      "rh": 26,
+      "wind": 5.6,
+      "dir": 135,
       "precip": 0.0,
-      "angstrom": 2.29
+      "angstrom": 2.22
      },
      {
       "t": "2026-10-08T16:00",
-      "temp": 14.8,
-      "rh": 35,
-      "wind": 5.6,
-      "dir": 105,
+      "temp": 14.7,
+      "rh": 33,
+      "wind": 4.7,
+      "dir": 99,
       "precip": 0.0,
-      "angstrom": 2.97
+      "angstrom": 2.88
      },
      {
       "t": "2026-10-08T17:00",
-      "temp": 13.1,
-      "rh": 40,
+      "temp": 12.9,
+      "rh": 37,
       "wind": 5.4,
-      "dir": 82,
+      "dir": 86,
       "precip": 0.0,
-      "angstrom": 3.39
+      "angstrom": 3.26
      },
      {
       "t": "2026-10-08T18:00",
-      "temp": 12.4,
-      "rh": 42,
-      "wind": 5.9,
-      "dir": 79,
+      "temp": 13.0,
+      "rh": 37,
+      "wind": 5.4,
+      "dir": 70,
       "precip": 0.0,
-      "angstrom": 3.56
+      "angstrom": 3.25
      },
      {
       "t": "2026-10-08T19:00",
-      "temp": 12.6,
-      "rh": 46,
-      "wind": 6.2,
-      "dir": 83,
+      "temp": 12.9,
+      "rh": 39,
+      "wind": 5.5,
+      "dir": 79,
+      "precip": 0.0,
+      "angstrom": 3.36
+     },
+     {
+      "t": "2026-10-08T20:00",
+      "temp": 12.7,
+      "rh": 40,
+      "wind": 5.2,
+      "dir": 78,
+      "precip": 0.0,
+      "angstrom": 3.43
+     },
+     {
+      "t": "2026-10-08T21:00",
+      "temp": 12.1,
+      "rh": 45,
+      "wind": 5.0,
+      "dir": 69,
       "precip": 0.0,
       "angstrom": 3.74
      },
      {
-      "t": "2026-10-08T20:00",
-      "temp": 12.9,
-      "rh": 49,
-      "wind": 5.2,
-      "dir": 78,
-      "precip": 0.0,
-      "angstrom": 3.86
-     },
-     {
-      "t": "2026-10-08T21:00",
-      "temp": 11.9,
-      "rh": 53,
-      "wind": 5.2,
-      "dir": 74,
-      "precip": 0.0,
-      "angstrom": 4.16
-     },
-     {
       "t": "2026-10-08T22:00",
-      "temp": 11.1,
-      "rh": 55,
-      "wind": 5.0,
-      "dir": 69,
+      "temp": 11.5,
+      "rh": 48,
+      "wind": 4.8,
+      "dir": 63,
       "precip": 0.0,
-      "angstrom": 4.34
+      "angstrom": 3.95
      },
      {
       "t": "2026-10-08T23:00",
-      "temp": 10.4,
-      "rh": 56,
-      "wind": 4.9,
-      "dir": 54,
+      "temp": 10.9,
+      "rh": 51,
+      "wind": 4.7,
+      "dir": 58,
       "precip": 0.0,
-      "angstrom": 4.46
+      "angstrom": 4.16
      }
     ]
    },
@@ -6736,7 +6736,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 284,
+   "cycles": 285,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -13053,7 +13053,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 269,
+   "cycles": 270,
    "fires": [
     {
      "id": "portiledefier-44.768-22.324",
@@ -13110,23 +13110,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T15:12:14+00:00",
-    "time": "2026-10-08T15:00",
-    "temp_c": 19.4,
-    "humidity_pct": 32,
-    "wind_kmh": 6.1,
-    "gust_kmh": 24.5,
-    "wind_from_deg": 152,
-    "wind_from_compass": "SE",
-    "downwind_deg": 332,
-    "downwind_compass": "NV",
+    "updated": "2026-10-08T15:17:12+00:00",
+    "time": "2026-10-08T15:15",
+    "temp_c": 19.0,
+    "humidity_pct": 31,
+    "wind_kmh": 5.0,
+    "gust_kmh": 22.3,
+    "wind_from_deg": 159,
+    "wind_from_compass": "S",
+    "downwind_deg": 339,
+    "downwind_compass": "N",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0,
-    "vpd_kpa": 1.53,
+    "vpd_kpa": 1.52,
     "soil_moisture": 0.125,
     "elevation_m": 678.0,
     "danger": {
-     "index": 2.36,
+     "index": 2.35,
      "name": "Angström",
      "class": "ridicat",
      "color": "#f76b15",
@@ -13254,111 +13254,111 @@
      },
      {
       "t": "2026-10-08T12:00",
-      "temp": 20.5,
-      "rh": 26,
-      "wind": 11.3,
-      "dir": 143,
+      "temp": 20.6,
+      "rh": 24,
+      "wind": 9.4,
+      "dir": 140,
       "precip": 0.0,
-      "angstrom": 1.95
+      "angstrom": 1.84
      },
      {
       "t": "2026-10-08T13:00",
+      "temp": 20.8,
+      "rh": 24,
+      "wind": 9.3,
+      "dir": 144,
+      "precip": 0.0,
+      "angstrom": 1.82
+     },
+     {
+      "t": "2026-10-08T14:00",
       "temp": 20.6,
       "rh": 26,
-      "wind": 10.9,
-      "dir": 146,
+      "wind": 9.0,
+      "dir": 157,
       "precip": 0.0,
       "angstrom": 1.94
      },
      {
-      "t": "2026-10-08T14:00",
-      "temp": 20.4,
-      "rh": 28,
-      "wind": 9.2,
-      "dir": 149,
-      "precip": 0.0,
-      "angstrom": 2.06
-     },
-     {
       "t": "2026-10-08T15:00",
-      "temp": 19.4,
-      "rh": 32,
-      "wind": 6.1,
-      "dir": 152,
+      "temp": 19.7,
+      "rh": 29,
+      "wind": 5.8,
+      "dir": 150,
       "precip": 0.0,
-      "angstrom": 2.36
+      "angstrom": 2.18
      },
      {
       "t": "2026-10-08T16:00",
-      "temp": 16.3,
-      "rh": 42,
-      "wind": 3.3,
-      "dir": 193,
+      "temp": 16.6,
+      "rh": 39,
+      "wind": 3.9,
+      "dir": 214,
       "precip": 0.0,
-      "angstrom": 3.17
+      "angstrom": 2.99
      },
      {
       "t": "2026-10-08T17:00",
-      "temp": 15.3,
-      "rh": 43,
-      "wind": 2.2,
-      "dir": 279,
+      "temp": 15.4,
+      "rh": 42,
+      "wind": 2.9,
+      "dir": 277,
       "precip": 0.0,
-      "angstrom": 3.32
+      "angstrom": 3.26
      },
      {
       "t": "2026-10-08T18:00",
-      "temp": 15.1,
-      "rh": 44,
-      "wind": 3.3,
-      "dir": 283,
+      "temp": 15.4,
+      "rh": 42,
+      "wind": 4.5,
+      "dir": 284,
       "precip": 0.0,
-      "angstrom": 3.39
+      "angstrom": 3.26
      },
      {
       "t": "2026-10-08T19:00",
-      "temp": 15.3,
-      "rh": 44,
-      "wind": 2.9,
-      "dir": 263,
+      "temp": 15.1,
+      "rh": 42,
+      "wind": 4.3,
+      "dir": 265,
       "precip": 0.0,
-      "angstrom": 3.37
+      "angstrom": 3.29
      },
      {
       "t": "2026-10-08T20:00",
       "temp": 15.4,
-      "rh": 44,
-      "wind": 1.8,
-      "dir": 259,
+      "rh": 42,
+      "wind": 4.3,
+      "dir": 270,
       "precip": 0.0,
-      "angstrom": 3.36
+      "angstrom": 3.26
      },
      {
       "t": "2026-10-08T21:00",
-      "temp": 14.8,
-      "rh": 45,
-      "wind": 2.6,
-      "dir": 286,
+      "temp": 15.4,
+      "rh": 42,
+      "wind": 2.9,
+      "dir": 277,
       "precip": 0.0,
-      "angstrom": 3.47
+      "angstrom": 3.26
      },
      {
       "t": "2026-10-08T22:00",
-      "temp": 13.8,
-      "rh": 48,
-      "wind": 4.6,
-      "dir": 288,
+      "temp": 14.5,
+      "rh": 43,
+      "wind": 4.5,
+      "dir": 284,
       "precip": 0.0,
-      "angstrom": 3.72
+      "angstrom": 3.4
      },
      {
       "t": "2026-10-08T23:00",
-      "temp": 13.2,
-      "rh": 50,
-      "wind": 6.8,
+      "temp": 13.5,
+      "rh": 43,
+      "wind": 5.7,
       "dir": 288,
       "precip": 0.0,
-      "angstrom": 3.88
+      "angstrom": 3.5
      }
     ]
    },
@@ -13474,7 +13474,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-08T14:47:07+00:00"
     },
-    "updated": "2026-10-08T15:12:14+00:00"
+    "updated": "2026-10-08T15:17:12+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -13629,5 +13629,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-08T15:12:14+00:00"
+ "updated": "2026-10-08T15:17:12+00:00"
 }
