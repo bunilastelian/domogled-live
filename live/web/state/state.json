@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 220,
+ "cycles": 221,
  "zones": {
   "domogled": {
    "detections": {
@@ -5775,15 +5775,113 @@
      "daynight": "N",
      "satellite": "A",
      "first_seen": "2026-10-08T05:52:00+00:00"
+    },
+    "ESA|SLSTR MWIR1km-standard|2026-10-08|0842|44.9224|22.5110": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.92241,
+     "lon": 22.51098,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 24.48,
+     "confidence": 90,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 320.7,
+     "first_seen": "2026-10-08T11:12:01+00:00"
+    },
+    "ESA|SLSTR MWIR1km-standard|2026-10-08|0842|44.9088|22.5176": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.90878,
+     "lon": 22.51763,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 13.35,
+     "confidence": 84,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 312.4,
+     "first_seen": "2026-10-08T11:12:01+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-08|0842|44.9224|22.5110": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.92241,
+     "lon": 22.51098,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 14.05,
+     "confidence": 90,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 320.7,
+     "first_seen": "2026-10-08T11:12:01+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-08|0842|44.9088|22.5176": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.90878,
+     "lon": 22.51763,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 7.82,
+     "confidence": 84,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 312.4,
+     "first_seen": "2026-10-08T11:12:01+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-08|0842|44.9121|22.4940": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.91208,
+     "lon": 22.49396,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 4.61,
+     "confidence": 75,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 307.0,
+     "first_seen": "2026-10-08T11:12:01+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-08|0842|44.9160|22.5054": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.91599,
+     "lon": 22.50541,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 4.61,
+     "confidence": 75,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 307.0,
+     "first_seen": "2026-10-08T11:12:01+00:00"
+    },
+    "ESA|SLSTR MWIR1km-alternative|2026-10-08|0842|44.8976|22.5184": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-alternative",
+     "lat": 44.89764,
+     "lon": 22.51844,
+     "date": "2026-10-08",
+     "time": "0842",
+     "frp": 5.61,
+     "confidence": 80,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 308.8,
+     "first_seen": "2026-10-08T11:12:01+00:00"
     }
    },
    "stats": {
-    "total": 434,
+    "total": 441,
     "nasa": 304,
-    "esa": 130,
-    "last24_count": 55,
-    "last24_frp": 217.2,
-    "last24_max": 19.6,
+    "esa": 137,
+    "last24_count": 62,
+    "last24_frp": 291.7,
+    "last24_max": 24.5,
     "days": [
      {
       "date": "2026-09-30",
@@ -5867,31 +5965,43 @@
      },
      {
       "date": "2026-10-08",
-      "count": 22,
-      "frp": 53.0,
-      "max": 9.8,
+      "count": 29,
+      "frp": 127.5,
+      "max": 24.5,
       "nasa": 22,
-      "esa": 0,
+      "esa": 7,
       "frp_nasa": 53.0,
-      "frp_esa": 0.0
+      "frp_esa": 74.5
      }
     ],
     "latest": {
-     "src": "NASA",
-     "sensor": "MODIS-1km",
-     "lat": 44.91784,
-     "lon": 22.51006,
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.92241,
+     "lon": 22.51098,
      "date": "2026-10-08",
-     "time": "0249",
-     "frp": 9.79,
-     "confidence": 67,
-     "daynight": "N",
-     "satellite": "A",
-     "first_seen": "2026-10-08T05:52:00+00:00"
+     "time": "0842",
+     "frp": 24.48,
+     "confidence": 90,
+     "daynight": "D",
+     "satellite": "S3A",
+     "bt_k": 320.7,
+     "first_seen": "2026-10-08T11:12:01+00:00"
     },
-    "updated": "2026-10-08T11:07:02+00:00"
+    "updated": "2026-10-08T11:12:02+00:00"
    },
    "alerts": [
+    {
+     "at": "2026-10-08T11:12:02+00:00",
+     "count": 7,
+     "max_frp": 24.48,
+     "lat": 44.92241,
+     "lon": 22.51098,
+     "when": "2026-10-08 0842Z",
+     "source": "ESA SLSTR MWIR1km-standard",
+     "telegram": false,
+     "label": "7 detecții noi · max 24.5 MW · 2026-10-08 0842Z"
+    },
     {
      "at": "2026-10-08T05:52:01+00:00",
      "count": 2,
@@ -6026,26 +6136,26 @@
     {
      "id": "domogled-44.898-22.479",
      "zone": "domogled",
-     "lat": 44.89816,
-     "lon": 22.47861,
-     "points": 428,
+     "lat": 44.89839,
+     "lon": 22.47913,
+     "points": 435,
      "days": 9,
      "first": "2026-09-30T00:54+00:00",
-     "last": "2026-10-08T02:49+00:00",
+     "last": "2026-10-08T08:42+00:00",
      "frp_max": 97.36,
-     "frp_sum": 1870.3,
-     "frp_last24": 199.4,
+     "frp_sum": 1944.9,
+     "frp_last24": 273.9,
      "frp_prev24": 374.3,
-     "det_last24": 50,
+     "det_last24": 57,
      "det_prev24": 58,
      "trend": "în scădere",
      "trend_color": "#30a46c",
-     "extent_km": 8.54,
+     "extent_km": 8.89,
      "nasa": 302,
-     "esa": 126,
+     "esa": 133,
      "in_park": true,
      "nearest_place": "Colțu Pietrii (1228 m)",
-     "nearest_km": 0.86,
+     "nearest_km": 0.83,
      "elev_span_m": null,
      "rank": 1
     },
@@ -6078,7 +6188,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T11:02:03+00:00",
+    "updated": "2026-10-08T11:12:02+00:00",
     "time": "2026-10-08T11:00",
     "temp_c": 19.2,
     "humidity_pct": 27,
@@ -6343,6 +6453,7 @@
     "S3A_SL_2_FRP____20261005T194021_20261005T194321_20261005T215703_0179_144_356______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261007T090604_20261007T090904_20261007T110756_0180_144_378______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261007T202858_20261007T203158_20261007T224300_0179_144_385______MAR_O_NR_003.SEN3",
+    "S3A_SL_2_FRP____20261008T083953_20261008T084253_20261008T104026_0179_145_007______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20260930T193134_20260930T193434_20260930T214706_0180_125_142______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T092328_20261001T092628_20261001T112458_0179_125_150______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T204623_20261001T204923_20261001T213116_0179_125_157______MAR_O_NR_003.SEN3",
@@ -6357,7 +6468,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 235,
+   "cycles": 236,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -12353,7 +12464,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 220,
+   "cycles": 221,
    "fires": [
     {
      "id": "portiledefier-44.768-22.325",
@@ -12410,7 +12521,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T11:02:11+00:00",
+    "updated": "2026-10-08T11:12:06+00:00",
     "time": "2026-10-08T11:00",
     "temp_c": 20.3,
     "humidity_pct": 26,
@@ -12774,7 +12885,7 @@
      "satellite": "A",
      "first_seen": "2026-10-08T05:52:04+00:00"
     },
-    "updated": "2026-10-08T11:07:07+00:00"
+    "updated": "2026-10-08T11:12:07+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -12929,5 +13040,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-08T11:07:07+00:00"
+ "updated": "2026-10-08T11:12:07+00:00"
 }
