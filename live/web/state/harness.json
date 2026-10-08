@@ -1,16 +1,16 @@
 {
-  "generated": "2026-10-08T09:08:14+00:00",
-  "verdict": "SCADERE",
+  "generated": "2026-10-08T12:07:47+00:00",
+  "verdict": "MIXT",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-08T06:08:13+00:00",
-    "hours_elapsed": 3.0,
+    "since": "2026-10-08T09:08:14+00:00",
+    "hours_elapsed": 2.99,
     "zones": {
       "domogled": {
-        "total": 0.0,
-        "last24_count": -6.0,
-        "last24_frp": -98.6,
-        "last24_max": -2.0,
+        "total": 7.0,
+        "last24_count": 0.0,
+        "last24_frp": 41.8,
+        "last24_max": 4.9,
         "burn_ha": 0.0,
         "burn_ha_mod": 0.0,
         "new_fires": [],
@@ -18,9 +18,9 @@
         "frp_changes": [
           {
             "id": "domogled-44.898-22.479",
-            "delta_frp": -98.7,
-            "from": 304.4,
-            "to": 205.7,
+            "delta_frp": 41.9,
+            "from": 205.7,
+            "to": 247.6,
             "trend": "în scădere"
           }
         ],
@@ -30,9 +30,9 @@
       },
       "portiledefier": {
         "total": 0.0,
-        "last24_count": -5.0,
-        "last24_frp": -36.9,
-        "last24_max": -0.2,
+        "last24_count": -8.0,
+        "last24_frp": -32.8,
+        "last24_max": 0.0,
         "burn_ha": 0.0,
         "burn_ha_mod": 0.0,
         "new_fires": [],
@@ -40,10 +40,10 @@
         "frp_changes": [
           {
             "id": "portiledefier-44.768-22.325",
-            "delta_frp": -36.8,
-            "from": 275.9,
-            "to": 239.1,
-            "trend": "staționar"
+            "delta_frp": -32.9,
+            "from": 239.1,
+            "to": 206.2,
+            "trend": "în scădere"
           }
         ],
         "new_scene": false,
@@ -57,26 +57,26 @@
       "zone": "domogled",
       "ok": true,
       "errors": [],
-      "current": "În imaginea Sentinel-2 true color se distinge un panou central de nori albi, denși, cu aspect de ceață orografică, care acoperă relieful și împiedică observarea focarelor. Nu se distinge fum clar, separat de nori, și nu pot stabili o direcție a acestuia spre puncte cardinale. Nu se distinge nicio cicatrice de ardere (zone maro-inchis/negre) pe suprafețele vizibile. Vegetația apare ca pădure densă verde (estimate 60–70% din zonele neacoperite), cu pete maronii de pășuni/versanți uscați, în special în est și sud-vest. Relieful este deluros-muntos, cu văi adânci și creste fragmentate, specific Carpaților Meridionali.",
+      "current": "În imaginea Sentinel-2 (true color) a zonei Domogled – Valea Cernei, se observă următoarele:\n\n1. FUM: Nu se distinge fum clar. Există o zonă albicioasă difuză în centru, dar pare mai degrabă nori joși sau ceață, nu fum dens. Nu pot confirma direcția.\n\n2. CICATRICE DE ARDERE: Nu se distinge o zonă arsă clară (maro-închis/negru). Există pete maronii pe versanți, dar par a fi vegetație uscată sau stâncărie, nu arsuri recente.\n\n3. VEGETATIE: Padure densa verde pe majoritatea imaginii (aprox. 70-80%), cu zone maronii deschise (pajisti uscate/stancarie) pe creste si versanti insoriti.\n\n4. RELIEF: Relief muntos fragmentat, cu vai adanci si creste orientate NV-SE. Se distinge o vale principala in stanga (Valea Cernei) si un platou mai înalt in centru-dreapta.\n\nConcluzie: Imaginea nu arata fum sau arsuri evidente; posibil acoperita partial de nori/ceață in centru.",
       "current_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
       "current_date": "2026-10-04T09:31:41.024000Z",
-      "comparison": "Fara schimbare relevanta. Diferentele dintre cele doua imagini sunt cauzate exclusiv de prezenta norilor si a umbrelor acestora, nu de evolutia incendiului. In IMAGINEA 2, un nor dens acopera zona centrala, mascand cicatricea de ardere si fumul vizibile in IMAGINEA 1. Nu se poate confirma extinderea arderii sau o uscare mai pronuntata a vegetatiei; variatiile de culoare sunt efecte de iluminare si acoperire noroasa.",
+      "comparison": "Fumul s-a extins și s-a mutat spre est și nord-est, acoperind o suprafață mult mai mare în Imaginea 2. Cicatricea de ardere pare să se fi extins din zona centrală spre versanții estici, unde vegetația prezintă deja un aspect mai uscat și brun. Comparativ cu Imaginea 1, vegetația din zonele afectate arată mai uscată, iar fumul dens maschează o parte din relief, indicând o activitate intensă a incendiului.",
       "compared": [
         "s2_S2C_MSIL2A_20261002T093031_N0513_R136_T34TFQ_20261002T130613.png",
         "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
       ],
-      "burn_scar": "Aproximativ 10% din imagine arată ca ars, localizat în principal în stânga sus și centru."
+      "burn_scar": "Aproximativ 5% din imagine arată ca ars. Zona afectată este localizată în partea central-vestică și nord-vestică a hărții."
     },
     "portiledefier": {
       "zone": "portiledefier",
       "ok": true,
       "errors": [],
-      "current": "În imaginea Sentinel-2 se distinge clar un panou dens de nori albi în partea central-vestică a zonei montane, care acoperă o parte din relief. Nu se observă fum clar asociat focarelor specificate, deoarece acesta este mascat de nori. Nu se distinge nicio cicatrice de ardere (zonă maro-negru) la suprafață. Vegetația este predominant verde (pădure densă, circa 70-80% din suprafața vizibilă), cu zone stâncoase și uscate maro-roșiatic pe versanți. Relieful este deluros-muntos, cu văi adânci și un platou fragmentat, iar în partea de sud se vede un curs de apă (Danube) de culoare verde-albăstrui. Estimarea este limitată de prezența norilor.",
+      "current": "În imaginea Sentinel-2 se distinge clar un panou de fum dens, alb-cenușiu, în zona central-vestică, orientat spre sud-est, conform vântului din SE. Nu se distinge o cicatrice de ardere mare, distinctă (maro-negru), ci doar zone maro-roșiatic pe versanți, probabil pădure rară sau uscată. Vegetația este majoritar verde închis (pădure densă) pe creste și văi, cu pete maro pe versanții sudici. Relieful este muntos, cu creste, văi adânci și lacul de acumulare (Porțile de Fier) vizibil în sud. Nu pot confirma cicatrici de ardere.",
       "current_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
       "current_date": "2026-10-04T09:31:41.024000Z",
-      "burn_scar": "Aproximativ 2-3% din imagine prezintă zone arse, concentrate în centrul și estul regiunii."
+      "burn_scar": "Aproximativ 1-2% din imagine pare ars. Zona afectată este localizată central și spre dreapta-jos."
     }
   },
-  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali\n**Data: 2026-10-08 09:08 UTC**\n\n## 1. EVOLUȚIE: SCĂDERE\n\n**Domogled – Valea Cernei:** FRP24h a scăzut de la 322.2 MW (acum 3h) la 223.6 MW (-98.6). Detecțiile 24h: 62 → 56. Focarul principal (rank 1) e în trend clar descrescător: 304.4 → 205.7 MW. Focarul secundar (rank 2) e în creștere (5.2 → 17.8 MW), dar rămâne mic. Focarul principal are 9 zile de activitate — incendiul e de durată, dar în retragere.\n\n**Porțile de Fier:** FRP24h 277.5 → 240.6 MW (-36.9). Detecții 64 → 59. Focarul principal e staționar (275.9 → 239.1 MW). Focar secundar mic, în creștere (1.5 MW).\n\n**Concluzie:** ambele zone sunt în SCĂDERE pe agregat, deși focarele secundare noi apar. Trendul zilnic confirmă: -88% (Domogled) și -87% (Porțile de Fier) față de vârfurile din 10-05/10-06.\n\n## 2. IMAGINILE VS. SENZORI\n\nImaginile Sentinel-2 (2026-10-04) sunt **puternic compromise de nori** — panouri dense maschează focarele. Nu se vede fum clar, nu se poate confirma extinderea. Cifrele arată activitate semnificativă (56-59 detecții/24h), dar vizual nu se validează. **Aceasta este o limitare informațională, nu o contrazicere** — norii ascund zona. Cicatricea dNBR arată doar 3 ha sever (Domogled) și 5.6 ha sever (Porțile de Fier), mult sub amploarea detecțiilor — posibil foc de suprafață/tufișuri, nu coroană.\n\n## 3. RISC 24-48h\n\n- **Vânt:** E/SE, 10-14 km/h, rafale 33-36 km/h → propagare spre V/NV.\n- **Umiditate:** RH 30-31%, sol 0.094-0.125 — **foarte uscat**.\n- **Precipitații:** 0.1 mm (Domogled), 0 mm (Porțile de Fier) — **neglijabil**.\n- **Pericol Angström:** 2.4 (ridicat); min 48h 4.41 (Domogled) — risc crescut.\n\n**Zone expuse:** Colțu Pietrii (0.86 km de focar, în parc), Pecinișca (10.35 km), Orșova (7.61 km), Băile Herculane (2.51 km de focar secundar).\n\n## 4. PREDICTIE 24h\n\n**Probabil SCĂDERE** (~60%), STAGNARE (~30%), CREȘTERE (~10%). Bazat pe trend istoric, umiditate sol și lipsa precipitațiilor semnificative. **Estimare pe trend, NU model fizic de propagare.**\n\n## 5. SEMNALE\n\n- Focar secundar Domogled (rank 2) în creștere, dar cu doar 6 puncte — posibil zgomot.\n- Imagini satelitare cu acoperire noroasă 0.01 — **nu se poate valida vizual evoluția**.\n- dNBR mult sub detecții — posibil foc de suprafață, sau detecții de zgomot.\n- Nu lipsesc date meteo sau senzori.",
-  "state_updated": "2026-10-08T09:07:08+00:00"
+  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali\n**Data: 2026-10-08 12:07 UTC**\n\n## EVOLUȚIE: SCĂDERE (cu rezerve)\n\n**Domogled – Valea Cernei:** FRP24h a crescut ușor (+41.8 MW față de rularea de la 09:08), dar trendul pe 3 zile e clar descendent: 451→330→127 MW (-72%). Focarul principal (rank 1) e în scădere (400→247 MW), dar rămâne activ (51 detecții/24h). Apare un al doilea focar (rank 2), în creștere (5.2→17.8 MW), în afara parcului.\n\n**Porțile de Fier:** SCĂDERE clară. FRP24h -32.8 MW, detecții -8, focarul principal 326→206 MW. Al doilea focar e minor (1.5 MW).\n\n**Verdict:** Ambele zone sunt în scădere față de vârful din 05-06 octombrie, dar rămân active. Nu există focare noi semnificative.\n\n## CE ARATĂ IMAGINILE\n\nImaginile din 04 octombrie contrazic parțial senzorii: la Domogled, **nu se vede fum sau cicatrice clară**, deși dNBR indică 240 ha moderate+. La Porțile de Fier, fumul e vizibil și orientat SE→NV, dar cicatricea nu e distinctă. **Discordanță importantă:** senzorii raportează sute de detecții, dar imaginile (parțial acoperite de nori/ceață) nu confirmă arsuri extinse. Fumul comparat între 02 și 04 octombrie arăta extindere spre E/NE – acum pare diminuat, dar nu avem scenă recentă pentru validare.\n\n## RISC 24-48h\n\n**Meteo critic:** RH 26%, VPD 1.66–1.78 kPa, sol uscat (0.094–0.125), zero precipitații 48h, Angström ridicat (2.07/1.95, min 4.41/3.7). Vânt SE 9–11 km/h, rafale 28–32 km/h → **pană spre NV**.\n\n**Zone expuse:** La Domogled, Colțu Pietrii (0.83 km de focarul 1) și versanții NV. La Porțile de Fier, Orșova (7.6 km) și Băile Herculane (2.5 km de focarul 2). Vântul NV împinge fumul spre zone locuite/împădurite.\n\n## PREDICȚIE 24h\n\n**FRP: stagnare spre scădere ușoară** (probabilitate ~60-65%), cu risc de revenire dacă rafalele activează focarele latent. **Estimare bazată pe trend, NU model fizic de propagare.**\n\n## SEMNALE\n\n- **Anomalie:** Domogled FRP24h +41.8 MW fără detecții noi (+0) – posibil focar latent reactivat.\n- **Focar rank 2 Domogled** în creștere, în afara parcului – submonitorizat.\n- **Imagini:** scene din 04 octombrie, nu acoperă perioada curentă; nori/ceață maschează zonele centrale.\n- **Lipsesc:** date meteo in-situ, confirmare terestră, scenă satelitară recentă.",
+  "state_updated": "2026-10-08T12:07:08+00:00"
 }
