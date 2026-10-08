@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 288,
+ "cycles": 289,
  "zones": {
   "domogled": {
    "detections": {
@@ -6120,14 +6120,40 @@
      "daynight": "D",
      "satellite": "N",
      "first_seen": "2026-10-08T14:57:01+00:00"
+    },
+    "NASA|MODIS-1km|2026-10-08|1355|44.8758|22.4565": {
+     "src": "NASA",
+     "sensor": "MODIS-1km",
+     "lat": 44.8758,
+     "lon": 22.45645,
+     "date": "2026-10-08",
+     "time": "1355",
+     "frp": 8.27,
+     "confidence": 63,
+     "daynight": "D",
+     "satellite": "A",
+     "first_seen": "2026-10-08T16:52:00+00:00"
+    },
+    "NASA|MODIS-1km|2026-10-08|1355|44.9108|22.5077": {
+     "src": "NASA",
+     "sensor": "MODIS-1km",
+     "lat": 44.91076,
+     "lon": 22.50774,
+     "date": "2026-10-08",
+     "time": "1355",
+     "frp": 6.75,
+     "confidence": 54,
+     "daynight": "D",
+     "satellite": "A",
+     "first_seen": "2026-10-08T16:52:00+00:00"
     }
    },
    "stats": {
-    "total": 460,
-    "nasa": 323,
+    "total": 462,
+    "nasa": 325,
     "esa": 137,
-    "last24_count": 71,
-    "last24_frp": 296.8,
+    "last24_count": 73,
+    "last24_frp": 311.9,
     "last24_max": 24.5,
     "days": [
      {
@@ -6212,31 +6238,42 @@
      },
      {
       "date": "2026-10-08",
-      "count": 48,
-      "frp": 187.4,
+      "count": 50,
+      "frp": 202.5,
       "max": 24.5,
-      "nasa": 41,
+      "nasa": 43,
       "esa": 7,
-      "frp_nasa": 112.9,
+      "frp_nasa": 127.9,
       "frp_esa": 74.5
      }
     ],
     "latest": {
      "src": "NASA",
-     "sensor": "VIIRS-NOAA20-375m",
-     "lat": 44.87645,
-     "lon": 22.46587,
+     "sensor": "MODIS-1km",
+     "lat": 44.8758,
+     "lon": 22.45645,
      "date": "2026-10-08",
-     "time": "1149",
-     "frp": 6.94,
-     "confidence": 60,
+     "time": "1355",
+     "frp": 8.27,
+     "confidence": 63,
      "daynight": "D",
-     "satellite": "N20",
-     "first_seen": "2026-10-08T14:47:00+00:00"
+     "satellite": "A",
+     "first_seen": "2026-10-08T16:52:00+00:00"
     },
-    "updated": "2026-10-08T16:47:04+00:00"
+    "updated": "2026-10-08T16:52:02+00:00"
    },
    "alerts": [
+    {
+     "at": "2026-10-08T16:52:01+00:00",
+     "count": 2,
+     "max_frp": 8.27,
+     "lat": 44.8758,
+     "lon": 22.45645,
+     "when": "2026-10-08 1355Z",
+     "source": "NASA MODIS-1km",
+     "telegram": false,
+     "label": "2 detecții noi · max 8.3 MW · 2026-10-08 1355Z"
+    },
     {
      "at": "2026-10-08T14:57:03+00:00",
      "count": 14,
@@ -6404,22 +6441,22 @@
     {
      "id": "domogled-44.898-22.479",
      "zone": "domogled",
-     "lat": 44.89805,
-     "lon": 22.47884,
-     "points": 454,
+     "lat": 44.89802,
+     "lon": 22.47885,
+     "points": 456,
      "days": 9,
      "first": "2026-09-30T00:54+00:00",
-     "last": "2026-10-08T11:49+00:00",
+     "last": "2026-10-08T13:55+00:00",
      "frp_max": 97.36,
-     "frp_sum": 2004.8,
-     "frp_last24": 279.0,
+     "frp_sum": 2019.8,
+     "frp_last24": 294.0,
      "frp_prev24": 304.7,
-     "det_last24": 66,
+     "det_last24": 68,
      "det_prev24": 59,
      "trend": "staționar",
      "trend_color": "#f5d90a",
      "extent_km": 8.89,
-     "nasa": 321,
+     "nasa": 323,
      "esa": 133,
      "in_park": true,
      "nearest_place": "Colțu Pietrii (1228 m)",
@@ -6456,7 +6493,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T16:47:04+00:00",
+    "updated": "2026-10-08T16:52:02+00:00",
     "time": "2026-10-08T16:45",
     "temp_c": 13.2,
     "humidity_pct": 36,
@@ -6736,7 +6773,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 303,
+   "cycles": 304,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -13053,7 +13090,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 288,
+   "cycles": 289,
    "fires": [
     {
      "id": "portiledefier-44.768-22.324",
@@ -13110,7 +13147,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T16:47:10+00:00",
+    "updated": "2026-10-08T16:52:06+00:00",
     "time": "2026-10-08T16:45",
     "temp_c": 15.6,
     "humidity_pct": 42,
@@ -13474,7 +13511,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-08T14:47:07+00:00"
     },
-    "updated": "2026-10-08T16:47:11+00:00"
+    "updated": "2026-10-08T16:52:06+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -13629,5 +13666,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-08T16:47:11+00:00"
+ "updated": "2026-10-08T16:52:06+00:00"
 }
