@@ -1,26 +1,39 @@
 {
-  "generated": "2026-10-08T03:08:13+00:00",
-  "verdict": "SCADERE",
+  "generated": "2026-10-08T06:08:13+00:00",
+  "verdict": "ESCALADARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-08T00:07:45+00:00",
+    "since": "2026-10-08T03:08:13+00:00",
     "hours_elapsed": 3.0,
     "zones": {
       "domogled": {
-        "total": 0.0,
-        "last24_count": -32.0,
-        "last24_frp": -61.4,
+        "total": 22.0,
+        "last24_count": 22.0,
+        "last24_frp": 53.0,
         "last24_max": 0.0,
         "burn_ha": 0.0,
         "burn_ha_mod": 0.0,
-        "new_fires": [],
-        "gone_fires": [],
+        "new_fires": [
+          {
+            "id": "domogled-44.801-22.332",
+            "lat": 44.8011,
+            "lon": 22.3324,
+            "frp_24h": 17.8,
+            "points": 6
+          }
+        ],
+        "gone_fires": [
+          {
+            "id": "domogled-44.801-22.329",
+            "last_frp": 15.3
+          }
+        ],
         "frp_changes": [
           {
             "id": "domogled-44.898-22.479",
-            "delta_frp": -61.4,
-            "from": 315.3,
-            "to": 253.9,
+            "delta_frp": 50.5,
+            "from": 253.9,
+            "to": 304.4,
             "trend": "în scădere"
           }
         ],
@@ -29,23 +42,35 @@
         "cur_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
       },
       "portiledefier": {
-        "total": 0.0,
-        "last24_count": -53.0,
-        "last24_frp": -72.7,
+        "total": 20.0,
+        "last24_count": 20.0,
+        "last24_frp": 41.8,
         "last24_max": 0.0,
         "burn_ha": 0.0,
         "burn_ha_mod": 0.0,
-        "new_fires": [],
-        "gone_fires": [],
-        "frp_changes": [
+        "new_fires": [
           {
-            "id": "portiledefier-44.767-22.325",
-            "delta_frp": -72.7,
-            "from": 308.4,
-            "to": 235.7,
-            "trend": "în scădere"
+            "id": "portiledefier-44.768-22.325",
+            "lat": 44.768,
+            "lon": 22.325,
+            "frp_24h": 275.9,
+            "points": 435
+          },
+          {
+            "id": "portiledefier-44.869-22.443",
+            "lat": 44.8688,
+            "lon": 22.4431,
+            "frp_24h": 1.5,
+            "points": 3
           }
         ],
+        "gone_fires": [
+          {
+            "id": "portiledefier-44.767-22.325",
+            "last_frp": 235.7
+          }
+        ],
+        "frp_changes": [],
         "new_scene": false,
         "prev_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
         "cur_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
@@ -57,26 +82,26 @@
       "zone": "domogled",
       "ok": true,
       "errors": [],
-      "current": "În imaginea Sentinel-2 (true color) se distinge un **panou central de nori albi, semi-transparent**, cu aspect de **ceață densă**, care acoperă parțial relieful pe direcția NV–SE. **Fumul nu se distinge clar** ca panou separat de nori. **Cicatrice de ardere** (maro-închis/negru) **nu se distinge** evident la această scară. **Vegetația**: predomină **pădure densă verde-închis** (cca 70–80% din suprafață), cu **zone maronii-roscate** pe creste și versanți (probabil uscăciune, stâncărie sau sol expus). **Relief**: **munte cu văi adânci și creste**, fragmentat, fără platou extins.",
+      "current": "Imaginea este parțial acoperită de nori albi, densi, în centru și spre est. Sub nori, se distinge relief montan accidentat, cu văi adânci și creste. Pădurea verde densă acoperă aproximativ 60-70% din suprafața vizibilă, în special în vest și nord-vest. Spre est și sud-est, vegetația este maro-portocalie, indicând zone uscate sau posibil arse, dar nu se distinge clar o cicatrice de ardere recentă (negru/cenușiu). Nu se observă fum distinct, probabil mascat de nori. Vântul din E ar putea dispersa fumul spre vest, dar nu pot confirma. Nu se distinge clar direcția fumului.",
       "current_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
       "current_date": "2026-10-04T09:31:41.024000Z",
-      "comparison": "Fumul s-a extins și s-a mutat spre nord-est, acoperind o suprafață mult mai mare. Cicatricea de ardere (zonele întunecate) s-a extins vizibil spre est și nord-est. Vegetația din zonele neafectate apare similară, dar suprafețele arse sunt mai întinse în a doua imagine.",
+      "comparison": "Fumul s-a extins semnificativ spre est și nord-est, acoperind o zonă mult mai mare. Cicatricea de ardere pare să se fi extins în aceeași direcție estică, cu noi zone afectate vizibile sub pana de fum. Vegetația din zonele neafectate de fum apare mai uscată, cu nuanțe maronii mai pronunțate, sugerând o uscare accentuată între cele două date.",
       "compared": [
         "s2_S2C_MSIL2A_20261002T093031_N0513_R136_T34TFQ_20261002T130613.png",
         "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
       ],
-      "burn_scar": "Aproximativ 5% din imagine arată ca ars. Zona afectată este localizată preponderent în stânga sus și în centrul hărții."
+      "burn_scar": "Aproximativ 5% din imagine arată ca ars. Zona afectată este localizată dispersat, în principal în jumătatea stângă și în centrul imaginii."
     },
     "portiledefier": {
       "zone": "portiledefier",
       "ok": true,
       "errors": [],
-      "current": "Imaginea nu este acoperită de nori, dar prezintă umbre orografice pronunțate. Iată ce se distinge concret:\n\n1. **FUM:** Nu se distinge clar un panou de fum activ. Zonele albicioase din stânga și centru-stânga sunt umbre de relief sau nori joși, nu fum dens. Vântul din V ar dispersa fumul spre E, dar nu e vizibil.\n2. **CICATRICE DE ARDERE:** Nu se distinge o zonă arsă clară (negru/maro-inchis). Există suprafețe maronii pe versanți, dar par a fi pădure de foioase sau sol expus, nu arsură recentă.\n3. **VEGETATIE:** Pădure densă pe creste și versanți (verde închis, ~60-70% din imagine). Zone maronii-roscate pe văi și versanți sudici (pajiști uscate, stâncărie sau pădure rară). Nu e vegetație uniform verde.\n4. **RELIEF:** Relief montan fragmentat, cu creste înalte, văi adânci și versanți abrupti. Se vede lacul de acumulare (Porțile de Fier) în partea de jos, cu apă verde-albăstruie.",
+      "current": "În imaginea Sentinel-2 se distinge un peisaj montan cu văi adânci și creste. \n\n1. FUM: Nu se distinge fum vizibil. Există o masă de nori albi pe versantul stâng (vest), dar nu pare a fi fum.\n2. CICATRICI DE ARDERE: Nu se distinge o zonă arsă clară (maro-închis/negru). Se observă zone maro-deschis (posibil pădure rară, uscată sau stâncoasă) pe versanți, dar nu cicatrici de incendiu.\n3. VEGETATIE: Pădure densă verde (aproximativ 60-70% din imagine), cu zone maro (pajiști uscate/stâncărie) pe creste și în văi.\n4. RELIEF: Relief montan accidentat, cu văi adânci și creste, vizibile prin umbre.",
       "current_scene": "portiledefier_s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
       "current_date": "2026-10-04T09:31:41.024000Z",
-      "burn_scar": "Aproximativ 5% din imagine pare arsă. Zona afectată este localizată central și spre dreapta-jos, cu pete izolate de severitate variată."
+      "burn_scar": "Zonele arse (roșu/portocaliu) acoperă sub 5% din imagine și sunt localizate central, în partea stângă și inferioară a acesteia."
     }
   },
-  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali\n**Data: 2026-10-08 03:08 UTC**\n\n## EVOLUȚIE: SCĂDERE (ambele zone)\n\n**Domogled – Valea Cernei:** FRP24h a scăzut de la 330.6 MW (00:07) la 269.2 MW (-61.4 MW față de acum 3h). Detecțiile 24h: 72 → 40 (-32). Focarul principal (rank 1) e în trend descendent: 408.3 → 253.9 MW. A apărut un focar nou (rank 2, 4 puncte, 15.3 MW/24h), dar nesemnificativ față de scăderea celui principal.\n\n**Porțile de Fier:** FRP24h 308.4 → 235.7 MW (-72.7). Detecții 24h: 97 → 44 (-53). Focar unic, trend descendent (332.3 → 235.7 MW).\n\n**Concluzie:** SCĂDERE clară în ambele zone, susținută de delta negativ pe FRP și detecții.\n\n## CE ARATĂ IMAGINILE\nAnaliza vizuală (Sentinel-2, 04 oct) arată fum extins NV–SE și cicatrice ~5% din imagine la Domogled — **consistentă** cu FRP-ul ridicat de atunci (154 MW pe 04 oct). La Porțile de Fier, deși senzorii raportau 264 MW pe 04 oct, **imaginea nu confirmă fum sau cicatrice clară** — posibil fum dispersat, nori joși sau arsuri de mică intensitate (dNBR mediu 0.0428, sub fundal 0.061). Această **discrepanță senzor–vizual** e importantă: FRP ridicat fără semnătură vizuală clară poate indica arderi de suprafață sau sol, nu incendiu de coronament.\n\n## RISC 24–48h\n- **Vânt:** Domogled — E 6.4 km/h (rafale 28), fum spre V. Porțile de Fier — V 4.7 km/h, fum spre E.\n- **Umiditate:** RH 47–52%, sol uscat (0.068 / 0.111), VPD scăzut (0.54–0.68).\n- **Precipitații: 0 mm în 48h** — uscăciune persistentă.\n- **Expunere:** Domogled — Colțu Pietrii (0.87 km de focarul rank 1, ÎN PARC). Porțile de Fier — Orșova (7.58 km).\n\n## PREDICȚIE 24h\n**FRP va scădea sau stagna.** Probabilitate scădere: ~65%, stagnare ~25%, creștere ~10%. Estimare bazată exclusiv pe trendul descendent din ultimele rulări, **NU pe model fizic de propagare**.\n\n## SEMNALE\n- Focar nou Domogled (rank 2, 44.801/22.329) în creștere, dar sub 7 MW — de urmărit.\n- Discrepanță senzor/vizual la Porțile de Fier (FRP mare, fără fum vizibil).\n- Date lipsă: precipitații prognozate 0 mm, dar fără confirmare radar; AOI fără suprafață în km².",
-  "state_updated": "2026-10-08T03:07:08+00:00"
+  "report": "# Raport analiză incendii – Carpații Meridionali\n**2026-10-08 06:08 UTC**\n\n## EVOLUȚIE: SCĂDERE (cu rezerve)\n\nAmbele zone arată **scădere față de vârful de acum 3 zile**, dar cu o **revenire pe termen scurt** în ultimele 3h.\n\n- **Domogled:** vârf 637 MW (10-05) → 53 MW (10-08). Trend 3 zile -88%. Însă FRP24h a urcat de la 269 la 322 MW (+53 MW față de rularea de la 03:08). Focarul principal (rank1) e în scădere (408→304 MW), dar a apărut un **focar nou** la 44.801/22.332 (17.8 MW, 6 puncte).\n- **Porțile de Fie:** vârf 332 MW (10-06) → 41.8 MW (10-08). Trend -87%. Focarul principal e declarat „staționar\" (332→276 MW), dar au apărut **2 focare noi** și unul a dispărut.\n\n**Verdict:** tendință generală de scădere, cu reactivări locale. Nu e escaladare, dar nici stingere.\n\n## CE ARATĂ IMAGINILE\n\nImaginile (2026-10-04) arată **nori densi** care acoperă centrul/estul – deci nu putem confirma vizual noile focare din 10-06/08. Fumul s-a extins spre E/NE între 10-02 și 10-04. dNBR arată doar 3 ha sever la Domogled și 5.6 ha la Porțile de Fie – **semnale slabe pentru incendii cu FRP de sute de MW**. Posibil ca o parte din FRP să fie de la mai multe focare mici sau de la combustibil cu ardere mocnită, nu un front unic. Cifrele senzorilor nu sunt contrazise direct, dar nici confirmate vizual.\n\n## RISC 24-48h\n\n- Vânt slab (3–6 km/h), rafale 18–26 km/h, din E (Domogled) și SV (Porțile de Fie).\n- **Pana spre V** (Domogled) și **NE** (Porțile de Fie).\n- RH 41–46%, VPD ~0.8 kPa, **0 mm precipitații** prevăzute.\n- Umezeala sol foarte scăzută (0.068 Domogled).\n- Expuse: **Colțu Pietrii** (0.86 km de focar), **Pecinișca** (10 km), **Băile Herculane** (2.5 km de focarul secundar Porțile de Fie).\n\n## PREDICȚIE 24h\n\n**Stagnare cu variații locale**, ușoară scădere a FRP total. Probabilitate ~55% scădere, 30% stagnare, 15% creștere. **Estimare pe trend, nu model fizic.**\n\n## SEMNALE\n\n- Focar nou apărut la ambele zone în ultimele 3h – nu e liniște completă.\n- Focar „disparut\" la Porțile de Fie, înlocuit de altul la coordonate aproape identice – posibil re-detectare, nu stingere.\n- Imaginile recente **lipsesc** (ultima e 10-04, la 4 zile).\n- dNBR sever mult sub FRP raportat – **neconcordanță** de investigat.",
+  "state_updated": "2026-10-08T06:07:08+00:00"
 }
