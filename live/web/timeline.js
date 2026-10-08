@@ -86,6 +86,7 @@
      detectii noaptea. Fiecare trecere are o harta termica generata din
      produsul SL_2_FRP - arata FRONTUL ACTIV, nu cicatricea. */
   let s3Index = null;
+  let s2History = null;
 
   async function loadS3() {
     if (s3Index) return s3Index;
@@ -96,16 +97,30 @@
     return s3Index;
   }
 
-  function s3ForZone(list) {
-    if (!s3Index) return [];
-    return s3Index[window.__activeZone] || [];
+  /* Istoricul extins de scene Sentinel-2 (din aprilie pana azi).
+     Aplicatia colecteaza doar de la 30 septembrie, dar arhiva CDSE are
+     scene de luni de zile. Le aratam pe cele care exista in intervalul
+     selectat - daca nu e nicio scena intr-o zi, nu afisam nimic (nu
+     inventam date). */
+  async function loadS2History() {
+    if (s2History) return s2History;
+    try {
+      const r = await fetch('state/s2_history.json');
+      s2History = r.ok ? await r.json() : {};
+    } catch (e) { s2History = {}; }
+    return s2History;
+  }
+
+  function s2ForZone() {
+    if (!s2History) return [];
+    return s2History[window.__activeZone] || [];
   }
 
   /* ---------- construire UI ---------- */
 
   async function build(container, state, onFilter) {
-    // incarcam indexul S3 (o singura data) si expunem zonele S2 pentru modul foto
-    await loadS3();
+    // incarcam indexul S3 + istoricul S2 (o singura data)
+    await Promise.all([loadS3(), loadS2History()]);
     window.__s2Scenes = window.__s2Scenes || {};
     const zid0 = window.__activeZone;
     if (state && state.imagery && zid0) {
@@ -118,15 +133,31 @@
       .map(d => ({ ...d, _ms: stamp(d) }))
       .sort((a, b) => a._ms - b._ms);
 
+    /* Construim axa temporala din DETECTII + SCENELE DIN ARHIVA.
+       Detectiile incep pe 30 septembrie (cand a pornit colectarea locala),
+       dar avem scene Sentinel-2 catalogate din aprilie. Fara asta, utilizatorul
+       nu poate selecta mai departe de 30 septembrie si nu vede contextul. */
+    const daySet = new Set(detections.map(d => dayKey(d._ms)));
+    for (const s of s2ForZone()) {
+      if (s.date) daySet.add(s.date);
+    }
+    for (const p of ((s3Index && s3Index[window.__activeZone]) || [])) {
+      if (p.date) daySet.add(p.date);
+    }
+
     if (!detections.length) { container.innerHTML = '<div style="padding:10px;color:#8b98a5">fără detecții</div>'; return; }
 
     const byDay = {};
     for (const d of detections) (byDay[dayKey(d._ms)] = byDay[dayKey(d._ms)] || []).push(d);
-    days = Object.keys(byDay).sort();
+
+    // ZILELE AXEI = reuniune intre zilele cu detectii SI zilele cu scene in arhiva.
+    // Sortate cronologic. Zilele fara detectii (mai vechi de 30 sept) apar pe axa
+    // ca sa poti selecta perioada - barele lor au inaltime 0, dar exista.
+    days = [...daySet].sort();
 
     // suma FRP pe zi -> inaltimea barelor din timeline
     const dayFrp = {};
-    for (const k of days) dayFrp[k] = byDay[k].reduce((s, d) => s + (d.frp || 0), 0);
+    for (const k of days) dayFrp[k] = (byDay[k] || []).reduce((s, d) => s + (d.frp || 0), 0);
     const maxFrp = Math.max(...Object.values(dayFrp), 1);
 
     // implicit: ultimele 3 ore; daca nu sunt detectii atat de recente,
@@ -184,9 +215,15 @@
   function drawDays(byDay, dayFrp, maxFrp) {
     const el = document.getElementById('tl-days');
     el.innerHTML = days.map((k, i) => {
-      const h = Math.max(6, (dayFrp[k] / maxFrp) * 100);
-      const n = byDay[k].length;
-      return `<div class="tl-day" data-i="${i}" title="${k}: ${n} detecții, ${dayFrp[k].toFixed(0)} MW">
+      // atentie: zilele care vin doar din arhiva de scene (fara detectii)
+      // nu exista in byDay -> byDay[k] e undefined si .length crapa
+      const n = (byDay[k] || []).length;
+      const s = dayFrp[k] || 0;
+      const h = Math.max(s > 0 ? 6 : 2, (s / maxFrp) * 100);
+      const cls = n ? 'tl-day' : 'tl-day tl-day-empty';
+      const t = n ? `${k}: ${n} detecții, ${s.toFixed(0)} MW`
+                  : `${k}: fără detecții (doar scenă satelit)`;
+      return `<div class="${cls}" data-i="${i}" title="${t}">
                 <div class="tl-daybar" style="height:${h}%"></div>
                 <div class="tl-daylbl">${fmtDay(k)}</div>
               </div>`;
@@ -330,25 +367,35 @@
     }).sort((a, b) => (a.datetime || '').localeCompare(b.datetime || ''));
 
     if (imgMode === 's2') {
-      // modul S2: imaginile true-color, pe zile distincte
-      const scenes = (window.__s2Scenes && window.__s2Scenes[z]) || [];
+      // modul S2: folosim ISTORICUL EXTINS (din aprilie), nu doar scenele
+      // colectate local (care incep pe 30 septembrie)
+      const scenes = s2ForZone().length ? s2ForZone()
+        : ((window.__s2Scenes && window.__s2Scenes[z]) || []);
       const sel = scenes.filter(e => {
-        const d = (e.datetime || '').slice(0, 10);
+        const d = (e.date || e.datetime || '').slice(0, 10);
         return d >= k0 && d <= k1;
       });
       if (!sel.length) {
-        box.innerHTML = '<div style="color:#8b98a5;font-size:11px;padding:6px 0">' +
-          'nicio scenă Sentinel-2 în interval</div>';
+        box.innerHTML = '<div class="tl-pnote">nicio scenă Sentinel-2 în ' +
+          'interval. Scenele acoperă ' +
+          (scenes.length ? scenes[0].date + ' → ' + scenes[scenes.length-1].date
+                         : 'perioada disponibilă') + '.</div>';
         return;
       }
+      const total = scenes.length;
       box.innerHTML = '<div class="tl-ptitle">Sentinel-2 (true color, 60 m) — ' +
-        sel.length + ' scene</div><div class="tl-prow">' +
-        sel.map((e, i) => {
-          const d = (e.datetime || '').slice(0, 10);
+        sel.length + ' din ' + total + ' scene</div><div class="tl-prow">' +
+        sel.map(e => {
+          const d = (e.date || e.datetime || '').slice(0, 10);
           const file = e.file || '';
-          return `<button class="tl-pass" data-img="${file}" data-label="S2 ${d}">` +
+          const cc = e.cloud ?? '?';
+          // scenă fără imagine descărcată local = doar catalog (nu o putem afișa)
+          const has = !!file;
+          return `<button class="tl-pass" data-img="${file}" ` +
+                 `data-label="S2 ${d}" ${has ? '' : 'disabled style="opacity:.45"'}>` +
                  `<span class="tl-pdot" style="background:#3b82f6"></span>` +
-                 `<b>${fmtDay(d)}</b><br><span>${e.cloud ?? '?'}% nori</span></button>`;
+                 `<b>${fmtDay(d)}</b><br>` +
+                 `<span>${cc}% nori${has ? '' : ' · doar catalog'}</span></button>`;
         }).join('') + '</div>';
       wirePassButtons();
       return;

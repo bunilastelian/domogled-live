@@ -1,0 +1,140 @@
+{
+  "domogled": {
+    "nume": "Domogled – Valea Cernei",
+    "focar": {
+      "lat": 44.89816,
+      "lon": 22.47861,
+      "raza_km": 1.2,
+      "puncte": 428
+    },
+    "referinta": "2026-05-04",
+    "serie": [
+      {
+        "date": "2026-05-04",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.464579192803943,
+        "nbr_stdev": 0.08852980496043421,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-05-05",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.5403932693986988,
+        "nbr_stdev": 0.07900136077278244,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-05-24",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6849069867366889,
+        "nbr_stdev": 0.035598911551119106,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-05-25",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6899912778829745,
+        "nbr_stdev": 0.03371824266534289,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-05-27",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6916415942788573,
+        "nbr_stdev": 0.03361042426887791,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-06-09",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6727551509967716,
+        "nbr_stdev": 0.07416071036101851,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-06-14",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6951964800042381,
+        "nbr_stdev": 0.06571560687791952,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-07-19",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6742404354314353,
+        "nbr_stdev": 0.044622381771753074,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-08-25",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6036674001597738,
+        "nbr_stdev": 0.08315327551427798,
+        "px_total": 0,
+        "dnbr": null
+      }
+    ],
+    "aprindere": null,
+    "dnbr_max": 0,
+    "dnbr_max_data": "2026-05-04"
+  },
+  "portiledefier": {
+    "nume": "Porțile de Fier – nord de Orșova",
+    "focar": {
+      "lat": 44.76797,
+      "lon": 22.32499,
+      "raza_km": 1.2,
+      "puncte": 435
+    },
+    "referinta": "2026-05-04",
+    "serie": [
+      {
+        "date": "2026-05-04",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6437612432139775,
+        "nbr_stdev": 0.045686547115947336,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-07-21",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": 0.6400513327901716,
+        "nbr_stdev": 0.030999124743852056,
+        "px_total": 0,
+        "dnbr": null
+      },
+      {
+        "date": "2026-09-04",
+        "nbr_p50": null,
+        "nbr_p10": null,
+        "nbr_mean": "NaN",
+        "nbr_stdev": "NaN",
+        "px_total": 0,
+        "dnbr": null
+      }
+    ],
+    "aprindere": null,
+    "dnbr_max": 0,
+    "dnbr_max_data": "2026-05-04"
+  }
+}

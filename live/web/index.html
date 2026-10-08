@@ -207,6 +207,13 @@
   font-size:10px;color:#6b7785}
 .sat-age.ok{color:#4ade80}
 .sat-age.late{color:#fbbf24}
+.tl-pnote{color:#8b98a5;font-size:10.5px;padding:7px 0;line-height:1.5}
+.tl-pass[disabled]{cursor:default}
+.tl-pass[disabled]:hover{background:#1c2430;border-color:var(--line)}
+/* zile care vin doar din arhiva de scene (fara detectii): bara subtire,
+   eticheta stinsa - se vede ca exista, dar nu e confundata cu activitate */
+.tl-day-empty .tl-daybar{background:#2b3846 !important;opacity:.5}
+.tl-day-empty .tl-daylbl{color:#4b5563}
 </style>
 </head>
 <body>
@@ -343,9 +350,9 @@
   </aside>
 </div>
 
-<script src="app.js?v=6"></script>
-<script src="timeline.js?v=3"></script>
-<script src="sat_timer.js?v=1"></script>
+<script src="app.js?v=7"></script>
+<script src="timeline.js?v=4"></script>
+<script src="sat_timer.js?v=2"></script>
 <script>
 // Anti-cache: index.html nu are versiune in URL, deci CDN-ul GitHub Pages
 // si browserul il tin in cache pana la 10 min. Dupa un deploy, utilizatorul
@@ -353,7 +360,7 @@
 // confuzia pe care am avut-o. Verificam daca versiunea din HTML corespunde
 // cu cea servita si reincarcam fortat o singura data.
 (function () {
-  const V = 'v2';                       // creste la fiecare schimbare de layout
+  const V = 'v4';                       // creste la fiecare schimbare de layout
   if (sessionStorage.getItem('dv') === V) return;
   sessionStorage.setItem('dv', V);
   if (!document.querySelector('[data-imgs="s3"]')) {
