@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 90,
+ "cycles": 91,
  "zones": {
   "domogled": {
    "detections": {
@@ -5495,8 +5495,8 @@
     "total": 412,
     "nasa": 282,
     "esa": 130,
-    "last24_count": 72,
-    "last24_frp": 330.6,
+    "last24_count": 59,
+    "last24_frp": 305.2,
     "last24_max": 21.6,
     "days": [
      {
@@ -5594,7 +5594,7 @@
      "bt_k": 303.6,
      "first_seen": "2026-10-07T22:22:02+00:00"
     },
-    "updated": "2026-10-08T00:17:03+00:00"
+    "updated": "2026-10-08T00:22:04+00:00"
    },
    "alerts": [
     {
@@ -5717,10 +5717,10 @@
      "last": "2026-10-07T19:51+00:00",
      "frp_max": 97.36,
      "frp_sum": 1819.9,
-     "frp_last24": 315.3,
-     "frp_prev24": 445.8,
-     "det_last24": 69,
-     "det_prev24": 91,
+     "frp_last24": 289.9,
+     "frp_prev24": 471.2,
+     "det_last24": 56,
+     "det_prev24": 104,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 8.33,
@@ -5761,7 +5761,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T00:17:02+00:00",
+    "updated": "2026-10-08T00:22:03+00:00",
     "time": "2026-10-08T00:15",
     "temp_c": 8.5,
     "humidity_pct": 49,
@@ -6040,7 +6040,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 105,
+   "cycles": 106,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -11753,7 +11753,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 90,
+   "cycles": 91,
    "fires": [
     {
      "id": "portiledefier-44.767-22.325",
@@ -11766,10 +11766,10 @@
      "last": "2026-10-07T20:29+00:00",
      "frp_max": 18.66,
      "frp_sum": 1259.9,
-     "frp_last24": 308.4,
-     "frp_prev24": 332.1,
-     "det_last24": 97,
-     "det_prev24": 94,
+     "frp_last24": 284.8,
+     "frp_prev24": 355.6,
+     "det_last24": 80,
+     "det_prev24": 111,
      "trend": "staționar",
      "trend_color": "#f5d90a",
      "extent_km": 7.9,
@@ -11784,7 +11784,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-08T00:17:12+00:00",
+    "updated": "2026-10-08T00:22:08+00:00",
     "time": "2026-10-08T00:15",
     "temp_c": 11.1,
     "humidity_pct": 44,
@@ -12040,8 +12040,8 @@
     "total": 419,
     "nasa": 262,
     "esa": 157,
-    "last24_count": 97,
-    "last24_frp": 308.4,
+    "last24_count": 80,
+    "last24_frp": 284.9,
     "last24_max": 13.7,
     "days": [
      {
@@ -12139,7 +12139,7 @@
      "bt_k": 300.3,
      "first_seen": "2026-10-07T23:02:07+00:00"
     },
-    "updated": "2026-10-08T00:17:12+00:00"
+    "updated": "2026-10-08T00:22:09+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -12294,5 +12294,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-08T00:17:12+00:00"
+ "updated": "2026-10-08T00:22:09+00:00"
 }
