@@ -476,10 +476,21 @@ function renderAlerts() {
   const a = (state && state.alerts) || [];
   const box = document.getElementById('alerts');
   if (!a.length) return;
-  box.innerHTML = a.slice(0, 12).map((x, i) =>
-    `<div class="alert ${i === 0 ? 'new' : ''}">${x.label}<br>
-      <time>${new Date(x.at).toLocaleString('ro-RO')} · ${x.source}${x.telegram ? ' · Telegram' : ''}</time>
-     </div>`).join('');
+  // Fiecare alerta devine clicabila si duce harta la locul focarului.
+  // Alertele au lat/lon (centrul de masa al detectiilor noi din acel lot),
+  // deci nu ducem la focarul principal, ci exact unde au aparut detectiile.
+  box.innerHTML = a.slice(0, 12).map((x, i) => {
+    const areLoc = typeof x.lat === 'number' && typeof x.lon === 'number';
+    const cls = `alert ${i === 0 ? 'new' : ''}${areLoc ? ' clickable' : ''}`;
+    const atr = areLoc
+      ? ` role="button" tabindex="0" data-lat="${x.lat}" data-lon="${x.lon}"`
+        + ` data-label="${esc(x.label)}" data-at="${x.at}"`
+      : '';
+    return `<div class="${cls}"${atr}>
+       ${areLoc ? '<span class="alert-pin">📍</span>' : ''}${esc(x.label)}<br>
+      <time>${new Date(x.at).toLocaleString('ro-RO')} · ${esc(x.source)}${x.telegram ? ' · Telegram' : ''}${areLoc ? ' · <b>vezi pe hartă</b>' : ''}</time>
+     </div>`;
+  }).join('');
 
   if (lastAlertKey && a[0].at !== lastAlertKey && document.getElementById('notif').checked &&
       'Notification' in window && Notification.permission === 'granted') {
@@ -487,6 +498,63 @@ function renderAlerts() {
   }
   lastAlertKey = a[0].at;
 }
+
+// mic helper anti-XSS pentru textul care intra in HTML
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g,
+    c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// Duce harta la alerta selectata, cu un marker temporar care arata unde e focul.
+// Markerul se sterge singur cand selectezi alta alerta (unul singur odata).
+let alertMarker = null;
+function goToAlert(lat, lon, label) {
+  if (typeof lat !== 'number' || typeof lon !== 'number') return;
+  if (!map) return;
+  map.flyTo([lat, lon], 14, { duration: 0.9 });
+
+  if (alertMarker) { map.removeLayer(alertMarker); alertMarker = null; }
+
+  alertMarker = L.circleMarker([lat, lon], {
+    radius: 11, color: '#fbbf24', weight: 3, opacity: 1,
+    fillColor: '#f59e0b', fillOpacity: 0.35, className: 'alert-marker',
+  }).addTo(map);
+
+  // pulsul care atrage atentia (se opreste dupa 6s ca sa nu oboseasca)
+  const ring = L.circleMarker([lat, lon], {
+    radius: 11, color: '#fbbf24', weight: 2, opacity: 0.9, fill: false,
+  }).addTo(map);
+  let r = 11;
+  const anim = setInterval(() => {
+    r += 2.2;
+    ring.setRadius(r);
+    ring.setStyle({ opacity: Math.max(0, 0.9 - (r - 11) / 26) });
+    if (r > 38) { clearInterval(anim); map.removeLayer(ring); }
+  }, 60);
+
+  alertMarker.bindTooltip(String(label || '').slice(0, 90), {
+    permanent: false, direction: 'top', offset: [0, -12],
+  }).openTooltip();
+
+  const st = document.getElementById('s-alert');
+  if (st) st.textContent = '📍 alertă: ' + String(label || '').slice(0, 60);
+  setTimeout(() => { if (st) st.textContent = ''; }, 6000);
+}
+
+// click (si Enter/Space pentru tastatura) pe orice alerta care are coordonate
+document.addEventListener('click', (ev) => {
+  const el = ev.target.closest('#alerts .alert.clickable');
+  if (!el) return;
+  goToAlert(parseFloat(el.dataset.lat), parseFloat(el.dataset.lon), el.dataset.label);
+});
+document.addEventListener('keydown', (ev) => {
+  if (ev.key !== 'Enter' && ev.key !== ' ') return;
+  const el = document.activeElement;
+  if (!el || !el.classList || !el.classList.contains('alert')) return;
+  if (!el.dataset.lat) return;
+  ev.preventDefault();
+  goToAlert(parseFloat(el.dataset.lat), parseFloat(el.dataset.lon), el.dataset.label);
+});
 
 function renderImagery() {
   const box = document.getElementById('thumbs');
