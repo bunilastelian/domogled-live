@@ -17,9 +17,14 @@ on:
   push:
     branches: [main]
     paths:
-      - 'live/web/state/state.json'
+      - 'live/web/state/**'
       - 'live/web/img/**'
       - 'live/web/*.geojson'
+      # Codul frontend: fara astea, un fix in app.js/index.html nu declanseaza
+      # workflow-ul si ramane vesnic doar in repo, nevazut pe site. Exact
+      # problema care a facut butonul "alerte clicabile" sa nu apara.
+      - 'live/web/*.js'
+      - 'live/web/*.html'
       - '.github/workflows/collect.yml'
   workflow_dispatch:        # pornire manuala din tab-ul Actions
 
