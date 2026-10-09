@@ -1,6 +1,6 @@
 {
  "version": 2,
- "cycles": 472,
+ "cycles": 474,
  "zones": {
   "domogled": {
    "detections": {
@@ -6260,7 +6260,7 @@
      "satellite": "A",
      "first_seen": "2026-10-08T16:52:00+00:00"
     },
-    "updated": "2026-10-09T07:57:22+00:00"
+    "updated": "2026-10-09T08:07:23+00:00"
    },
    "alerts": [
     {
@@ -6493,23 +6493,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-09T07:57:22+00:00",
-    "time": "2026-10-09T07:45",
-    "temp_c": 17.6,
+    "updated": "2026-10-09T08:07:22+00:00",
+    "time": "2026-10-09T08:00",
+    "temp_c": 17.8,
     "humidity_pct": 56,
-    "wind_kmh": 11.3,
-    "gust_kmh": 45.7,
-    "wind_from_deg": 292,
-    "wind_from_compass": "V",
-    "downwind_deg": 112,
-    "downwind_compass": "E",
+    "wind_kmh": 11.8,
+    "gust_kmh": 46.4,
+    "wind_from_deg": 293,
+    "wind_from_compass": "NV",
+    "downwind_deg": 113,
+    "downwind_compass": "SE",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 4.6,
-    "vpd_kpa": 0.89,
+    "vpd_kpa": 0.9,
     "soil_moisture": 0.095,
     "elevation_m": 1026.0,
     "danger": {
-     "index": 3.74,
+     "index": 3.72,
      "name": "Angström",
      "class": "scăzut",
      "color": "#30a46c",
@@ -6774,7 +6774,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 487,
+   "cycles": 489,
    "aoi": {
     "name": "Domogled – Valea Cernei",
     "bbox": [
@@ -13092,7 +13092,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 472,
+   "cycles": 474,
    "fires": [
     {
      "id": "portiledefier-44.768-22.324",
@@ -13149,23 +13149,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-09T07:57:31+00:00",
-    "time": "2026-10-09T07:45",
-    "temp_c": 20.2,
-    "humidity_pct": 57,
-    "wind_kmh": 11.0,
-    "gust_kmh": 28.8,
-    "wind_from_deg": 289,
+    "updated": "2026-10-09T08:07:29+00:00",
+    "time": "2026-10-09T08:00",
+    "temp_c": 20.3,
+    "humidity_pct": 56,
+    "wind_kmh": 11.4,
+    "gust_kmh": 29.9,
+    "wind_from_deg": 288,
     "wind_from_compass": "V",
-    "downwind_deg": 109,
+    "downwind_deg": 108,
     "downwind_compass": "E",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 3.7,
-    "vpd_kpa": 1.02,
+    "vpd_kpa": 1.05,
     "soil_moisture": 0.115,
     "elevation_m": 678.0,
     "danger": {
-     "index": 3.53,
+     "index": 3.47,
      "name": "Angström",
      "class": "scăzut",
      "color": "#30a46c",
@@ -13513,7 +13513,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-08T14:47:07+00:00"
     },
-    "updated": "2026-10-09T07:57:32+00:00"
+    "updated": "2026-10-09T08:07:29+00:00"
    },
    "aoi": {
     "name": "Porțile de Fier – nord de Orșova",
@@ -13668,5 +13668,5 @@
   }
  ],
  "default_zone": "domogled",
- "updated": "2026-10-09T07:57:32+00:00"
+ "updated": "2026-10-09T08:07:29+00:00"
 }
