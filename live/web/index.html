@@ -127,18 +127,34 @@
   /* heatmap-ul detecțiilor, desenat pe canvas peste tile-uri */
   .heat-layer{position:absolute;left:0;top:0;pointer-events:none}
 
+  /* linkul "vezi pe hartă" din alerte: nedespărțit, ca să nu se rupa pe două
+     rânduri pe ecrane înguste */
+  .see-map{white-space:nowrap;color:#7ee2b8}
+
   /* ---------- mobil ---------- */
   @media (max-width: 900px){
     #wrap{grid-template-columns:1fr;height:auto}
-    #map{height:62vh;height:62dvh}
+    /* Harta ocupa mai mult: pe telefon e elementul principal, iar 62vh lasa
+       doar ~520px pe un ecran de 844 - prea putin pentru 843 de detectii. */
+    #map{height:70vh;height:70dvh}
     aside{border-left:0;border-top:1px solid var(--line);overflow:visible}
-    header{position:sticky;top:0;z-index:800}
-    header h1{font-size:14px;order:-1;width:100%}
-    .badge{font-size:11px}
+    header{position:sticky;top:0;z-index:800;padding:7px 12px;gap:6px 8px}
+    header h1{font-size:13.5px;order:-1;width:100%;margin-bottom:2px;
+              white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .badge{font-size:10.5px;padding:2px 7px}
     .kpis{grid-template-columns:1fr 1fr}
+    /* Cardurile lungi (grafice, liste) se pliaza, ca sa nu derulezi 4000px. */
+    .card{padding:11px 12px}
+    .card > h2{cursor:pointer;user-select:none;display:flex;justify-content:space-between;
+               align-items:center;margin-bottom:8px}
+    .card > h2::after{content:'▾';font-size:11px;color:var(--dim);transition:.15s}
+    .card.collapsed > h2::after{transform:rotate(-90deg)}
+    .card.collapsed > *:not(h2){display:none}
+    .card.collapsed{padding-bottom:9px}
   }
   @media (max-width: 380px){
     .kpi b{font-size:18px}
+    #map{height:64vh;height:64dvh}
   }
   .zonesel{background:#0d1117;color:var(--txt);border:1px solid var(--line);border-radius:7px;
            padding:5px 9px;font-size:13px;font-weight:600;max-width:15rem}

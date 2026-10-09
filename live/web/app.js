@@ -612,7 +612,7 @@ function renderAlerts() {
       : '';
     return `<div class="${cls}"${atr}>
        ${areLoc ? '<span class="alert-pin">📍</span>' : ''}${esc(x.label)}<br>
-      <time>${new Date(x.at).toLocaleString('ro-RO')} · ${esc(x.source)}${x.telegram ? ' · Telegram' : ''}${areLoc ? ' · <b>vezi pe hartă</b>' : ''}</time>
+      <time>${new Date(x.at).toLocaleString('ro-RO')} · ${esc(x.source)}${x.telegram ? ' · Telegram' : ''}${areLoc ? ' · <b class="see-map">vezi pe hartă</b>' : ''}</time>
      </div>`;
   }).join('');
 
@@ -744,6 +744,31 @@ function buildTimeline() {
 }
 
 function bindControls() {
+  // Pe mobil, cardurile sunt lungi: pagina ajungea la 4400px. Le facem pliabile,
+  // cu titlul ca buton. Doar pe ecrane inguste - pe desktop panoul are scroll
+  // propriu si plierea ar ascunde informatia fara motiv.
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    const cards = Array.from(document.querySelectorAll('aside .card'));
+    cards.forEach(card => {
+      const h = card.querySelector('h2');
+      if (!h) return;
+      // pornim cu toate deschise; utilizatorul pliaza ce nu-l intereseaza
+      card.style.cursor = '';
+      h.setAttribute('role', 'button');
+      h.setAttribute('tabindex', '0');
+      h.setAttribute('aria-expanded', 'true');
+      const toggle = () => {
+        const nowCollapsed = !card.classList.contains('collapsed');
+        card.classList.toggle('collapsed', nowCollapsed);
+        h.setAttribute('aria-expanded', String(!nowCollapsed));
+      };
+      h.addEventListener('click', toggle);
+      h.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+  }
+
   document.getElementById('zone').addEventListener('change', e => switchZone(e.target.value));
   document.getElementById('l-strong').addEventListener('change', () => refresh(true));
   const ctxBox = document.getElementById('l-context');
