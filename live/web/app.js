@@ -606,6 +606,41 @@ function renderStats() {
   } else {
     status.className = 'badge err'; status.textContent = `oprit de ${(mins / 60).toFixed(0)} h`;
   }
+
+  // Explicam starea focarului. Fara asta, "0 detecții în 24 h" si "0.0 MW" in
+  // capul panoului arata ca o eroare, desi insemna doar ca incendiul s-a stins.
+  const note = document.getElementById('status-note');
+  if (note) {
+    const latest = st.latest || null;
+    let ore = null;
+    if (latest && latest.date) {
+      const t = Date.parse(`${latest.date}T${(latest.time || '0000').padStart(4, '0').slice(0, 2)}:${(latest.time || '0000').padStart(4, '0').slice(2, 4)}:00Z`);
+      if (!isNaN(t)) ore = (Date.now() - t) / 3600000;
+    }
+    const fmtOre = h => h < 1 ? `${Math.round(h * 60)} min` :
+      (h < 48 ? `${Math.round(h)} h` : `${Math.round(h / 24)} zile`);
+
+    if (st.last24_count === 0 && ore !== null) {
+      note.hidden = false;
+      note.className = 'status-note stins';
+      note.innerHTML = `<b>Focar stins.</b> Nicio detecție termică în ultimele 24 h — ` +
+        `ultima a fost acum ${fmtOre(ore)}. Sistemul rămâne activ și ridică alertă ` +
+        `automat dacă reapare ceva.`;
+    } else if (st.last24_count > 0 && st.last24_count <= 3) {
+      note.hidden = false;
+      note.className = 'status-note activ';
+      note.innerHTML = `<b>Activitate slabă.</b> ${st.last24_count} ` +
+        `${st.last24_count === 1 ? 'detecție' : 'detecții'} în ultimele 24 h` +
+        (st.last24_max ? `, maxim ${st.last24_max.toFixed(1)} MW` : '') + '.';
+    } else if (ore !== null && ore > 72) {
+      note.hidden = false;
+      note.className = 'status-note estic';
+      note.innerHTML = `<b>Date vechi.</b> Ultima detecție acum ${fmtOre(ore)} — ` +
+        `verifică dacă sursele mai răspund.`;
+    } else {
+      note.hidden = true;
+    }
+  }
 }
 
 function renderAlerts() {
