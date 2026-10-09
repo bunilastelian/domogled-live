@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 505,
+ "cycles": 506,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11512,23 +11512,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-09T10:29:49+00:00",
-    "time": "2026-10-09T10:15",
-    "temp_c": 24.3,
-    "humidity_pct": 46,
-    "wind_kmh": 15.0,
-    "gust_kmh": 34.6,
-    "wind_from_deg": 294,
+    "updated": "2026-10-09T10:34:50+00:00",
+    "time": "2026-10-09T10:30",
+    "temp_c": 24.5,
+    "humidity_pct": 45,
+    "wind_kmh": 15.6,
+    "gust_kmh": 35.6,
+    "wind_from_deg": 296,
     "wind_from_compass": "NV",
-    "downwind_deg": 114,
+    "downwind_deg": 116,
     "downwind_compass": "SE",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0.6,
-    "vpd_kpa": 1.64,
+    "vpd_kpa": 1.69,
     "soil_moisture": 0.125,
     "elevation_m": 321.0,
     "danger": {
-     "index": 2.57,
+     "index": 2.5,
      "name": "Angström",
      "class": "moderat",
      "color": "#f5d90a",
@@ -11779,6 +11779,7 @@
     "S3A_SL_2_FRP____20261007T202858_20261007T203158_20261007T224300_0179_144_385______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261008T083953_20261008T084253_20261008T104026_0179_145_007______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261008T200247_20261008T200547_20261008T221824_0180_145_014______MAR_O_NR_003.SEN3",
+    "S3A_SL_2_FRP____20261009T081342_20261009T081642_20261009T101421_0179_145_021______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20260930T193134_20260930T193434_20260930T214706_0180_125_142______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T092328_20261001T092628_20261001T112458_0179_125_150______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T204623_20261001T204923_20261001T213116_0179_125_157______MAR_O_NR_003.SEN3",
@@ -11793,7 +11794,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 520,
+   "cycles": 521,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16767,7 +16768,7 @@
      "satellite": "A",
      "first_seen": "2026-10-08T16:52:00+00:00"
     },
-    "updated": "2026-10-09T10:29:49+00:00"
+    "updated": "2026-10-09T10:34:50+00:00"
    }
   }
  },
@@ -16841,7 +16842,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-09T10:29:49+00:00",
+ "updated": "2026-10-09T10:34:50+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
