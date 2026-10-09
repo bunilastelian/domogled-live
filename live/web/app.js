@@ -733,8 +733,13 @@ async function refresh(force) {
     lastUpdated = new Date();
   } catch (e) {
     // Nu inghitim eroarea: daca pagina arata "date indisponibile", vrem sa
-    // stim de ce in consola, nu sa ghicim.
+    // stim de ce. O expunem si pe window, ca sa poata fi citita din afara
+    // (consola browserului nu e disponibila cand diagnosticam remote).
     console.error('refresh a esuat:', e);
+    window.__lastRefreshError = {
+      msg: String(e && e.message || e),
+      stack: String(e && e.stack || '').split('\n').slice(0, 5),
+    };
     document.getElementById('b-status').className = 'badge err';
     document.getElementById('b-status').textContent = 'date indisponibile';
     const u = document.getElementById('b-updated');
