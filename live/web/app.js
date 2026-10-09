@@ -37,9 +37,17 @@ async function loadState() {
   if (!staticMode) {
     try {
       const r = await fetch(API + '?_=' + Date.now(), { cache: 'no-store' });
-      if (r.ok) return await r.json();
-    } catch (e) { /* trecem pe static */ }
-    staticMode = true;
+      // Pe GitHub Pages nu exista /api/state: serverul intoarce 404 cu HTML.
+      // r.json() arunca atunci, dar exceptia nu spune de ce - si mai rau,
+      // prima rulare a lui refresh() murea aici si lasa badge-ul pe
+      // "date indisponibile" pana la urmatorul ciclu de 60s, desi datele
+      // statice erau perfect disponibile.
+      if (r.ok) {
+        const ct = r.headers.get('content-type') || '';
+        if (ct.includes('json')) return await r.json();
+      }
+    } catch (e) { /* serverul local nu raspunde - trecem pe static */ }
+    staticMode = true;      // de aici incolo citim direct fisierul static
   }
   const r = await fetch(STATIC_STATE + '?_=' + Date.now(), { cache: 'no-store' });
   if (!r.ok) throw new Error('nu pot citi starea');
@@ -724,8 +732,13 @@ async function refresh(force) {
     renderBurn();
     lastUpdated = new Date();
   } catch (e) {
+    // Nu inghitim eroarea: daca pagina arata "date indisponibile", vrem sa
+    // stim de ce in consola, nu sa ghicim.
+    console.error('refresh a esuat:', e);
     document.getElementById('b-status').className = 'badge err';
     document.getElementById('b-status').textContent = 'date indisponibile';
+    const u = document.getElementById('b-updated');
+    if (u && u.textContent === '—') u.title = String(e && e.message || e);
   }
 }
 
