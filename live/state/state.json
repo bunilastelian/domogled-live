@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 644,
+ "cycles": 645,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11181,9 +11181,34 @@
      "daynight": "D",
      "satellite": "N",
      "first_seen": "2026-10-08T14:57:06+00:00"
+    },
+    "ESA|SLSTR SWIR500m|2026-10-09|1937|44.7812|22.3603": {
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.78119,
+     "lon": 22.36032,
+     "date": "2026-10-09",
+     "time": "1937",
+     "frp": 1.0,
+     "confidence": 100,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-09T22:07:14+00:00"
     }
    },
    "alerts": [
+    {
+     "at": "2026-10-09T22:07:15+00:00",
+     "count": 1,
+     "max_frp": 1.0,
+     "lat": 44.78119,
+     "lon": 22.36032,
+     "when": "2026-10-09 1937Z",
+     "source": "ESA SLSTR SWIR500m",
+     "telegram": true,
+     "label": "1 detecții noi · max 1.0 MW · 2026-10-09 1937Z"
+    },
     {
      "at": "2026-10-08T16:52:01+00:00",
      "count": 2,
@@ -11452,6 +11477,46 @@
    },
    "fires": [
     {
+     "id": "cernei-dunarii-44.768-22.324",
+     "zone": "cernei-dunarii",
+     "lat": 44.76792,
+     "lon": 22.32434,
+     "points": 425,
+     "days": 10,
+     "first": "2026-09-30T10:58+00:00",
+     "last": "2026-10-09T19:37+00:00",
+     "frp_max": 18.66,
+     "frp_sum": 1194.7,
+     "frp_last24": 1.0,
+     "frp_prev24": 116.3,
+     "det_last24": 1,
+     "det_prev24": 39,
+     "trend": "în scădere",
+     "trend_color": "#30a46c",
+     "extent_km": 7.9,
+     "nasa": 301,
+     "esa": 124,
+     "in_park": false,
+     "parks": [
+      "Parcul Natural Porțile de Fier"
+     ],
+     "nearest_place": "Orșova",
+     "nearest_km": 7.65,
+     "elev_span_m": null,
+     "rank": 1,
+     "sync": {
+      "grup": [
+       1,
+       2
+      ],
+      "n": 2,
+      "varf_comun": "2026-10-06",
+      "corelatie": 0.85,
+      "distanta_max_km": 18.9,
+      "ore_intre_varfuri": 24.0
+     }
+    },
+    {
      "id": "cernei-dunarii-44.898-22.479",
      "zone": "cernei-dunarii",
      "lat": 44.89792,
@@ -11478,46 +11543,6 @@
      "nearest_place": "Colțu Pietrii (1228 m)",
      "nearest_km": 0.89,
      "elev_span_m": null,
-     "rank": 1,
-     "sync": {
-      "grup": [
-       1,
-       2
-      ],
-      "n": 2,
-      "varf_comun": "2026-10-05",
-      "corelatie": 0.85,
-      "distanta_max_km": 18.9,
-      "ore_intre_varfuri": 24.0
-     }
-    },
-    {
-     "id": "cernei-dunarii-44.768-22.324",
-     "zone": "cernei-dunarii",
-     "lat": 44.76789,
-     "lon": 22.32426,
-     "points": 424,
-     "days": 9,
-     "first": "2026-09-30T10:58+00:00",
-     "last": "2026-10-08T11:47+00:00",
-     "frp_max": 18.66,
-     "frp_sum": 1193.7,
-     "frp_last24": 0.0,
-     "frp_prev24": 116.3,
-     "det_last24": 0,
-     "det_prev24": 39,
-     "trend": "în scădere",
-     "trend_color": "#30a46c",
-     "extent_km": 7.9,
-     "nasa": 301,
-     "esa": 123,
-     "in_park": false,
-     "parks": [
-      "Parcul Natural Porțile de Fier"
-     ],
-     "nearest_place": "Orșova",
-     "nearest_km": 7.65,
-     "elev_span_m": null,
      "rank": 2,
      "sync": {
       "grup": [
@@ -11525,7 +11550,7 @@
        2
       ],
       "n": 2,
-      "varf_comun": "2026-10-05",
+      "varf_comun": "2026-10-06",
       "corelatie": 0.85,
       "distanta_max_km": 18.9,
       "ore_intre_varfuri": 24.0
@@ -11534,7 +11559,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-09T22:02:14+00:00",
+    "updated": "2026-10-09T22:07:16+00:00",
     "time": "2026-10-09T22:00",
     "temp_c": 12.6,
     "humidity_pct": 92,
@@ -11802,6 +11827,7 @@
     "S3A_SL_2_FRP____20261008T083953_20261008T084253_20261008T104026_0179_145_007______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261008T200247_20261008T200547_20261008T221824_0180_145_014______MAR_O_NR_003.SEN3",
     "S3A_SL_2_FRP____20261009T081342_20261009T081642_20261009T101421_0179_145_021______MAR_O_NR_003.SEN3",
+    "S3A_SL_2_FRP____20261009T193636_20261009T193936_20261009T215228_0179_145_028______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20260930T193134_20260930T193434_20260930T214706_0180_125_142______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T092328_20261001T092628_20261001T112458_0179_125_150______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261001T204623_20261001T204923_20261001T213116_0179_125_157______MAR_O_NR_003.SEN3",
@@ -11818,7 +11844,7 @@
     "S3B_SL_2_FRP____20261009T091600_20261009T091900_20261009T111904_0179_125_264______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 659,
+   "cycles": 660,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16681,12 +16707,12 @@
    "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
    "short": "Cernei – Dunării",
    "stats": {
-    "total": 843,
+    "total": 844,
     "nasa": 624,
-    "esa": 219,
-    "last24_count": 0,
-    "last24_frp": 0,
-    "last24_max": 0,
+    "esa": 220,
+    "last24_count": 1,
+    "last24_frp": 1.0,
+    "last24_max": 1.0,
     "days": [
      {
       "date": "2026-09-30",
@@ -16777,22 +16803,33 @@
       "esa": 5,
       "frp_nasa": 241.7,
       "frp_esa": 52.7
+     },
+     {
+      "date": "2026-10-09",
+      "count": 1,
+      "frp": 1.0,
+      "max": 1.0,
+      "nasa": 0,
+      "esa": 1,
+      "frp_nasa": 0.0,
+      "frp_esa": 1.0
      }
     ],
     "latest": {
-     "src": "NASA",
-     "sensor": "MODIS-1km",
-     "lat": 44.8758,
-     "lon": 22.45645,
-     "date": "2026-10-08",
-     "time": "1355",
-     "frp": 8.27,
-     "confidence": 63,
-     "daynight": "D",
-     "satellite": "A",
-     "first_seen": "2026-10-08T16:52:00+00:00"
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.78119,
+     "lon": 22.36032,
+     "date": "2026-10-09",
+     "time": "1937",
+     "frp": 1.0,
+     "confidence": 100,
+     "daynight": "N",
+     "satellite": "S3A",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-09T22:07:14+00:00"
     },
-    "updated": "2026-10-09T22:02:15+00:00"
+    "updated": "2026-10-09T22:07:17+00:00"
    }
   }
  },
@@ -16866,7 +16903,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-09T22:02:15+00:00",
+ "updated": "2026-10-09T22:07:17+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
