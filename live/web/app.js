@@ -201,6 +201,19 @@ function renderDetections() {
   const groups = {};
   let shown = 0;
 
+  // 843 de cerculete desenate simultan se topesc intr-o pata fara forma: nu
+  // mai vezi focarele, parcurile, pâraiele. Cauza nu e numarul de detectii,
+  // ci faptul ca le desenam pe toate la orice zoom.
+  //
+  // Doua trepte:
+  //   zoom <= DETAIL_ZOOM  -> HEATMAP (densitate; arata unde arde)
+  //   zoom >  DETAIL_ZOOM  -> puncte individuale, unde chiar incap
+  const DETAIL_ZOOM = 12;
+  const detailed = map.getZoom() > DETAIL_ZOOM;
+
+  // punctele care intra in heatmap: doar cele din intervalul selectat
+  const heatPts = [];
+
   for (const d of Object.values((state && state.detections) || {})) {
     if (onlyStrong && (d.frp || 0) < 5) continue;
 
@@ -211,18 +224,27 @@ function renderDetections() {
     if (!inRange && !showContext) continue;
     if (inRange) shown++;
 
+    const age = ageHours(d);
+    // intensitatea in heatmap creste cu FRP-ul si scade cu vechimea
+    const w = Math.max(0.15, Math.min(1, ((d.frp || 0) / 20) + 0.25)) *
+              (inRange ? 1 : 0.25) *
+              (age <= 6 ? 1 : age <= 24 ? 0.85 : age <= 72 ? 0.6 : 0.35);
+    heatPts.push([d.lat, d.lon, w]);
+
+    if (!detailed) continue;      // la zoom mic nu desenam puncte individuale
+
     const st = tl ? tl.style(d, inRange) : {
       radius: radiusOf(d.frp),
       color: d.src === 'ESA' ? '#22d3ee' : '#ffffff',
       weight: 1.8, opacity: 0.9,
-      fillColor: ageColor(ageHours(d)), fillOpacity: 0.55
+      fillColor: ageColor(age), fillOpacity: 0.55
     };
 
     L.circleMarker([d.lat, d.lon], st).bindPopup(
       `<b>${d.sensor}</b><br>FRP: <b>${(d.frp || 0).toFixed(2)} MW</b><br>` +
       (d.bt_k ? `temperatură: ${d.bt_k} K<br>` : '') +
       `încredere: ${d.confidence}%<br>${d.lat.toFixed(4)}, ${d.lon.toFixed(4)}<br>` +
-      `achiziție: ${d.date} ${d.time}Z (${ageHours(d).toFixed(1)} h în urmă)<br>` +
+      `achiziție: ${d.date} ${d.time}Z (${age.toFixed(1)} h în urmă)<br>` +
       `zi/noapte: ${d.daynight === 'D' ? 'zi' : 'noapte'}` +
       (inRange ? '' : '<br><i style="color:#8b98a5">în afara intervalului selectat</i>')
     ).addTo(d.src === 'ESA' ? esaLayer : nasaLayer);
@@ -231,6 +253,8 @@ function renderDetections() {
       (groups[`${d.date} ${d.time}`] = groups[`${d.date} ${d.time}`] || []).push(d);
     }
   }
+
+  drawHeat(heatPts, detailed);
 
   for (const pts of Object.values(groups)) {
     if (pts.length < 3) continue;
@@ -241,6 +265,64 @@ function renderDetections() {
 
   return shown;
 }
+
+// Heatmap pe canvas, desenat in overlay-ul hartii. Fara plugin extern:
+// pentru cateva mii de puncte, o simpla acumulare de gradiente radiale e
+// suficienta si nu adauga o dependinta de 40 KB.
+let heatCanvas = null;
+
+function drawHeat(points, hidden) {
+  if (!heatCanvas) {
+    heatCanvas = L.DomUtil.create('canvas', 'heat-layer');
+    heatCanvas.style.position = 'absolute';
+    heatCanvas.style.pointerEvents = 'none';
+    heatCanvas.style.zIndex = 350;
+    map.getPanes().overlayPane.appendChild(heatCanvas);
+    const sync = () => {
+      // eticheta conului de vant se ascunde cand harta e departata, ca sa nu
+      // traverseze tot ecranul
+      document.body.classList.toggle('zoomed-out', map.getZoom() < 11);
+      drawHeat(lastHeatPts, lastHeatHidden);
+    };
+    map.on('moveend zoomend resize', sync);
+    sync();
+  }
+  lastHeatPts = points;
+  lastHeatHidden = hidden;
+
+  const size = map.getSize();
+  const dpr = window.devicePixelRatio || 1;
+  heatCanvas.width = size.x * dpr;
+  heatCanvas.height = size.y * dpr;
+  heatCanvas.style.width = size.x + 'px';
+  heatCanvas.style.height = size.y + 'px';
+
+  const ctx = heatCanvas.getContext('2d');
+  ctx.clearRect(0, 0, heatCanvas.width, heatCanvas.height);
+  if (!points.length || hidden) return;
+
+  const topLeft = map.containerPointToLayerPoint([0, 0]);
+  L.DomUtil.setPosition(heatCanvas, topLeft);
+
+  ctx.scale(dpr, dpr);
+  ctx.globalCompositeOperation = 'lighter';
+
+  // raza fixa in pixeli: un focar e o pata, nu 400 de puncte
+  const R = 18;
+  for (const [lat, lon, w] of points) {
+    const p = map.latLngToContainerPoint([lat, lon]);
+    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, R);
+    g.addColorStop(0, `rgba(255,140,40,${0.16 * w})`);
+    g.addColorStop(0.5, `rgba(255,80,20,${0.08 * w})`);
+    g.addColorStop(1, 'rgba(255,60,0,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, R, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+let lastHeatPts = [];
+let lastHeatHidden = false;
 
 function renderBurn() {
   const b = state && state.burn;
@@ -464,9 +546,11 @@ function renderWindCone() {
   L.polyline([src, pt(bearing, LEN)], { color: '#22d3ee', weight: 2, opacity: 0.85,
                                         dashArray: '6 4', interactive: false }).addTo(windLayer);
   L.marker(pt(bearing, LEN), {
+    // Eticheta era font 11px fara limite: la zoom mic se intindea peste jumatate
+    // de ecran si nu se putea citi. Acum e mica, pe un singur rand, cu fundal,
+    // si dispare cand nu incape (zoom mic) - conul ramane vizibil oricum.
     icon: L.divIcon({ className: '', iconSize: [0, 0], html:
-      `<div style="transform:translate(-50%,-50%);color:#22d3ee;font-size:11px;white-space:nowrap;
-                   text-shadow:0 0 4px #000,0 0 2px #000">pană spre ${w.downwind_compass}</div>` })
+      `<div class="windlabel">pană spre ${w.downwind_compass}</div>` })
   }).addTo(windLayer);
 }
 

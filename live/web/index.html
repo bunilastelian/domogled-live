@@ -115,6 +115,18 @@
         color:#dfe7ef;font-size:11px;padding:1px 5px;box-shadow:none}
   .leaflet-tooltip.reflabel::before{display:none}
 
+  /* eticheta conului de vant: mica, pe un rand, cu fundal ca sa rămâna lizibila
+     peste orice imagine satelitara */
+  .windlabel{transform:translate(-50%,-50%);color:#22d3ee;font-size:10px;
+        line-height:1.1;white-space:nowrap;background:rgba(13,17,23,.78);
+        border:1px solid rgba(34,211,238,.45);border-radius:4px;padding:1px 5px;
+        pointer-events:none}
+  /* la zoom mic eticheta fuge peste tot ecranul: o ascundem, conul rămâne */
+  .zoomed-out .windlabel{display:none}
+
+  /* heatmap-ul detecțiilor, desenat pe canvas peste tile-uri */
+  .heat-layer{position:absolute;left:0;top:0;pointer-events:none}
+
   /* ---------- mobil ---------- */
   @media (max-width: 900px){
     #wrap{grid-template-columns:1fr;height:auto}
