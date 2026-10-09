@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 517,
+ "cycles": 518,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11452,35 +11452,6 @@
    },
    "fires": [
     {
-     "id": "cernei-dunarii-44.768-22.324",
-     "zone": "cernei-dunarii",
-     "lat": 44.76789,
-     "lon": 22.32426,
-     "points": 424,
-     "days": 9,
-     "first": "2026-09-30T10:58+00:00",
-     "last": "2026-10-08T11:47+00:00",
-     "frp_max": 18.66,
-     "frp_sum": 1193.7,
-     "frp_last24": 67.3,
-     "frp_prev24": 175.8,
-     "det_last24": 13,
-     "det_prev24": 55,
-     "trend": "în scădere",
-     "trend_color": "#30a46c",
-     "extent_km": 7.9,
-     "nasa": 301,
-     "esa": 123,
-     "in_park": false,
-     "parks": [
-      "Parcul Natural Porțile de Fier"
-     ],
-     "nearest_place": "Orșova",
-     "nearest_km": 7.65,
-     "elev_span_m": null,
-     "rank": 1
-    },
-    {
      "id": "cernei-dunarii-44.898-22.479",
      "zone": "cernei-dunarii",
      "lat": 44.89792,
@@ -11491,10 +11462,10 @@
      "last": "2026-10-08T13:55+00:00",
      "frp_max": 97.36,
      "frp_sum": 1729.6,
-     "frp_last24": 65.7,
-     "frp_prev24": 226.3,
-     "det_last24": 14,
-     "det_prev24": 55,
+     "frp_last24": 41.2,
+     "frp_prev24": 250.8,
+     "det_last24": 7,
+     "det_prev24": 62,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 8.89,
@@ -11507,31 +11478,60 @@
      "nearest_place": "Colțu Pietrii (1228 m)",
      "nearest_km": 0.89,
      "elev_span_m": null,
+     "rank": 1
+    },
+    {
+     "id": "cernei-dunarii-44.768-22.324",
+     "zone": "cernei-dunarii",
+     "lat": 44.76789,
+     "lon": 22.32426,
+     "points": 424,
+     "days": 9,
+     "first": "2026-09-30T10:58+00:00",
+     "last": "2026-10-08T11:47+00:00",
+     "frp_max": 18.66,
+     "frp_sum": 1193.7,
+     "frp_last24": 19.8,
+     "frp_prev24": 223.3,
+     "det_last24": 4,
+     "det_prev24": 64,
+     "trend": "în scădere",
+     "trend_color": "#30a46c",
+     "extent_km": 7.9,
+     "nasa": 301,
+     "esa": 123,
+     "in_park": false,
+     "parks": [
+      "Parcul Natural Porțile de Fier"
+     ],
+     "nearest_place": "Orșova",
+     "nearest_km": 7.65,
+     "elev_span_m": null,
      "rank": 2
     }
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-09T11:29:50+00:00",
-    "time": "2026-10-09T11:15",
-    "temp_c": 24.8,
-    "humidity_pct": 45,
-    "wind_kmh": 17.2,
-    "gust_kmh": 38.9,
+    "updated": "2026-10-09T11:34:51+00:00",
+    "time": "2026-10-09T11:30",
+    "temp_c": 24.6,
+    "humidity_pct": 46,
+    "wind_kmh": 17.7,
+    "gust_kmh": 39.6,
     "wind_from_deg": 299,
     "wind_from_compass": "NV",
     "downwind_deg": 119,
     "downwind_compass": "SE",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 0.6,
-    "vpd_kpa": 1.72,
+    "vpd_kpa": 1.67,
     "soil_moisture": 0.125,
     "elevation_m": 321.0,
     "danger": {
-     "index": 2.47,
+     "index": 2.54,
      "name": "Angström",
-     "class": "ridicat",
-     "color": "#f76b15",
+     "class": "moderat",
+     "color": "#f5d90a",
      "formula": "I = (H/20) + (27-T)/10; mai mic = mai periculos",
      "next48_min": 3.92
     },
@@ -11794,7 +11794,7 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 532,
+   "cycles": 533,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16660,9 +16660,9 @@
     "total": 843,
     "nasa": 624,
     "esa": 219,
-    "last24_count": 27,
-    "last24_frp": 133.0,
-    "last24_max": 10.1,
+    "last24_count": 11,
+    "last24_frp": 61.0,
+    "last24_max": 8.3,
     "days": [
      {
       "date": "2026-09-30",
@@ -16768,7 +16768,7 @@
      "satellite": "A",
      "first_seen": "2026-10-08T16:52:00+00:00"
     },
-    "updated": "2026-10-09T11:29:50+00:00"
+    "updated": "2026-10-09T11:34:51+00:00"
    }
   }
  },
@@ -16842,7 +16842,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-09T11:29:50+00:00",
+ "updated": "2026-10-09T11:34:51+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
