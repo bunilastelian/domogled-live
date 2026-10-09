@@ -216,7 +216,6 @@ function renderDetections() {
   // Doua trepte:
   //   zoom <= DETAIL_ZOOM  -> HEATMAP (densitate; arata unde arde)
   //   zoom >  DETAIL_ZOOM  -> puncte individuale, unde chiar incap
-  const DETAIL_ZOOM = 12;
   const detailed = map.getZoom() > DETAIL_ZOOM;
 
   // punctele care intra in heatmap: doar cele din intervalul selectat
@@ -341,6 +340,11 @@ function drawHeat(points, hidden) {
 let lastHeatPts = [];
 let lastHeatHidden = false;
 let lastDetail = null;      // ultima treapta de zoom randata (heatmap vs puncte)
+// Pragul de zoom la care trecem de la heatmap la puncte individuale.
+// Trebuie sa fie la nivel de modul: il folosesc si renderDetections(), si
+// handlerul de zoom din drawHeat(). Declarat inauntrul unei functii, cel
+// de-al doilea apel arunca ReferenceError si pagina rămâne fara date.
+const DETAIL_ZOOM = 12;
 
 function renderBurn() {
   const b = state && state.burn;
