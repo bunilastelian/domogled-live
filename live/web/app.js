@@ -88,7 +88,10 @@ function initMap() {
 function loadParks(files) {
   const list = (files && files.length ? files : ['domogled.geojson']).filter(Boolean);
   const sig = list.join(',');
-  if (sig === parkGeomFiles.join(',')) return;
+  // NU iesi devreme pe baza semnaturii: loadParks e apelat la fiecare refresh
+  // (la 60s), iar daca semnatura e deja setata dar layerele nu s-au desenat
+  // (fetch esuat, geoJSON aruncat), contururile nu mai apar niciodata.
+  // Reincarcarea e ieftina - fisierele vin din cache HTTP.
   parkGeomFiles = list;
   parkLayer.clearLayers();
   list.forEach((f, i) => {
