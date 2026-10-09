@@ -537,6 +537,11 @@ function renderFires() {
                  ? f.parks.map(p => p.replace(/^Parcul (Național|Natural) /, '')).join(' · ')
                  : (f.in_park === false ? 'în afara parcurilor' : '')}</span></div>
       <div class="row"><span>cel mai aproape: ${f.nearest_place || '–'}</span><span>${f.nearest_km} km</span></div>
+      ${f.sync ? `<div class="syncnote">🔥 <b>Arde sincron</b> cu focarul
+        ${f.sync.grup.filter(r => r !== f.rank).join(', ')} — vârf comun pe
+        ${f.sync.varf_comun}, corelație ${f.sync.corelatie}, la ${f.sync.distanta_max_km} km.
+        Două focare cu același ritm sugerează o cauză comună (fulgere uscate,
+        vânt puternic sau aprindere deliberată), nu două întâmplări.</div>` : ''}
     </div>`).join('');
 }
 
