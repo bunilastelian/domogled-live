@@ -24,7 +24,7 @@ let satLayer = null;       // overlay cu imaginea satelitara selectata (S3 termi
 let fullState = null;      // toata starea, cu toate zonele
 let state = null;          // subarborele zonei active (.detections, .stats, .fires, .weather...)
 let currentZone = null;
-let parkGeomFile = null;
+let parkGeomFiles = [];
 let staticMode = false;
 let lastRenderSig = '';
 let lastBurnSig = '';
@@ -69,7 +69,7 @@ function initMap() {
   windLayer = L.layerGroup().addTo(map);
   refLayer = L.layerGroup().addTo(map);
 
-  loadPark(null);
+  // contururile parcurilor vin din zone_list, la syncZones()
 
   [['Cascada Cociului', 44.91838, 22.46485, '★'],
    ['Colțu Pietrii 1228 m', 44.90550, 22.48217, '▲'],
@@ -83,16 +83,23 @@ function initMap() {
   });
 }
 
-// conturul parcului depinde de zona activa
-function loadPark(file) {
-  const f = file || 'domogled.geojson';
-  if (f === parkGeomFile) return;
-  parkGeomFile = f;
+// Contururile ariilor protejate din regiune. Pot fi mai multe - regiunea
+// acopera doua parcuri, iar un focar poate sta in oricare sau in niciunul.
+function loadParks(files) {
+  const list = (files && files.length ? files : ['domogled.geojson']).filter(Boolean);
+  const sig = list.join(',');
+  if (sig === parkGeomFiles.join(',')) return;
+  parkGeomFiles = list;
   parkLayer.clearLayers();
-  fetch(f).then(r => r.json()).then(geom => {
-    L.geoJSON(geom, { style: { color: '#3b82f6', weight: 2, fill: false, opacity: 0.85, dashArray: '6 4' } })
-      .addTo(parkLayer);
-  }).catch(() => {});
+  list.forEach((f, i) => {
+    fetch(f).then(r => r.json()).then(geom => {
+      // culori distincte, ca sa se vada care contur e care
+      const cols = ['#3b82f6', '#a855f7', '#f97316', '#14b8a6'];
+      L.geoJSON(geom, {
+        style: { color: cols[i % cols.length], weight: 2, fill: false, opacity: 0.85, dashArray: '6 4' },
+      }).addTo(parkLayer);
+    }).catch(() => {});
+  });
 }
 
 // ---------------------------------------------------------------- zone
@@ -115,25 +122,37 @@ function syncZones() {
   }
 
   const list = (fullState && fullState.zone_list) || [];
-  if (!sel || !list.length) {
-    if (sel && fullState && !list.length) sel.innerHTML = '<option value="">fără zone în date</option>';
+  if (!list.length) {
+    if (sel) sel.innerHTML = '<option value="">fără zone în date</option>';
     return;
   }
 
-  const sig = list.map(z => z.id).join(',');
-  if (sel.dataset.sig !== sig) {
-    sel.dataset.sig = sig;
-    sel.innerHTML = list.map(z => `<option value="${z.id}">${z.name}</option>`).join('');
-    currentZone = currentZone || fullState.default_zone || list[0].id;
+  // Regiunea e una singura: fara selector. Daca totusi vin mai multe zone
+  // (format vechi), afisam selectorul, ca sa nu rupem nimic.
+  if (sel) {
+    if (list.length > 1) {
+      sel.style.display = '';
+      const sig = list.map(z => z.id).join(',');
+      if (sel.dataset.sig !== sig) {
+        sel.dataset.sig = sig;
+        sel.innerHTML = list.map(z => `<option value="${z.id}">${z.name}</option>`).join('');
+        currentZone = currentZone || fullState.default_zone || list[0].id;
+      }
+    } else {
+      sel.style.display = 'none';
+      currentZone = currentZone || list[0].id;
+    }
   }
   const zones = (fullState && fullState.zones) || {};
   if (!zones[currentZone]) currentZone = fullState.default_zone || list[0].id;
-  sel.value = currentZone;
+  if (sel && list.length > 1) sel.value = currentZone;
 
   state = zones[currentZone] || null;
   window.__activeZone = currentZone;      // folosit de timeline (S3/S2 per zona)
   const meta = list.find(z => z.id === currentZone) || {};
-  loadPark(((meta.park || {}).geojson) || null);
+  // toate contururile de parc ale regiunii (poate fi mai mult de unul)
+  const parks = meta.parks || (meta.park ? [meta.park] : []);
+  loadParks(parks.map(p => (p || {}).geojson).filter(Boolean));
   if (state && state.name) document.title = `${state.name} · incendii live`;
 }
 
@@ -145,8 +164,8 @@ function switchZone(id) {
   for (const el of document.querySelectorAll('#fires, #thumbs, #alerts')) delete el.dataset.sig;
   const aoi = (state && state.aoi) || {};
   if (aoi.center) map.setView(aoi.center, aoi.zoom || 12);
-  loadPark(null);                       // forteaza reincarcarea pentru zona noua
-  parkGeomFile = null;
+  // contururile se reincarca singure: syncZones() cheama loadParks cu
+  // lista de parcuri a zonei active
   syncZones();
   refresh(true);
 }
