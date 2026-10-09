@@ -93,12 +93,18 @@ function loadParks(files) {
   parkLayer.clearLayers();
   list.forEach((f, i) => {
     fetch(f).then(r => r.json()).then(geom => {
-      // culori distincte, ca sa se vada care contur e care
+      // Fisierele sunt geometrii GeoJSON simple (Polygon/MultiPolygon), nu
+      // FeatureCollection. L.geoJSON() accepta ambele, dar o geometrie
+      // fara "features" trece neobservata daca o ambalam gresit - asa ca
+      // normalizam explicit la Feature.
+      const gj = (geom && geom.type === 'FeatureCollection')
+        ? geom
+        : { type: 'Feature', properties: {}, geometry: geom };
       const cols = ['#3b82f6', '#a855f7', '#f97316', '#14b8a6'];
-      L.geoJSON(geom, {
+      L.geoJSON(gj, {
         style: { color: cols[i % cols.length], weight: 2, fill: false, opacity: 0.85, dashArray: '6 4' },
       }).addTo(parkLayer);
-    }).catch(() => {});
+    }).catch(e => console.warn('parc nu s-a incarcat:', f, e));
   });
 }
 
