@@ -722,7 +722,15 @@ async function refresh(force) {
     const sig = `${zst.updated}|${document.getElementById('l-strong').checked}`;
     const changed = force || sig !== lastRenderSig;
 
-    renderStats();          // mereu: badge-ul de prospetime trebuie actualizat
+    // renderStats seteaza badge-ul de prospetime. Daca nu-l putem rula (fara
+    // stats), badge-ul rămânea pe textul initial din HTML si pagina parea
+    // stricata desi datele erau bune - exact ce se intampla la prima rulare.
+    if (!state || !state.stats) {
+      document.getElementById('b-status').className = 'badge warn';
+      document.getElementById('b-status').textContent = 'date incomplete';
+      return;
+    }
+    renderStats();
     if (changed) {
       lastRenderSig = sig;
       buildTimeline();      // reconstruim timeline-ul pe zona/noile date
