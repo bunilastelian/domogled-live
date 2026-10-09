@@ -783,15 +783,20 @@ function bindControls() {
   // cu titlul ca buton. Doar pe ecrane inguste - pe desktop panoul are scroll
   // propriu si plierea ar ascunde informatia fara motiv.
   if (window.matchMedia('(max-width: 900px)').matches) {
+    // Pe telefon, pagina are ~4400px si e plin de harta + panoul de control.
+    // Pornim cu cardurile informative pliate si lasam deschis doar ce se
+    // citeste dintr-o privire: situatia curenta si focarele.
+    const DESCHISE = ['situația acum', 'focare'];
     const cards = Array.from(document.querySelectorAll('aside .card'));
     cards.forEach(card => {
       const h = card.querySelector('h2');
       if (!h) return;
-      // pornim cu toate deschise; utilizatorul pliaza ce nu-l intereseaza
-      card.style.cursor = '';
+      const titlu = (h.textContent || '').trim().toLowerCase();
+      const pornesteDeschis = DESCHISE.some(d => titlu.startsWith(d));
+      if (!pornesteDeschis) card.classList.add('collapsed');
       h.setAttribute('role', 'button');
       h.setAttribute('tabindex', '0');
-      h.setAttribute('aria-expanded', 'true');
+      h.setAttribute('aria-expanded', String(pornesteDeschis));
       const toggle = () => {
         const nowCollapsed = !card.classList.contains('collapsed');
         card.classList.toggle('collapsed', nowCollapsed);
