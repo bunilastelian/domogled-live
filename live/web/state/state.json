@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 629,
+ "cycles": 630,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11534,7 +11534,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-09T20:47:14+00:00",
+    "updated": "2026-10-09T20:52:14+00:00",
     "time": "2026-10-09T20:45",
     "temp_c": 12.7,
     "humidity_pct": 93,
@@ -11817,7 +11817,7 @@
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T091600_20261009T091900_20261009T111904_0179_125_264______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 644,
+   "cycles": 645,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16791,7 +16791,7 @@
      "satellite": "A",
      "first_seen": "2026-10-08T16:52:00+00:00"
     },
-    "updated": "2026-10-09T20:47:14+00:00"
+    "updated": "2026-10-09T20:52:14+00:00"
    }
   }
  },
@@ -16865,7 +16865,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-09T20:47:14+00:00",
+ "updated": "2026-10-09T20:52:14+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
