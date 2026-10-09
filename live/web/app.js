@@ -429,7 +429,9 @@ function renderFires() {
         <span class="trend" style="color:${f.trend_color}">${f.trend}</span></div>
       <div class="row"><span>FRP max ${f.frp_max} MW</span><span>24 h: ${f.frp_last24} MW</span></div>
       <div class="row"><span>întindere ${f.extent_km} km</span>
-        <span>${f.in_park === true ? 'în parc' : f.in_park === false ? 'în afara parcului' : ''}</span></div>
+        <span>${(f.parks && f.parks.length)
+                 ? f.parks.map(p => p.replace(/^Parcul (Național|Natural) /, '')).join(' · ')
+                 : (f.in_park === false ? 'în afara parcurilor' : '')}</span></div>
       <div class="row"><span>cel mai aproape: ${f.nearest_place || '–'}</span><span>${f.nearest_km} km</span></div>
     </div>`).join('');
 }
