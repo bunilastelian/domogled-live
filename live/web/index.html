@@ -279,15 +279,17 @@
   <aside>
     <div class="card">
       <h2>Situația acum</h2>
+      <!-- Doua zerouri mari arata ca o eroare pentru cine deschide pagina fara
+           context. Nota explicativa sta SUS, nu dupa KPI-uri: pe telefon
+           KPI-urile se termina la ~890px, sub marginea ecranului de 844px,
+           deci o nota pusa acolo nu ar fi vazuta fara scroll. -->
+      <div id="status-note" class="status-note" hidden></div>
       <div class="kpis">
         <div class="kpi hot"><b id="k-24">–</b><span>detecții în 24 h</span></div>
         <div class="kpi hot"><b id="k-frp">–</b><span>FRP max 24 h (MW)</span></div>
         <div class="kpi"><b id="k-total">–</b><span>detecții în total</span></div>
         <div class="kpi"><b id="k-days">–</b><span>zile cu foc</span></div>
       </div>
-      <!-- Doua zerouri mari in capul panoului arata ca o eroare pentru cine
-           deschide pagina fara context. Cand focarul e stins, spunem explicit. -->
-      <div id="status-note" class="status-note" hidden></div>
       <table class="kv" style="margin-top:10px">
         <tr><td>Cea mai recentă detecție</td><td id="s-latest">–</td></tr>
         <tr><td>Suprafață arsă (dNBR)</td><td id="s-burn">–</td></tr>
@@ -399,7 +401,7 @@
   </aside>
 </div>
 
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 <script src="timeline.js?v=4"></script>
 <script src="sat_timer.js?v=2"></script>
 <script>
