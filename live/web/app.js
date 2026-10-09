@@ -282,6 +282,15 @@ function drawHeat(points, hidden) {
       // eticheta conului de vant se ascunde cand harta e departata, ca sa nu
       // traverseze tot ecranul
       document.body.classList.toggle('zoomed-out', map.getZoom() < 11);
+      // Trecerea intre heatmap si puncte individuale se face dupa pragul de
+      // zoom. Fara re-randare aici, punctele nu apar niciodata la zoom mare:
+      // renderDetections rula doar la refresh-ul de date (60s), deci ramanea
+      // pe decizia luata la zoom-ul de atunci.
+      const wantDetail = map.getZoom() > DETAIL_ZOOM;
+      if (wantDetail !== lastDetail) {
+        lastDetail = wantDetail;
+        renderDetections();
+      }
       drawHeat(lastHeatPts, lastHeatHidden);
     };
     map.on('moveend zoomend resize', sync);
@@ -323,6 +332,7 @@ function drawHeat(points, hidden) {
 }
 let lastHeatPts = [];
 let lastHeatHidden = false;
+let lastDetail = null;      // ultima treapta de zoom randata (heatmap vs puncte)
 
 function renderBurn() {
   const b = state && state.burn;
