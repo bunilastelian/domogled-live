@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-09T09:18:28+00:00",
+  "generat": "2026-10-09T09:23:29+00:00",
   "latenta_publicare_min": {
     "medie": 73,
     "p10": 49,
@@ -12,7 +12,7 @@
       "satelit": "S3A",
       "fereastra": "noapte",
       "ora_estimata_utc": "2026-10-09T20:03:20+00:00",
-      "peste_minute": 645,
+      "peste_minute": 640,
       "variatie_min": 24,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-09T21:16:20+00:00",
@@ -24,7 +24,7 @@
       "satelit": "S3B",
       "fereastra": "noapte",
       "ora_estimata_utc": "2026-10-09T20:16:00+00:00",
-      "peste_minute": 658,
+      "peste_minute": 653,
       "variatie_min": 26,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-09T21:29:00+00:00",
@@ -32,35 +32,35 @@
       "date_disponibile_p90": "2026-10-09T22:02:00+00:00"
     },
     {
+      "id": "S3B_zi",
+      "satelit": "S3B",
+      "fereastra": "zi",
+      "ora_estimata_utc": "2026-10-10T08:40:00+00:00",
+      "peste_minute": 1397,
+      "variatie_min": 13,
+      "observatii": 2,
+      "date_disponibile_utc": "2026-10-10T09:53:00+00:00",
+      "date_disponibile_p10": "2026-10-10T09:29:00+00:00",
+      "date_disponibile_p90": "2026-10-10T10:26:00+00:00"
+    },
+    {
       "id": "S3A_zi",
       "satelit": "S3A",
       "fereastra": "zi",
       "ora_estimata_utc": "2026-10-10T08:52:30+00:00",
-      "peste_minute": 1414,
+      "peste_minute": 1409,
       "variatie_min": 14,
       "observatii": 2,
       "date_disponibile_utc": "2026-10-10T10:05:30+00:00",
       "date_disponibile_p10": "2026-10-10T09:41:30+00:00",
       "date_disponibile_p90": "2026-10-10T10:38:30+00:00"
-    },
-    {
-      "id": "S3B_zi",
-      "satelit": "S3B",
-      "fereastra": "zi",
-      "ora_estimata_utc": "2026-10-10T08:53:00+00:00",
-      "peste_minute": 1415,
-      "variatie_min": 26,
-      "observatii": 3,
-      "date_disponibile_utc": "2026-10-10T10:06:00+00:00",
-      "date_disponibile_p10": "2026-10-10T09:42:00+00:00",
-      "date_disponibile_p90": "2026-10-10T10:39:00+00:00"
     }
   ],
   "ultima_achizitie": {
     "achizitie_utc": "2026-10-08T20:02:47+00:00",
     "satelit": "S3A",
     "publicat_asteptat_utc": "2026-10-08T21:15:47+00:00",
-    "vechime_min": 796,
+    "vechime_min": 801,
     "gap_orbital_h": 10.7,
     "in_interval_normal": true,
     "intarziere_min": 0,
