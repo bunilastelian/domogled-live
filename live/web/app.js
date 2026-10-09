@@ -655,16 +655,38 @@ function renderAlerts() {
   // Fiecare alerta devine clicabila si duce harta la locul focarului.
   // Alertele au lat/lon (centrul de masa al detectiilor noi din acel lot),
   // deci nu ducem la focarul principal, ci exact unde au aparut detectiile.
-  box.innerHTML = a.slice(0, 12).map((x, i) => {
+  const acum = Date.now();
+  const deCand = t => {
+    const ms = acum - Date.parse(t);
+    if (isNaN(ms)) return '';
+    const h = ms / 3600000;
+    if (h < 1) return `${Math.round(h * 60)} min`;
+    if (h < 48) return `${Math.round(h)} h`;
+    return `${Math.round(h / 24)} zile`;
+  };
+
+  // Varsta celei mai recente alerte: daca toate sunt vechi, lista e istoric si
+  // trebuie spus explicit. Altfel "12 alerte" se citeste ca "12 probleme acum",
+  // cand de fapt sunt ultimele inregistrate inainte sa se stinga incendiul.
+  const vechimeOre = (acum - Date.parse(a[0].at)) / 3600000;
+
+  box.innerHTML = (vechimeOre > 12 ? `
+    <div class="alerts-stale">
+      <b>Nicio alertă nouă de ${deCand(a[0].at)}.</b>
+      Mai jos sunt ultimele înregistrate — se păstrează ca istoric al
+      incendiului, nu ca semnal de activitate curentă.
+    </div>` : '')
+    + a.slice(0, 12).map((x, i) => {
     const areLoc = typeof x.lat === 'number' && typeof x.lon === 'number';
-    const cls = `alert ${i === 0 ? 'new' : ''}${areLoc ? ' clickable' : ''}`;
+    const cls = `alert ${i === 0 && vechimeOre <= 12 ? 'new' : ''}${areLoc ? ' clickable' : ''}`;
     const atr = areLoc
       ? ` role="button" tabindex="0" data-lat="${x.lat}" data-lon="${x.lon}"`
         + ` data-label="${esc(x.label)}" data-at="${x.at}"`
       : '';
+    const varsta = deCand(x.at);
     return `<div class="${cls}"${atr}>
        ${areLoc ? '<span class="alert-pin">📍</span>' : ''}${esc(x.label)}<br>
-      <time>${new Date(x.at).toLocaleString('ro-RO')} · ${esc(x.source)}${x.telegram ? ' · Telegram' : ''}${areLoc ? ' · <b class="see-map">vezi pe hartă</b>' : ''}</time>
+      <time>${varsta ? `acum ${varsta} · ` : ''}${new Date(x.at).toLocaleString('ro-RO')} · ${esc(x.source)}${x.telegram ? ' · Telegram' : ''}${areLoc ? ' · <b class="see-map">vezi pe hartă</b>' : ''}</time>
      </div>`;
   }).join('');
 
