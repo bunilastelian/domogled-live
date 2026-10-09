@@ -1,5 +1,5 @@
 {
-  "generat": "2026-10-09T21:42:14+00:00",
+  "generat": "2026-10-09T21:47:16+00:00",
   "latenta_publicare_min": {
     "medie": 73,
     "p10": 49,
@@ -12,7 +12,7 @@
       "satelit": "S3A",
       "fereastra": "zi",
       "ora_estimata_utc": "2026-10-10T08:39:20+00:00",
-      "peste_minute": 657,
+      "peste_minute": 652,
       "variatie_min": 26,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-10T09:52:20+00:00",
@@ -24,7 +24,7 @@
       "satelit": "S3B",
       "fereastra": "zi",
       "ora_estimata_utc": "2026-10-10T08:52:00+00:00",
-      "peste_minute": 670,
+      "peste_minute": 665,
       "variatie_min": 24,
       "observatii": 3,
       "date_disponibile_utc": "2026-10-10T10:05:00+00:00",
@@ -35,20 +35,20 @@
       "id": "S3B_noapte",
       "satelit": "S3B",
       "fereastra": "noapte",
-      "ora_estimata_utc": "2026-10-10T20:03:00+00:00",
-      "peste_minute": 1341,
-      "variatie_min": 13,
-      "observatii": 2,
-      "date_disponibile_utc": "2026-10-10T21:16:00+00:00",
-      "date_disponibile_p10": "2026-10-10T20:52:00+00:00",
-      "date_disponibile_p90": "2026-10-10T21:49:00+00:00"
+      "ora_estimata_utc": "2026-10-10T20:14:40+00:00",
+      "peste_minute": 1347,
+      "variatie_min": 24,
+      "observatii": 3,
+      "date_disponibile_utc": "2026-10-10T21:27:40+00:00",
+      "date_disponibile_p10": "2026-10-10T21:03:40+00:00",
+      "date_disponibile_p90": "2026-10-10T22:00:40+00:00"
     },
     {
       "id": "S3A_noapte",
       "satelit": "S3A",
       "fereastra": "noapte",
       "ora_estimata_utc": "2026-10-10T20:15:00+00:00",
-      "peste_minute": 1353,
+      "peste_minute": 1348,
       "variatie_min": 13,
       "observatii": 2,
       "date_disponibile_utc": "2026-10-10T21:28:00+00:00",
@@ -57,15 +57,15 @@
     }
   ],
   "ultima_achizitie": {
-    "achizitie_utc": "2026-10-09T09:16:00+00:00",
+    "achizitie_utc": "2026-10-09T20:38:54+00:00",
     "satelit": "S3B",
-    "publicat_asteptat_utc": "2026-10-09T10:29:00+00:00",
-    "vechime_min": 746,
+    "publicat_asteptat_utc": "2026-10-09T21:51:54+00:00",
+    "vechime_min": 68,
     "gap_orbital_h": 10.7,
     "in_interval_normal": true,
     "intarziere_min": 0,
     "explicatie": "in intervalul orbital normal pentru aceasta zona"
   },
-  "total_achizitii_istoric": 29,
+  "total_achizitii_istoric": 30,
   "nota": "Orele de trecere sunt estimate din achizitiile reale din ultimele 3 zile (orbita heliosincrona = ora stabila). Variatie = jumatate din intervalul observat."
 }
