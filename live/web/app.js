@@ -713,8 +713,13 @@ async function refresh(force) {
       return;
     }
     fullState = st;
-    syncZones();
-    const sig = `${(st.stats || {}).updated}|${document.getElementById('l-strong').checked}`;
+    syncZones();            // seteaza `state` pe zona activa
+    // Statisticile stau sub zones[<zona>].stats, NU la radacina state.json.
+    // Citirea din radacina (st.stats) dadea undefined: semnatura de randare
+    // devenea "undefined|false", iar drawChart primea un array gol - graficul
+    // se desena din date vechi sau deloc, desi state.stats era plin.
+    const zst = (state && state.stats) || {};
+    const sig = `${zst.updated}|${document.getElementById('l-strong').checked}`;
     const changed = force || sig !== lastRenderSig;
 
     renderStats();          // mereu: badge-ul de prospetime trebuie actualizat
@@ -722,7 +727,7 @@ async function refresh(force) {
       lastRenderSig = sig;
       buildTimeline();      // reconstruim timeline-ul pe zona/noile date
       renderDetections();
-      drawChart((st.stats || {}).days || []);
+      drawChart(zst.days || []);
       renderAlerts();
       renderImagery();
       renderWeather();
