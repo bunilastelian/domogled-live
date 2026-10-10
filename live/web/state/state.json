@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 821,
+ "cycles": 822,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11208,9 +11208,33 @@
      "daynight": "N",
      "satellite": "N20",
      "first_seen": "2026-10-10T04:42:12+00:00"
+    },
+    "NASA|VIIRS-SNPP-375m|2026-10-10|0107|44.8746|22.4643": {
+     "src": "NASA",
+     "sensor": "VIIRS-SNPP-375m",
+     "lat": 44.87458,
+     "lon": 22.46426,
+     "date": "2026-10-10",
+     "time": "0107",
+     "frp": 1.16,
+     "confidence": 60,
+     "daynight": "N",
+     "satellite": "N",
+     "first_seen": "2026-10-10T12:52:12+00:00"
     }
    },
    "alerts": [
+    {
+     "at": "2026-10-10T12:52:13+00:00",
+     "count": 1,
+     "max_frp": 1.16,
+     "lat": 44.87458,
+     "lon": 22.46426,
+     "when": "2026-10-10 0107Z",
+     "source": "NASA VIIRS-SNPP-375m",
+     "telegram": true,
+     "label": "1 detecții noi · max 1.2 MW · 2026-10-10 0107Z"
+    },
     {
      "at": "2026-10-10T04:42:14+00:00",
      "count": 1,
@@ -11501,6 +11525,46 @@
    },
    "fires": [
     {
+     "id": "cernei-dunarii-44.898-22.478",
+     "zone": "cernei-dunarii",
+     "lat": 44.8978,
+     "lon": 22.47849,
+     "points": 421,
+     "days": 10,
+     "first": "2026-09-30T00:54+00:00",
+     "last": "2026-10-10T01:26+00:00",
+     "frp_max": 97.36,
+     "frp_sum": 1731.1,
+     "frp_last24": 1.6,
+     "frp_prev24": 15.0,
+     "det_last24": 2,
+     "det_prev24": 2,
+     "trend": "în scădere",
+     "trend_color": "#30a46c",
+     "extent_km": 8.89,
+     "nasa": 325,
+     "esa": 96,
+     "in_park": true,
+     "parks": [
+      "Parcul Național Domogled – Valea Cernei"
+     ],
+     "nearest_place": "Colțu Pietrii (1228 m)",
+     "nearest_km": 0.9,
+     "elev_span_m": null,
+     "rank": 1,
+     "sync": {
+      "grup": [
+       1,
+       2
+      ],
+      "n": 2,
+      "varf_comun": "2026-10-05",
+      "corelatie": 0.85,
+      "distanta_max_km": 18.9,
+      "ore_intre_varfuri": 24.0
+     }
+    },
+    {
      "id": "cernei-dunarii-44.768-22.324",
      "zone": "cernei-dunarii",
      "lat": 44.76792,
@@ -11527,46 +11591,6 @@
      "nearest_place": "Orșova",
      "nearest_km": 7.65,
      "elev_span_m": null,
-     "rank": 1,
-     "sync": {
-      "grup": [
-       1,
-       2
-      ],
-      "n": 2,
-      "varf_comun": "2026-10-06",
-      "corelatie": 0.85,
-      "distanta_max_km": 18.9,
-      "ore_intre_varfuri": 24.0
-     }
-    },
-    {
-     "id": "cernei-dunarii-44.898-22.479",
-     "zone": "cernei-dunarii",
-     "lat": 44.89786,
-     "lon": 22.47852,
-     "points": 420,
-     "days": 10,
-     "first": "2026-09-30T00:54+00:00",
-     "last": "2026-10-10T01:26+00:00",
-     "frp_max": 97.36,
-     "frp_sum": 1730.0,
-     "frp_last24": 0.4,
-     "frp_prev24": 15.0,
-     "det_last24": 1,
-     "det_prev24": 2,
-     "trend": "în scădere",
-     "trend_color": "#30a46c",
-     "extent_km": 8.89,
-     "nasa": 324,
-     "esa": 96,
-     "in_park": true,
-     "parks": [
-      "Parcul Național Domogled – Valea Cernei"
-     ],
-     "nearest_place": "Colțu Pietrii (1228 m)",
-     "nearest_km": 0.9,
-     "elev_span_m": null,
      "rank": 2,
      "sync": {
       "grup": [
@@ -11574,7 +11598,7 @@
        2
       ],
       "n": 2,
-      "varf_comun": "2026-10-06",
+      "varf_comun": "2026-10-05",
       "corelatie": 0.85,
       "distanta_max_km": 18.9,
       "ore_intre_varfuri": 24.0
@@ -11583,7 +11607,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T12:47:14+00:00",
+    "updated": "2026-10-10T12:52:14+00:00",
     "time": "2026-10-10T12:45",
     "temp_c": 24.6,
     "humidity_pct": 43,
@@ -11870,7 +11894,7 @@
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 836,
+   "cycles": 837,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16733,12 +16757,12 @@
    "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
    "short": "Cernei – Dunării",
    "stats": {
-    "total": 845,
-    "nasa": 625,
+    "total": 846,
+    "nasa": 626,
     "esa": 220,
-    "last24_count": 2,
-    "last24_frp": 1.4,
-    "last24_max": 1.0,
+    "last24_count": 3,
+    "last24_frp": 2.6,
+    "last24_max": 1.2,
     "days": [
      {
       "date": "2026-09-30",
@@ -16842,12 +16866,12 @@
      },
      {
       "date": "2026-10-10",
-      "count": 1,
-      "frp": 0.4,
-      "max": 0.4,
-      "nasa": 1,
+      "count": 2,
+      "frp": 1.6,
+      "max": 1.2,
+      "nasa": 2,
       "esa": 0,
-      "frp_nasa": 0.4,
+      "frp_nasa": 1.6,
       "frp_esa": 0.0
      }
     ],
@@ -16864,7 +16888,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-10T04:42:12+00:00"
     },
-    "updated": "2026-10-10T12:47:14+00:00"
+    "updated": "2026-10-10T12:52:14+00:00"
    }
   }
  },
@@ -16938,7 +16962,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T12:47:14+00:00",
+ "updated": "2026-10-10T12:52:14+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
