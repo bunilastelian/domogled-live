@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 808,
+ "cycles": 809,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11512,11 +11512,11 @@
      "frp_max": 18.66,
      "frp_sum": 1194.7,
      "frp_last24": 1.0,
-     "frp_prev24": 19.8,
+     "frp_prev24": 0.0,
      "det_last24": 1,
-     "det_prev24": 4,
-     "trend": "în scădere",
-     "trend_color": "#30a46c",
+     "det_prev24": 0,
+     "trend": "în creștere",
+     "trend_color": "#e5484d",
      "extent_km": 7.9,
      "nasa": 301,
      "esa": 124,
@@ -11583,23 +11583,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T11:42:15+00:00",
-    "time": "2026-10-10T11:30",
+    "updated": "2026-10-10T11:47:14+00:00",
+    "time": "2026-10-10T11:45",
     "temp_c": 24.8,
-    "humidity_pct": 41,
-    "wind_kmh": 13.6,
-    "gust_kmh": 33.8,
-    "wind_from_deg": 140,
+    "humidity_pct": 42,
+    "wind_kmh": 13.3,
+    "gust_kmh": 33.1,
+    "wind_from_deg": 139,
     "wind_from_compass": "SE",
-    "downwind_deg": 320,
+    "downwind_deg": 319,
     "downwind_compass": "NV",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 10.5,
-    "vpd_kpa": 1.85,
+    "vpd_kpa": 1.82,
     "soil_moisture": 0.125,
     "elevation_m": 321.0,
     "danger": {
-     "index": 2.27,
+     "index": 2.32,
      "name": "Angström",
      "class": "ridicat",
      "color": "#f76b15",
@@ -11870,7 +11870,7 @@
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 823,
+   "cycles": 824,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16864,7 +16864,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-10T04:42:12+00:00"
     },
-    "updated": "2026-10-10T11:42:15+00:00"
+    "updated": "2026-10-10T11:47:14+00:00"
    }
   }
  },
@@ -16938,7 +16938,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T11:42:15+00:00",
+ "updated": "2026-10-10T11:47:14+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
