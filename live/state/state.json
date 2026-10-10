@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 802,
+ "cycles": 803,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11583,9 +11583,9 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T11:12:15+00:00",
-    "time": "2026-10-10T11:00",
-    "temp_c": 24.6,
+    "updated": "2026-10-10T11:17:17+00:00",
+    "time": "2026-10-10T11:15",
+    "temp_c": 24.7,
     "humidity_pct": 41,
     "wind_kmh": 13.8,
     "gust_kmh": 34.2,
@@ -11595,11 +11595,11 @@
     "downwind_compass": "NV",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 10.5,
-    "vpd_kpa": 1.83,
+    "vpd_kpa": 1.84,
     "soil_moisture": 0.125,
     "elevation_m": 321.0,
     "danger": {
-     "index": 2.29,
+     "index": 2.28,
      "name": "Angström",
      "class": "ridicat",
      "color": "#f76b15",
@@ -11866,9 +11866,10 @@
     "S3B_SL_2_FRP____20261007T082722_20261007T083022_20261007T102737_0179_125_235______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T091600_20261009T091900_20261009T111904_0179_125_264______MAR_O_NR_003.SEN3",
-    "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3"
+    "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3",
+    "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 817,
+   "cycles": 818,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16862,7 +16863,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-10T04:42:12+00:00"
     },
-    "updated": "2026-10-10T11:12:15+00:00"
+    "updated": "2026-10-10T11:17:17+00:00"
    }
   }
  },
@@ -16936,7 +16937,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T11:12:15+00:00",
+ "updated": "2026-10-10T11:17:17+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
