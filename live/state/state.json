@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 922,
+ "cycles": 924,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11221,9 +11221,62 @@
      "daynight": "N",
      "satellite": "N",
      "first_seen": "2026-10-10T12:52:12+00:00"
+    },
+    "ESA|SLSTR MWIR1km-standard|2026-10-10|2013|44.8839|22.4811": {
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.88387,
+     "lon": 22.48115,
+     "date": "2026-10-10",
+     "time": "2013",
+     "frp": 4.5,
+     "confidence": 64,
+     "daynight": "N",
+     "satellite": "S3B",
+     "bt_k": 295.0,
+     "first_seen": "2026-10-10T21:17:14+00:00"
+    },
+    "ESA|SLSTR SWIR500m|2026-10-10|2013|44.8734|22.4635": {
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.87339,
+     "lon": 22.46349,
+     "date": "2026-10-10",
+     "time": "2013",
+     "frp": 1.33,
+     "confidence": 100,
+     "daynight": "N",
+     "satellite": "S3B",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-10T21:17:14+00:00"
+    },
+    "ESA|SLSTR SWIR500m|2026-10-10|2013|44.8839|22.4820": {
+     "src": "ESA",
+     "sensor": "SLSTR SWIR500m",
+     "lat": 44.88388,
+     "lon": 22.48198,
+     "date": "2026-10-10",
+     "time": "2013",
+     "frp": 1.48,
+     "confidence": 0,
+     "daynight": "N",
+     "satellite": "S3B",
+     "bt_k": 0.0,
+     "first_seen": "2026-10-10T21:17:14+00:00"
     }
    },
    "alerts": [
+    {
+     "at": "2026-10-10T21:17:15+00:00",
+     "count": 3,
+     "max_frp": 4.5,
+     "lat": 44.88387,
+     "lon": 22.48115,
+     "when": "2026-10-10 2013Z",
+     "source": "ESA SLSTR MWIR1km-standard",
+     "telegram": true,
+     "label": "3 detecții noi · max 4.5 MW · 2026-10-10 2013Z"
+    },
     {
      "at": "2026-10-10T12:52:13+00:00",
      "count": 1,
@@ -11527,29 +11580,29 @@
     {
      "id": "cernei-dunarii-44.898-22.478",
      "zone": "cernei-dunarii",
-     "lat": 44.8978,
-     "lon": 22.47849,
-     "points": 421,
+     "lat": 44.89768,
+     "lon": 22.47847,
+     "points": 424,
      "days": 10,
      "first": "2026-09-30T00:54+00:00",
-     "last": "2026-10-10T01:26+00:00",
+     "last": "2026-10-10T20:13+00:00",
      "frp_max": 97.36,
-     "frp_sum": 1731.1,
-     "frp_last24": 1.6,
+     "frp_sum": 1738.4,
+     "frp_last24": 8.9,
      "frp_prev24": 0.0,
-     "det_last24": 2,
+     "det_last24": 5,
      "det_prev24": 0,
      "trend": "în creștere",
      "trend_color": "#e5484d",
      "extent_km": 8.89,
      "nasa": 325,
-     "esa": 96,
+     "esa": 99,
      "in_park": true,
      "parks": [
       "Parcul Național Domogled – Valea Cernei"
      ],
      "nearest_place": "Colțu Pietrii (1228 m)",
-     "nearest_km": 0.9,
+     "nearest_km": 0.92,
      "elev_span_m": null,
      "rank": 1,
      "sync": {
@@ -11607,23 +11660,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T21:12:14+00:00",
-    "time": "2026-10-10T21:00",
+    "updated": "2026-10-10T21:22:15+00:00",
+    "time": "2026-10-10T21:15",
     "temp_c": 19.6,
-    "humidity_pct": 59,
-    "wind_kmh": 7.2,
-    "gust_kmh": 17.3,
-    "wind_from_deg": 96,
+    "humidity_pct": 60,
+    "wind_kmh": 7.7,
+    "gust_kmh": 19.1,
+    "wind_from_deg": 101,
     "wind_from_compass": "E",
-    "downwind_deg": 276,
+    "downwind_deg": 281,
     "downwind_compass": "V",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 8.8,
-    "vpd_kpa": 0.94,
+    "vpd_kpa": 0.91,
     "soil_moisture": 0.125,
     "elevation_m": 321.0,
     "danger": {
-     "index": 3.69,
+     "index": 3.74,
      "name": "Angström",
      "class": "scăzut",
      "color": "#30a46c",
@@ -11892,9 +11945,10 @@
     "S3B_SL_2_FRP____20261007T195017_20261007T195317_20261007T220459_0179_125_242______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T091600_20261009T091900_20261009T111904_0179_125_264______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3",
-    "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3"
+    "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3",
+    "S3B_SL_2_FRP____20261010T201243_20261010T201543_20261010T205959_0179_125_285______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 937,
+   "cycles": 939,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16757,12 +16811,12 @@
    "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
    "short": "Cernei – Dunării",
    "stats": {
-    "total": 846,
+    "total": 849,
     "nasa": 626,
-    "esa": 220,
-    "last24_count": 2,
-    "last24_frp": 1.6,
-    "last24_max": 1.2,
+    "esa": 223,
+    "last24_count": 5,
+    "last24_frp": 8.9,
+    "last24_max": 4.5,
     "days": [
      {
       "date": "2026-09-30",
@@ -16866,29 +16920,30 @@
      },
      {
       "date": "2026-10-10",
-      "count": 2,
-      "frp": 1.6,
-      "max": 1.2,
+      "count": 5,
+      "frp": 8.9,
+      "max": 4.5,
       "nasa": 2,
-      "esa": 0,
+      "esa": 3,
       "frp_nasa": 1.6,
-      "frp_esa": 0.0
+      "frp_esa": 7.3
      }
     ],
     "latest": {
-     "src": "NASA",
-     "sensor": "VIIRS-NOAA20-375m",
-     "lat": 44.87312,
-     "lon": 22.46387,
+     "src": "ESA",
+     "sensor": "SLSTR MWIR1km-standard",
+     "lat": 44.88387,
+     "lon": 22.48115,
      "date": "2026-10-10",
-     "time": "0126",
-     "frp": 0.4,
-     "confidence": 60,
+     "time": "2013",
+     "frp": 4.5,
+     "confidence": 64,
      "daynight": "N",
-     "satellite": "N20",
-     "first_seen": "2026-10-10T04:42:12+00:00"
+     "satellite": "S3B",
+     "bt_k": 295.0,
+     "first_seen": "2026-10-10T21:17:14+00:00"
     },
-    "updated": "2026-10-10T21:12:14+00:00"
+    "updated": "2026-10-10T21:22:16+00:00"
    }
   }
  },
@@ -16962,7 +17017,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T21:12:14+00:00",
+ "updated": "2026-10-10T21:22:16+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
