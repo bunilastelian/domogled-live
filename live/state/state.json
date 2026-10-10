@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 902,
+ "cycles": 903,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11575,12 +11575,12 @@
      "last": "2026-10-09T19:37+00:00",
      "frp_max": 18.66,
      "frp_sum": 1194.7,
-     "frp_last24": 1.0,
-     "frp_prev24": 0.0,
-     "det_last24": 1,
-     "det_prev24": 0,
-     "trend": "în creștere",
-     "trend_color": "#e5484d",
+     "frp_last24": 0.0,
+     "frp_prev24": 1.0,
+     "det_last24": 0,
+     "det_prev24": 1,
+     "trend": "în scădere",
+     "trend_color": "#30a46c",
      "extent_km": 7.9,
      "nasa": 301,
      "esa": 124,
@@ -11607,7 +11607,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T19:32:14+00:00",
+    "updated": "2026-10-10T19:37:15+00:00",
     "time": "2026-10-10T19:30",
     "temp_c": 19.2,
     "humidity_pct": 61,
@@ -11894,7 +11894,7 @@
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 917,
+   "cycles": 918,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16760,8 +16760,8 @@
     "total": 846,
     "nasa": 626,
     "esa": 220,
-    "last24_count": 3,
-    "last24_frp": 2.6,
+    "last24_count": 2,
+    "last24_frp": 1.6,
     "last24_max": 1.2,
     "days": [
      {
@@ -16888,7 +16888,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-10T04:42:12+00:00"
     },
-    "updated": "2026-10-10T19:32:14+00:00"
+    "updated": "2026-10-10T19:37:15+00:00"
    }
   }
  },
@@ -16962,7 +16962,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T19:32:14+00:00",
+ "updated": "2026-10-10T19:37:15+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
