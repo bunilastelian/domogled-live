@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 723,
+ "cycles": 724,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11195,9 +11195,33 @@
      "satellite": "S3A",
      "bt_k": 0.0,
      "first_seen": "2026-10-09T22:07:14+00:00"
+    },
+    "NASA|VIIRS-NOAA20-375m|2026-10-10|0126|44.8731|22.4639": {
+     "src": "NASA",
+     "sensor": "VIIRS-NOAA20-375m",
+     "lat": 44.87312,
+     "lon": 22.46387,
+     "date": "2026-10-10",
+     "time": "0126",
+     "frp": 0.4,
+     "confidence": 60,
+     "daynight": "N",
+     "satellite": "N20",
+     "first_seen": "2026-10-10T04:42:12+00:00"
     }
    },
    "alerts": [
+    {
+     "at": "2026-10-10T04:42:14+00:00",
+     "count": 1,
+     "max_frp": 0.4,
+     "lat": 44.87312,
+     "lon": 22.46387,
+     "when": "2026-10-10 0126Z",
+     "source": "NASA VIIRS-NOAA20-375m",
+     "telegram": true,
+     "label": "1 detecții noi · max 0.4 MW · 2026-10-10 0126Z"
+    },
     {
      "at": "2026-10-09T22:07:15+00:00",
      "count": 1,
@@ -11519,29 +11543,29 @@
     {
      "id": "cernei-dunarii-44.898-22.479",
      "zone": "cernei-dunarii",
-     "lat": 44.89792,
-     "lon": 22.47856,
-     "points": 419,
-     "days": 9,
+     "lat": 44.89786,
+     "lon": 22.47852,
+     "points": 420,
+     "days": 10,
      "first": "2026-09-30T00:54+00:00",
-     "last": "2026-10-08T13:55+00:00",
+     "last": "2026-10-10T01:26+00:00",
      "frp_max": 97.36,
-     "frp_sum": 1729.6,
-     "frp_last24": 0.0,
+     "frp_sum": 1730.0,
+     "frp_last24": 0.4,
      "frp_prev24": 118.4,
-     "det_last24": 0,
+     "det_last24": 1,
      "det_prev24": 19,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 8.89,
-     "nasa": 323,
+     "nasa": 324,
      "esa": 96,
      "in_park": true,
      "parks": [
       "Parcul Național Domogled – Valea Cernei"
      ],
      "nearest_place": "Colțu Pietrii (1228 m)",
-     "nearest_km": 0.89,
+     "nearest_km": 0.9,
      "elev_span_m": null,
      "rank": 2,
      "sync": {
@@ -11559,7 +11583,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T04:37:21+00:00",
+    "updated": "2026-10-10T04:42:14+00:00",
     "time": "2026-10-10T04:30",
     "temp_c": 12.0,
     "humidity_pct": 89,
@@ -11844,7 +11868,7 @@
     "S3B_SL_2_FRP____20261009T091600_20261009T091900_20261009T111904_0179_125_264______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 738,
+   "cycles": 739,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16707,11 +16731,11 @@
    "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
    "short": "Cernei – Dunării",
    "stats": {
-    "total": 844,
-    "nasa": 624,
+    "total": 845,
+    "nasa": 625,
     "esa": 220,
-    "last24_count": 1,
-    "last24_frp": 1.0,
+    "last24_count": 2,
+    "last24_frp": 1.4,
     "last24_max": 1.0,
     "days": [
      {
@@ -16813,23 +16837,32 @@
       "esa": 1,
       "frp_nasa": 0.0,
       "frp_esa": 1.0
+     },
+     {
+      "date": "2026-10-10",
+      "count": 1,
+      "frp": 0.4,
+      "max": 0.4,
+      "nasa": 1,
+      "esa": 0,
+      "frp_nasa": 0.4,
+      "frp_esa": 0.0
      }
     ],
     "latest": {
-     "src": "ESA",
-     "sensor": "SLSTR SWIR500m",
-     "lat": 44.78119,
-     "lon": 22.36032,
-     "date": "2026-10-09",
-     "time": "1937",
-     "frp": 1.0,
-     "confidence": 100,
+     "src": "NASA",
+     "sensor": "VIIRS-NOAA20-375m",
+     "lat": 44.87312,
+     "lon": 22.46387,
+     "date": "2026-10-10",
+     "time": "0126",
+     "frp": 0.4,
+     "confidence": 60,
      "daynight": "N",
-     "satellite": "S3A",
-     "bt_k": 0.0,
-     "first_seen": "2026-10-09T22:07:14+00:00"
+     "satellite": "N20",
+     "first_seen": "2026-10-10T04:42:12+00:00"
     },
-    "updated": "2026-10-10T04:37:24+00:00"
+    "updated": "2026-10-10T04:42:14+00:00"
    }
   }
  },
@@ -16903,7 +16936,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T04:37:24+00:00",
+ "updated": "2026-10-10T04:42:14+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
