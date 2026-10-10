@@ -1,33 +1,20 @@
 {
-  "generated": "2026-10-10T15:07:57+00:00",
-  "verdict": "ESCALADARE",
+  "generated": "2026-10-10T18:07:55+00:00",
+  "verdict": "STAGNARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-10T12:07:39+00:00",
+    "since": "2026-10-10T15:07:57+00:00",
     "hours_elapsed": 3.0,
     "zones": {
       "cernei-dunarii": {
-        "total": 1.0,
-        "last24_count": 1.0,
-        "last24_frp": 1.2,
-        "last24_max": 0.2,
+        "total": 0.0,
+        "last24_count": 0.0,
+        "last24_frp": 0.0,
+        "last24_max": 0.0,
         "burn_ha": 0.0,
         "burn_ha_mod": 0.0,
-        "new_fires": [
-          {
-            "id": "cernei-dunarii-44.898-22.478",
-            "lat": 44.8978,
-            "lon": 22.4785,
-            "frp_24h": 1.6,
-            "points": 421
-          }
-        ],
-        "gone_fires": [
-          {
-            "id": "cernei-dunarii-44.898-22.479",
-            "last_frp": 0.4
-          }
-        ],
+        "new_fires": [],
+        "gone_fires": [],
         "frp_changes": [],
         "new_scene": false,
         "prev_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
@@ -40,16 +27,16 @@
       "zone": "cernei-dunarii",
       "ok": true,
       "errors": [],
-      "current": "În imaginea Sentinel-2 true color se distinge un sistem montan accidentat, cu văi adânci și creste. Văd un nor subțire, semi-transparent, de culoare alb-albăstruie, orientat dinspre NV spre SE, care acoperă parțial zona centrală și estică. Nu se distinge fum dens sau o cicatrice de ardere clară (maro-negru) — norul și umbrele de relief maschează posibile zone arse. Pădurea verde densă acoperă aproximativ 60-70% din imagine, mai ales pe versanți; restul sunt poieni, stâncării și zone uscate maronii. Relief: văi adânci, versanți puternic înclinați, fără platou vizibil.",
+      "current": "Imaginea prezintă o zonă montană cu relief accidentat. Nu se distinge fum clar, ci doar nori albi și ceață densă în centru și est, care acoperă parțial terenul. Nu se distinge nicio cicatrice de ardere (zonă maro-închis sau neagră). Vegetația este predominant pădure densă verde (aproximativ 70% din suprafață), cu zone mai deschise la culoare, posibil pajiști sau stâncărie. Relieful este deluros-muntos, cu văi adânci și creste, vizibile prin umbrele reliefului. Norii și ceața împiedică observarea detaliată a focarelor.",
       "current_scene": "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
       "current_date": "2026-10-04T09:31:41.024000Z",
-      "comparison": "Fumul s-a extins semnificativ spre nord-est, acoperind o suprafață mult mai mare. Cicatricea de ardere pare să se fi extins în aceeași direcție (nord-est), vizibilă sub pana densă de fum. Vegetația din zonele neafectate de fum apare ușor mai uscată, cu nuanțe maronii mai pronunțate.",
+      "comparison": "Fumul s-a extins masiv spre est și sud-est, acoperind o suprafață mult mai mare. Cicatricea de ardere pare să se fi extins în aceeași direcție (est/sud-est), fiind acum parțial ascunsă de fumul dens. Vegetația din zonele neafectate de fum pare mai uscată, cu nuanțe mai pronunțate de maro, sugerând stres hidric accentuat.",
       "compared": [
         "s2_S2C_MSIL2A_20261002T093031_N0513_R136_T34TFQ_20261002T130613.png",
         "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png"
       ]
     }
   },
-  "report": "**RAPORT ANALIZĂ INCENDII – Carpații Meridionali**\n**Data: 2026-10-10 15:07 UTC | Zona: Domogled–Porțile de Fier**\n\n---\n\n**1. EVOLUȚIE: STAGNARE (cu tendință de declin accentuat)**\n\nFocul a scăzut dramatic față de vârful din 06.10 (706 MW/175 det). Trend 3 zile: 294 MW → 1,6 MW (-99%). În ultimele 24h avem doar **3 detecții / 2,6 MW**, iar în 24h anterioare 0. Delta FRP24h față de acum 3h: **+1,2 MW** (ușoară creștere, dar sub pragul de alertă). Ambele focare active (rank 1: 1,6 MW; rank 2: 1,0 MW) au trend \"în creștere\" doar pentru că anteriorul era 0 — nu escaladează real. Un focar a apărut (44.898/22.478, 421 puncte) și unul a dispărut (44.898/22.479) — practic aceeași zonă, posibil artefact de re-detectare. **Verdict: STAGNARE, nu escaladare.**\n\n**2. IMAGINI vs. CIFRE**\n\nImaginile 02.10 vs 04.10 arată fum extins NE și cicatrice de ardere — dar aceea era faza de vârf. Cifrele actuale (3 det/2,6 MW) nu mai corespund cu imagini recente (ultima e din 04.10, veche de 6 zile). **Nu avem imagine actuală** — deci nu putem confirma/infirma vizual starea de azi. cicatricea dNBR (240 ha moderat+, doar 3 ha sever) indică arderi de suprafață, nu de coronament.\n\n**3. RISC 24-48h**\n\nVânt SE 12 km/h (rafale 28,8) → pană spre NV. RH 47%, VPD 1,49 kPa (moderat), umezeala sol 0,125 (uscat). **17 mm precipitații în 48h** — factor major de stingere. Angström 2,75 (moderat), dar precipitațiile reduc riscul. Extindere posibilă NV, dar limitată. Zone expuse: **Colțu Pietrii (0,9 km, în parc)**, eventual Orșova (7,65 km).\n\n**4. PREDICȚIE 24h**\n\nFRP: **scădere sau stagnare la valori <5 MW. Probabilitate ~75%.** Estimare bazată pe trend + precipitații, **NU model fizic de propagare.**\n\n**5. SEMNALE**\n\n- Focar \"nou\" cu 421 puncte la 44.898/22.478 — identic cu cel dispărut; posibilă re-clasificare, nu focar real nou.\n- **Lipsă imaginii satelitare recente** (ultima 04.10) — nu pot valida vizual starea actuală.\n- Focar rank 1 și 2 au \"trend în creștere\" formal, dar de la 0 → valori minime; nu supra-interpretați.\n- Nor subțire în scenele vechi poate fi mascat cicatrice.",
-  "state_updated": "2026-10-10T15:07:16+00:00"
+  "report": "# RAPORT ANALIZĂ INCENDII – 10.10.2026 18:07 UTC\n**Zone: Domogled–Valea Cernei / Porțile de Fier**\n\n## EVOLUȚIE: STAGNARE (cu tendință de scădere lungă)\nFRP24h=2.6 MW, +0.0 față de acum 3h; det24h=3, +0 față de acum 3h. Nu există focare noi sau stinse – ambele focare (rank 1 și 2) rămân active cu trend numit „în creștere\" doar pentru că 24h anterioare au fost 0.0 MW. Comparativ cu vârful 10-06 (706.2 MW, 175 det), trendul pe 3 zile este **-99%** (294.4→1.6 MW). Deci: nu escaladează, dar nici nu s-a stins complet.\n\n## CE ARATĂ IMAGINILE\nScena 10-04 arată fum extins E/SE și cicatrice parțial ascunsă, vegetație mai uscată. **Contradicție parțială cu senzorii**: dNBR raportează doar 3.0 ha sever și 12.4 ha moderat-ridicat din 3827 ha cu semnal – adică mult zgomot de fundal (dNBR mediu focar 0.0753 < fundal 0.0842). Vizuallul sugerează mai multă ardere decât o confirmă cifrele. Nori/ceață densă acoperă centrul și estul – imposibil de validat focarele punctual.\n\n## RISC 24–48h\nVânt E 6.8 km/h (rafale 15.8), RH 63%, VPD 0.82 kPa, sol 0.125 (uscat). Precipitații 0 mm acum, dar **8.8 mm în 48h** – poate suprima focarele mici. Angström 3.94 (scăzut), urcând la 6.04. Expunere spre **V** (panta urcă E, coboară abrupt spre 269.5°). Colțu Pietrii (1228 m, în parc) e la 0.9 km de focarul 1 – cel mai expus. Orșova la 7.65 km, în afara parcului.\n\n## PREDICȚIE 24h\n**Stagnare/scădere**, probabilitate ~70% scădere, ~25% stagnare, ~5% creștere. Estimare pe trend, NU model fizic de propagare.\n\n## SEMNALE\n- 846 detectii totale istorice vs doar 3 în 24h – posibil zgomot termic rezidual, nu focar activ.\n- Focar „rank 1\" cu 421 puncte/10 zile, dar FRP 24h doar 1.6 MW – detectii fără focar real probabil.\n- Imagini 10-04 cu nori ascund zona; ultima comparație vizuală e veche (6 zile).\n- Lipsesc date: suprafețe AOI (None km2), confirmare terestră.",
+  "state_updated": "2026-10-10T18:07:18+00:00"
 }
