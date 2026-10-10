@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 688,
+ "cycles": 689,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11488,9 +11488,9 @@
      "frp_max": 18.66,
      "frp_sum": 1194.7,
      "frp_last24": 1.0,
-     "frp_prev24": 90.8,
+     "frp_prev24": 82.1,
      "det_last24": 1,
-     "det_prev24": 23,
+     "det_prev24": 15,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 7.9,
@@ -11528,9 +11528,9 @@
      "frp_max": 97.36,
      "frp_sum": 1729.6,
      "frp_last24": 0.0,
-     "frp_prev24": 147.2,
+     "frp_prev24": 137.9,
      "det_last24": 0,
-     "det_prev24": 28,
+     "det_prev24": 21,
      "trend": "în scădere",
      "trend_color": "#30a46c",
      "extent_km": 8.89,
@@ -11559,23 +11559,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-10T01:42:14+00:00",
-    "time": "2026-10-10T01:30",
-    "temp_c": 12.5,
+    "updated": "2026-10-10T01:47:14+00:00",
+    "time": "2026-10-10T01:45",
+    "temp_c": 12.6,
     "humidity_pct": 88,
     "wind_kmh": 5.2,
-    "gust_kmh": 13.0,
+    "gust_kmh": 12.6,
     "wind_from_deg": 344,
     "wind_from_compass": "N",
     "downwind_deg": 164,
     "downwind_compass": "S",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 11.2,
-    "vpd_kpa": 0.17,
+    "vpd_kpa": 0.18,
     "soil_moisture": 0.125,
     "elevation_m": 321.0,
     "danger": {
-     "index": 5.85,
+     "index": 5.84,
      "name": "Angström",
      "class": "fără pericol semnificativ",
      "color": "#3b82f6",
@@ -11844,7 +11844,7 @@
     "S3B_SL_2_FRP____20261009T091600_20261009T091900_20261009T111904_0179_125_264______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261009T203854_20261009T204154_20261009T212404_0180_125_271______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 703,
+   "cycles": 704,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16829,7 +16829,7 @@
      "bt_k": 0.0,
      "first_seen": "2026-10-09T22:07:14+00:00"
     },
-    "updated": "2026-10-10T01:42:14+00:00"
+    "updated": "2026-10-10T01:47:14+00:00"
    }
   }
  },
@@ -16903,7 +16903,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-10T01:42:14+00:00",
+ "updated": "2026-10-10T01:47:14+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
