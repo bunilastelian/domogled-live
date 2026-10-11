@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 1059,
+ "cycles": 1060,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11660,7 +11660,7 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-11T08:37:17+00:00",
+    "updated": "2026-10-11T08:42:13+00:00",
     "time": "2026-10-11T08:30",
     "temp_c": 17.0,
     "humidity_pct": 83,
@@ -11683,7 +11683,16 @@
      "formula": "I = (H/20) + (27-T)/10; mai mic = mai periculos",
      "next48_min": 4.83
     },
-    "terrain": {},
+    "terrain": {
+     "elevation_m": 321.0,
+     "mean_ring_m": 351.0,
+     "span_km": 2.0,
+     "on_summit": false,
+     "upslope_deg": 89.5,
+     "upslope_compass": "E",
+     "slope_pct": 29.6,
+     "steepest_down_deg": 269.5
+    },
     "series": [
      {
       "t": "2026-10-11T00:00",
@@ -11939,7 +11948,7 @@
     "S3B_SL_2_FRP____20261010T084949_20261010T085249_20261010T105135_0179_125_278______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261010T201243_20261010T201543_20261010T205959_0179_125_285______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 1074,
+   "cycles": 1075,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16934,7 +16943,7 @@
      "bt_k": 295.0,
      "first_seen": "2026-10-10T21:17:14+00:00"
     },
-    "updated": "2026-10-11T08:37:31+00:00"
+    "updated": "2026-10-11T08:42:14+00:00"
    }
   }
  },
@@ -17008,7 +17017,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-11T08:37:31+00:00",
+ "updated": "2026-10-11T08:42:14+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
