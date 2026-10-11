@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 1211,
+ "cycles": 1212,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11660,23 +11660,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-11T21:13:58+00:00",
-    "time": "2026-10-11T21:00",
+    "updated": "2026-10-11T21:19:00+00:00",
+    "time": "2026-10-11T21:15",
     "temp_c": 14.1,
-    "humidity_pct": 82,
-    "wind_kmh": 17.6,
-    "gust_kmh": 44.6,
+    "humidity_pct": 80,
+    "wind_kmh": 17.9,
+    "gust_kmh": 44.3,
     "wind_from_deg": 332,
     "wind_from_compass": "NV",
     "downwind_deg": 152,
     "downwind_compass": "SE",
     "precip_now_mm": 0.0,
     "precip_next48_mm": 5.5,
-    "vpd_kpa": 0.29,
+    "vpd_kpa": 0.32,
     "soil_moisture": 0.119,
     "elevation_m": 321.0,
     "danger": {
-     "index": 5.39,
+     "index": 5.29,
      "name": "Angström",
      "class": "fără pericol semnificativ",
      "color": "#3b82f6",
@@ -11859,56 +11859,56 @@
      {
       "t": "2026-10-11T18:00",
       "temp": 14.0,
-      "rh": 85,
+      "rh": 83,
       "wind": 14.0,
       "dir": 334,
       "precip": 0.0,
-      "angstrom": 5.55
+      "angstrom": 5.45
      },
      {
       "t": "2026-10-11T19:00",
       "temp": 14.1,
-      "rh": 84,
+      "rh": 82,
       "wind": 16.4,
       "dir": 331,
-      "precip": 0.0,
-      "angstrom": 5.49
-     },
-     {
-      "t": "2026-10-11T20:00",
-      "temp": 14.2,
-      "rh": 81,
-      "wind": 16.8,
-      "dir": 332,
-      "precip": 0.0,
-      "angstrom": 5.33
-     },
-     {
-      "t": "2026-10-11T21:00",
-      "temp": 14.1,
-      "rh": 82,
-      "wind": 17.6,
-      "dir": 332,
       "precip": 0.0,
       "angstrom": 5.39
      },
      {
+      "t": "2026-10-11T20:00",
+      "temp": 13.9,
+      "rh": 83,
+      "wind": 16.8,
+      "dir": 332,
+      "precip": 0.0,
+      "angstrom": 5.46
+     },
+     {
+      "t": "2026-10-11T21:00",
+      "temp": 14.1,
+      "rh": 81,
+      "wind": 17.6,
+      "dir": 332,
+      "precip": 0.0,
+      "angstrom": 5.34
+     },
+     {
       "t": "2026-10-11T22:00",
       "temp": 13.9,
-      "rh": 80,
+      "rh": 79,
       "wind": 19.8,
       "dir": 333,
       "precip": 0.0,
-      "angstrom": 5.31
+      "angstrom": 5.26
      },
      {
       "t": "2026-10-11T23:00",
-      "temp": 13.6,
+      "temp": 13.4,
       "rh": 80,
       "wind": 19.8,
       "dir": 333,
       "precip": 0.0,
-      "angstrom": 5.34
+      "angstrom": 5.36
      }
     ]
    },
@@ -11950,7 +11950,7 @@
     "S3B_SL_2_FRP____20261010T201243_20261010T201543_20261010T205959_0179_125_285______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261011T082338_20261011T082638_20261011T102542_0180_125_292______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 1226,
+   "cycles": 1227,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16945,7 +16945,7 @@
      "bt_k": 295.0,
      "first_seen": "2026-10-10T21:17:14+00:00"
     },
-    "updated": "2026-10-11T21:13:58+00:00"
+    "updated": "2026-10-11T21:19:00+00:00"
    }
   }
  },
@@ -17019,7 +17019,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-11T21:13:58+00:00",
+ "updated": "2026-10-11T21:19:00+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
