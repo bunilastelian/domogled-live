@@ -397,8 +397,7 @@
       "datetime": "2026-09-12T09:30:31.025000Z",
       "id": "S2C_MSIL2A_20260912T093031_N0512_R136_T34TEQ_20260912T130724",
       "cloud": 30.03,
-      "platform": "sentinel-2c",
-      "file": "s2hist_cernei-dunarii_20260912.jpg"
+      "platform": "sentinel-2c"
     },
     {
       "date": "2026-09-14",
