@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 1325,
+ "cycles": 1326,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -11671,23 +11671,23 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-10-12T15:32:15+00:00",
+    "updated": "2026-10-12T15:37:18+00:00",
     "time": "2026-10-12T15:30",
-    "temp_c": 14.0,
-    "humidity_pct": 60,
-    "wind_kmh": 17.3,
-    "gust_kmh": 43.6,
-    "wind_from_deg": 329,
+    "temp_c": 14.1,
+    "humidity_pct": 57,
+    "wind_kmh": 17.5,
+    "gust_kmh": 46.4,
+    "wind_from_deg": 328,
     "wind_from_compass": "NV",
-    "downwind_deg": 149,
+    "downwind_deg": 148,
     "downwind_compass": "SE",
     "precip_now_mm": 0.0,
-    "precip_next48_mm": 0,
-    "vpd_kpa": 0.64,
+    "precip_next48_mm": 0.2,
+    "vpd_kpa": 0.69,
     "soil_moisture": 0.234,
     "elevation_m": 321.0,
     "danger": {
-     "index": 4.3,
+     "index": 4.14,
      "name": "Angström",
      "class": "fără pericol semnificativ",
      "color": "#3b82f6",
@@ -11815,102 +11815,102 @@
      },
      {
       "t": "2026-10-12T12:00",
-      "temp": 17.4,
-      "rh": 51,
-      "wind": 21.7,
-      "dir": 333,
+      "temp": 17.8,
+      "rh": 48,
+      "wind": 21.6,
+      "dir": 334,
       "precip": 0.0,
-      "angstrom": 3.51
+      "angstrom": 3.32
      },
      {
       "t": "2026-10-12T13:00",
-      "temp": 16.7,
-      "rh": 52,
-      "wind": 23.0,
-      "dir": 335,
+      "temp": 17.0,
+      "rh": 49,
+      "wind": 22.9,
+      "dir": 336,
       "precip": 0.0,
-      "angstrom": 3.63
+      "angstrom": 3.45
      },
      {
       "t": "2026-10-12T14:00",
-      "temp": 15.7,
-      "rh": 56,
-      "wind": 23.0,
-      "dir": 335,
+      "temp": 15.9,
+      "rh": 53,
+      "wind": 22.7,
+      "dir": 337,
       "precip": 0.0,
-      "angstrom": 3.93
+      "angstrom": 3.76
      },
      {
       "t": "2026-10-12T15:00",
-      "temp": 14.5,
-      "rh": 59,
-      "wind": 19.5,
-      "dir": 330,
+      "temp": 14.6,
+      "rh": 55,
+      "wind": 19.3,
+      "dir": 331,
       "precip": 0.0,
-      "angstrom": 4.2
+      "angstrom": 3.99
      },
      {
       "t": "2026-10-12T16:00",
       "temp": 13.6,
-      "rh": 60,
-      "wind": 15.4,
-      "dir": 327,
+      "rh": 58,
+      "wind": 15.8,
+      "dir": 325,
       "precip": 0.0,
-      "angstrom": 4.34
+      "angstrom": 4.24
      },
      {
       "t": "2026-10-12T17:00",
-      "temp": 13.1,
-      "rh": 62,
-      "wind": 12.8,
-      "dir": 328,
+      "temp": 13.0,
+      "rh": 60,
+      "wind": 13.4,
+      "dir": 324,
       "precip": 0.0,
-      "angstrom": 4.49
+      "angstrom": 4.4
      },
      {
       "t": "2026-10-12T18:00",
       "temp": 12.6,
-      "rh": 63,
-      "wind": 11.3,
-      "dir": 329,
+      "rh": 62,
+      "wind": 11.7,
+      "dir": 326,
       "precip": 0.0,
-      "angstrom": 4.59
+      "angstrom": 4.54
      },
      {
       "t": "2026-10-12T19:00",
-      "temp": 12.1,
-      "rh": 64,
-      "wind": 10.6,
-      "dir": 332,
+      "temp": 12.2,
+      "rh": 63,
+      "wind": 11.0,
+      "dir": 328,
       "precip": 0.0,
-      "angstrom": 4.69
+      "angstrom": 4.63
      },
      {
       "t": "2026-10-12T20:00",
-      "temp": 12.1,
-      "rh": 66,
+      "temp": 12.0,
+      "rh": 65,
       "wind": 9.8,
       "dir": 332,
       "precip": 0.0,
-      "angstrom": 4.79
+      "angstrom": 4.75
      },
      {
       "t": "2026-10-12T21:00",
       "temp": 12.0,
-      "rh": 68,
-      "wind": 8.6,
-      "dir": 327,
+      "rh": 67,
+      "wind": 8.4,
+      "dir": 329,
       "precip": 0.0,
-      "angstrom": 4.9
+      "angstrom": 4.85
      },
      {
       "t": "2026-10-12T22:00",
-      "temp": 11.7,
-      "rh": 70,
+      "temp": 11.9,
+      "rh": 69,
       "wind": 7.8,
       "dir": 326,
       "precip": 0.0,
-      "angstrom": 5.03
+      "angstrom": 4.96
      },
      {
       "t": "2026-10-12T23:00",
@@ -11964,7 +11964,7 @@
     "S3B_SL_2_FRP____20261011T082338_20261011T082638_20261011T102542_0180_125_292______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261011T194632_20261011T194932_20261011T220016_0179_125_299______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 1340,
+   "cycles": 1341,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -16959,7 +16959,7 @@
      "bt_k": 295.0,
      "first_seen": "2026-10-10T21:17:14+00:00"
     },
-    "updated": "2026-10-12T15:32:15+00:00"
+    "updated": "2026-10-12T15:37:19+00:00"
    }
   }
  },
@@ -17033,7 +17033,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-10-12T15:32:15+00:00",
+ "updated": "2026-10-12T15:37:19+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
