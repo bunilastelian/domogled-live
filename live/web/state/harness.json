@@ -1,37 +1,56 @@
 {
-  "generated": "2026-10-20T21:15:50+00:00",
-  "verdict": "STAGNARE",
+  "generated": "2026-10-20T21:21:01+00:00",
+  "verdict": "ESCALADARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-13T12:07:39+00:00",
-    "hours_elapsed": 177.14,
+    "since": "2026-10-20T21:15:50+00:00",
+    "hours_elapsed": 0.08,
     "zones": {
       "cernei-dunarii": {
-        "total": 0.0,
-        "last24_count": 0.0,
-        "last24_frp": 0.0,
-        "last24_max": 0.0,
-        "burn_ha": 0.0,
-        "burn_ha_mod": 0.0,
-        "new_fires": [],
-        "gone_fires": [],
+        "total": 5.0,
+        "last24_count": 3.0,
+        "last24_frp": 4.1,
+        "last24_max": 1.6,
+        "burn_ha": 599.9,
+        "burn_ha_mod": 21.4,
+        "new_fires": [
+          {
+            "id": "cernei-dunarii-44.898-22.479",
+            "lat": 44.8975,
+            "lon": 22.4786,
+            "frp_24h": 4.2,
+            "points": 429
+          }
+        ],
+        "gone_fires": [
+          {
+            "id": "cernei-dunarii-44.898-22.478",
+            "last_frp": 0.0
+          }
+        ],
         "frp_changes": [],
-        "new_scene": false,
+        "new_scene": true,
         "prev_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261012T093031_N0513_R136_T34TFQ_20261012T131205.png",
-        "cur_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261012T093031_N0513_R136_T34TFQ_20261012T131205.png"
+        "cur_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261019T092031_N0513_R093_T34TFQ_20261019T125357.png"
       }
     }
   },
   "vision": {
     "cernei-dunarii": {
       "zone": "cernei-dunarii",
-      "ok": false,
-      "errors": [
-        "scena curenta: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
-        "comparatie: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      ]
+      "ok": true,
+      "errors": [],
+      "current": "1. FUM: Nu se distinge clar în imagine, deși există benzi albe-albăstrui semi-transparente orientate NV-SE, care par mai degrabă nori joși sau ceață. În partea stângă-sus, în apropierea văii, se observă o pată albicioasă difuză, posibil fum dispersat, dar nu este evidentă.\n\n2. CICATRICE DE ARDERE: Nu se distinge o zonă arsă recent (negru/maro închis) cu contur clar. Există numeroase zone maro-roșiatici pe versanți, probabil pădure de foioase sau vegetație uscată, dar nu pot fi confirmate ca arsuri.\n\n3. VEGETATIE: Pădure densă acoperă aproximativ 60-70% din imagine, verde închis. Restul este reprezentat de suprafețe maro (posibil pădure rară, tufișuri sau zone uscate), stâncărie în partea de sus și câmpuri agricole (mozaic maro/verde) în partea de jos.\n\n4. RELIEF: Relief deluros și montan, cu văi adânci, creste fragmentate și un defileu major al Dunării în partea de jos (curs sinuos). Nu se distinge un platou întins.",
+      "current_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261019T092031_N0513_R093_T34TFQ_20261019T125357.png",
+      "current_date": "2026-10-19T09:20:31.025000Z",
+      "comparison": "Imaginea 1 este masiv acoperită de nori, fum sau ceață, în timp ce Imaginea 2 oferă o vedere clară. Comparând zonele vizibile din Imaginea 1 cu echivalentul lor din Imaginea 2:\n\n1. **Fumul:** Nu se poate evalua o evoluție clară; ceea ce pare fum în Imaginea 1 este indistinct de nori. În Imaginea 2 nu se distinge un panou de fum activ major.\n2. **Cicatricea de ardere:** Nu se observă o extindere clară între cele două date; suprafețele maronii din Imaginea 2 par a fi vegetație uscată sezonieră, nu urme proaspete de incendiu.\n3. **Vegetația:** În zonele fără nori din Imaginea 1, aspectul este similar cu cel din Imaginea 2 (uscată, maronie), dar diferențele par cauzate de iluminare și acoperirea noroasă.\n\n**Concluzie:** fără schimbare relevantă (diferențele sunt date de nori/iluminare).",
+      "compared": [
+        "cernei-dunarii_s2_S2B_MSIL2A_20261017T093029_N0513_R136_T34TFQ_20261017T114934.png",
+        "cernei-dunarii_s2_S2C_MSIL2A_20261019T092031_N0513_R093_T34TFQ_20261019T125357.png"
+      ],
+      "burn_scar": "Aproximativ 5-10% din imagine pare arsă, concentrată în principal în jumătatea superioară (nord-est) și în câteva pete izolate spre sud-vest."
     }
   },
-  "report": "",
-  "state_updated": "2026-10-13T13:52:14+00:00"
+  "report": "**RAPORT ANALIZĂ INCENDII – Carpații Meridionali (Domogled–Porțile de Fier)**\n**Data: 2026-10-20 21:20 UTC**\n\n**EVOLUȚIE: STAGNARE (cu semnal local de escaladare)**\nFață de ultima rulare (acum ~5 min), FRP24h a crescut de la 0 la 4.1 MW (+3 detectii), iar totalul a urcat cu 5. Apare un focar „nou\" la 44.8975/22.4786 cu FRP 4.2 MW / 429 puncte – dar acesta corespunde coordonatelor focarului rank 1 existent (44.898/22.479), deci nu e focar real nou, ci o reranking-are la reactivare. Focarul „dispărut\" (ultim FRP 0.0) este tot același obiect relistat. Trend pe 24h al rank 1: 2.5 MW (24h anterioare) → 4.2 MW (ultimele 24h) = creștere. Rank 2: 0/0, staționar. Concluzie: STAGNARE de fond, cu reactivare locală a focarului din parc.\n\n**CE ARATĂ IMAGINILE**\nScena 2026-10-19 (clară) nu arată fum activ major, iar comparația cu 2026-10-17 indică „fără schimbare relevantă\". Aceasta **contrazice parțial senzorii**: 3 detectii/4.2 MW fără panou de fum vizibil sugerează fie incendiu de suprafață/sub arbore, fie detectii de tip „hot spot\" de suprafață mică sau artefacte (senzori termici pe sol expus). Cicatricea dNBR (261 ha moderat+) nu se validează vizual ca arsură proaspătă – suprafețele maronii par vegetație uscată sezonieră. Semnal important: **discrepanță detectori–vizual**.\n\n**RISC 24–48h**\nVânt slab 6 km/h din SE, rafale 14 km/h, direcție pană spre NV. RH 77%, precipitații ~0.1 mm, VPD 0.36 kPa, umezeală sol 0.146 (uscat), pericol Angström 5.17 (nesemnificativ). Condiții de propagare **reduse**; risc de extindere rapidă scăzut. Expuse ipotetic: Colțu Pietrii (0.93 km de focarul rank 1, în parc) și versantul vestic spre NV. Orșova e la 7.65 km de rank 2 (în afara parcului).\n\n**PREDICȚIE 24h**\nFRP va **stagna sau scădea ușor** – probabilitate ~65% stagnare/scădere, ~35% creștere mică (reactivări punctuale). **Estimare pe trend, NU model fizic de propagare.**\n\n**SEMNALE**\n- Focar „nou\" = de fapt rank 1 reactivat (coordonate identice) – nu escaladare reală.\n- Focar cu detectii (4.2 MW) fără fum vizibil – posibil incendiu de suprafață sau fals-pozitiv termic.\n- Fereastră de date lipsă: 2026-10-13 → 2026-10-20 fără rulări în istoric (7 zile).\n- Zilele 10-11…10-18 lipsesc din seria zilnică (doar 10-19 prezent).\n- Imaginea 2026-10-17 masiv acoperită de nori/ceață – ascunde zona.",
+  "state_updated": "2026-10-20T21:17:39+00:00"
 }
