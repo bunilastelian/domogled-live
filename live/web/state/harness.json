@@ -1,10 +1,10 @@
 {
-  "generated": "2026-10-13T12:07:39+00:00",
+  "generated": "2026-10-20T21:15:50+00:00",
   "verdict": "STAGNARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-13T09:08:42+00:00",
-    "hours_elapsed": 2.98,
+    "since": "2026-10-13T12:07:39+00:00",
+    "hours_elapsed": 177.14,
     "zones": {
       "cernei-dunarii": {
         "total": 0.0,
@@ -25,18 +25,13 @@
   "vision": {
     "cernei-dunarii": {
       "zone": "cernei-dunarii",
-      "ok": true,
-      "errors": [],
-      "current": "1. FUM: Nu se distinge niciun fum in imagine.\n\n2. CICATRICE DE ARDERE: Nu se distinge nicio zona arsa (maro-inchis, cenusiu sau negru) care sa fie diferita de padure.\n\n3. VEGETATIE: In partea de est si nord-est se vede padure densa, verde (aproximativ 60-70% din suprafata neacoperita de nori). In centru si vest sunt zone de pajisti, tufisuri si terenuri agricole (verde deschis, maro, ocru). In sud, de-a lungul Dunarii, sunt campuri agricole (maro deschis, galben-verzui).\n\n4. RELIEF: Relief deluros si muntos cu vai adanci si creste fragmentate in partea de nord si centru. In sud, lunca Dunarii este plata, cu meandre largi si insule.\n\nO mentiune: aproximativ 30-40% din imagine, in special in stanga (vest), este acoperita de nori albi densi, ceea ce impiedica observarea detaliilor in acea zona.",
-      "current_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261012T093031_N0513_R136_T34TFQ_20261012T131205.png",
-      "current_date": "2026-10-12T09:30:31.025000Z",
-      "comparison": "Fara schimbare relevanta. Cele doua imagini prezinta zone geografice diferite (o zona montana cu nori si o zona de defileu cu lunca Dunarii), ceea ce face imposibila compararea directa a fumului, a cicatricei de ardere sau a starii vegetatiei pentru acelasi perimetru. Diferentele observate sunt date de acoperirea noroasa, iluminare si cadraj, nu de evolutia unui incendiu.",
-      "compared": [
-        "s2_S2A_MSIL2A_20261004T093141_N0513_R136_T34TFQ_20261004T143711.png",
-        "cernei-dunarii_s2_S2C_MSIL2A_20261012T093031_N0513_R136_T34TFQ_20261012T131205.png"
+      "ok": false,
+      "errors": [
+        "scena curenta: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
+        "comparatie: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
       ]
     }
   },
-  "report": "# RAPORT ANALIZĂ INCENDII – Carpații Meridionali / Domogled – Porțile de Fier\n**Data:** 2026-10-13 12:07 UTC\n\n## EVOLUTIE: STAGNARE\nFocarul este în stagnare prelungită, cu tendință clară de **SCĂDERE** pe termen mediu. Cifre:\n- FRP24h = 0 MW, det24h = 0, identic cu ultimele 12 rulări (din 2026-10-11 21:07).\n- Delta față de rularea anterioară (acum ~3h): FRP +0.0, det24h +0.0, total detectii +0.0.\n- Seria zilnică arată prăbușire: 706.2 MW (10-06) → 294.4 (10-08) → 1.0 (10-09) → 8.9 (10-10), trend -97% în 3 zile.\n- Ambele focare (rank 1 și rank 2) au 0 MW și 0 detecții în ultimele 48h. Nu există focare noi; nu s-au stins oficial, dar sunt inactive.\n\n## CE ARATA IMAGINILE\nAnaliza vizuală din 2026-10-12 confirmă cifrele: **fără fum, fără cicatrice de ardere vizibilă**. Comparația între cele două scene (04.10 vs 12.10) este neconcludentă – cadre geografice diferite și 30-40% nori în vest. Nu există contradicție senzor/imagine; absența fumului este consistentă cu FRP=0.\n\n## RISC (24-48h)\n- Meteo: 13.8°C, RH 62%, vânt 18.7 km/h NV, rafale 43.2 km/h, **0 mm precipitații** prognozate 48h, VPD 0.6 kPa, umezeala sol 0.226, pericol Angström 4.42 (scăzut).\n- Vântul NV împinge spre SE. Expuse teoretic: versantul estic al Cernei, zona Colțu Pietrii (1228 m, la 0.92 km de focarul 1, în parc) și corridorul Dunării spre Orșova.\n- Uscăciunea solului (0.226) menține un potențial latent, dar RH ridicat și VPD scăzut reduc probabilitatea reactivării.\n\n## PREDICTIE (24h)\nFRP va **stagna la 0 MW** – probabilitate ~85%; reactivare slabă (<10 MW) ~12%; escaladare semnificativă ~3%. Estimare bazată pe trend istoric, **NU pe model fizic de propagare**.\n\n## SEMNALE\n- Cele 849 detectii totale (626 NASA + 223 ESA) sunt istorice, nu active – nu există \"detecții fără focar\" curente.\n- Cicatricea dNBR: 3827 ha cu semnal, doar 3 ha sever – impact real modest față de numărul de detectii.\n- **Lipsă:** nu există imagini fără nori pentru zona focarului; nu există confirmare teren.",
-  "state_updated": "2026-10-13T12:07:19+00:00"
+  "report": "",
+  "state_updated": "2026-10-13T13:52:14+00:00"
 }
