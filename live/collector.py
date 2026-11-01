@@ -54,10 +54,11 @@ ZONE: dict = next((z for z in ZONES if z["id"] == ZONE_CFG.get("default_zone")),
 
 AOI = {
     "name": ZONE["name"],
-    "bbox": ZONE["bbox"],                     # W, S, E, N
+    "bbox": ZONE["bbox"],                     # W, S, E, N - aria de colectare
+    "focus": ZONE.get("focus") or ZONE["bbox"],   # aria de interes reala
     "center": ZONE["center"],
     "zoom": ZONE.get("zoom", 12),
-    "park_file": (ZONE.get("park") or {}).get("geojson", ""),
+    "parks": ZONE.get("parks") or [],
 }
 POLL_SECONDS = 300
 FRP_LOOKBACK_HOURS = 6            # cat de des cautam produse FRP noi
@@ -79,10 +80,12 @@ def set_zone(zone: dict) -> None:
     AOI.update({
         "name": zone["name"],
         "bbox": zone["bbox"],
+        "focus": zone.get("focus") or zone["bbox"],
         "center": zone["center"],
         "zoom": zone.get("zoom", 12),
-        "park_file": (zone.get("park") or {}).get("geojson", ""),
+        "parks": zone.get("parks") or [],
     })
+    load_park_geoms()      # geometriile, pentru filtrul point-in-polygon
 
 
 def zone_image(name: str) -> Path:
@@ -119,8 +122,82 @@ def dist_km(a, b) -> float:
 
 
 def in_aoi(lat: float, lon: float) -> bool:
-    w, s, e, n = AOI["bbox"]
-    return w <= lon <= e and s <= lat <= n
+    """Detectia e in aria de colectare?
+
+    Aria de colectare (bbox) acopera integral ariile protejate - e larga.
+    Aici se decide ce intra in stare: o detectie conteaza daca pica in aria
+    de interes (focus) SAU in oricare dintre parcuri. Altfel, un incendiu
+    real din Parcul Portile de Fier, la 60 km vest de zona obisnuita, ar fi
+    descarcat si apoi aruncat.
+    """
+    w, s, e, n = AOI.get("focus") or AOI["bbox"]
+    if w <= lon <= e and s <= lat <= n:
+        return True
+    for p in (AOI.get("parks") or []):
+        geom = p.get("_geom")
+        if geom and point_in_geom(lon, lat, geom):
+            return True
+    return False
+
+
+def point_in_geom(lon: float, lat: float, geom: dict) -> bool:
+    """Punct intr-o geometrie GeoJSON (Polygon sau MultiPolygon), cu gauri.
+
+    Ray casting pe fiecare inel: celelalte inele sunt gauri care scot
+    punctul din arie. Fara asta, o enclava din parc ar raporta incendii
+    care sunt de fapt in afara parcului.
+    """
+    typ = geom.get("type")
+    if typ == "Feature":
+        return point_in_geom(lon, lat, geom.get("geometry") or {})
+    if typ == "FeatureCollection":
+        return any(point_in_geom(lon, lat, f) for f in (geom.get("features") or []))
+    if typ == "Polygon":
+        polys = [geom.get("coordinates") or []]
+    elif typ == "MultiPolygon":
+        polys = geom.get("coordinates") or []
+    else:
+        return False
+
+    for rings in polys:
+        if not rings:
+            continue
+        if _in_ring(lon, lat, rings[0]):
+            # in interiorul inelului exterior: verificam gaurile
+            if any(_in_ring(lon, lat, h) for h in rings[1:]):
+                continue
+            return True
+    return False
+
+
+def _in_ring(lon: float, lat: float, ring: list) -> bool:
+    inside = False
+    n = len(ring)
+    for i in range(n):
+        x1, y1 = ring[i][0], ring[i][1]
+        x2, y2 = ring[(i + 1) % n][0], ring[(i + 1) % n][1]
+        if (y1 > lat) != (y2 > lat):
+            xint = x1 + (lat - y1) * (x2 - x1) / (y2 - y1)
+            if lon < xint:
+                inside = not inside
+    return inside
+
+
+def load_park_geoms() -> None:
+    """Incarca geometriile parcurilor in AOI, o singura data pe zona."""
+    parks = []
+    for p in (AOI.get("parks") or []):
+        gp = WEB / (p.get("geojson") or "")
+        if gp.exists():
+            try:
+                parks.append({"name": p.get("name"), "geojson": p.get("geojson"),
+                              "_geom": json.loads(gp.read_text(encoding="utf-8"))})
+            except (json.JSONDecodeError, OSError):
+                pass
+    AOI["parks"] = parks
+
+
+load_park_geoms()      # geometriile parcurilor, pentru filtrul de relevanta
 
 
 def log(msg: str) -> None:
@@ -309,10 +386,24 @@ def fetch_esa_frp(client: CDSE, state: dict, lookback_days: int = 2) -> list[dic
         return []
 
     import zipfile
-    rows: list[dict] = []
+
+    # Un singur rand per observatie, ca sa nu numaram acelasi pixel de doua ori.
+    #
+    # Produsul SLSTR contine trei scheme FRP. "standard" si "alternative" sun
+    # doi ALGORITMI pentru acelasi pixel, nu doua observatii independente: in
+    # practica, 69 de perechi aveau coordonate si minute identice (doar FRP-ul
+    # diferea usor). Numarate amandoua, umflau totalul, FRP-ul cumulat si
+    # numarul de puncte din focare.
+    #
+    # Prioritate: standard (produsul nominal ESA) > SWIR500m (rezolutie mai
+    # buna, senzor diferit - chiar e o observatie separata) > alternative
+    # (doar cand standard lipseste pentru acel pixel).
+    PRIORITY = {"MWIR1km-standard": 0, "SWIR500m": 1, "MWIR1km-alternative": 2}
+
     schemes = {"MWIR1km-standard": "FRP_MWIR1km_standard.csv",
                "MWIR1km-alternative": "FRP_MWIR1km_alternative.csv",
                "SWIR500m": "FRP_SWIR500m.csv"}
+    best: dict[tuple, tuple[int, dict]] = {}
     for p in fresh:
         try:
             zp = client.download_product(p["Id"], dest=STATE / "frp")
@@ -335,7 +426,7 @@ def fetch_esa_frp(client: CDSE, state: dict, lookback_days: int = 2) -> list[dic
                                 return float(d.get(k) or 0)
                             except ValueError:
                                 return 0.0
-                        rows.append({
+                        row = {
                             "src": "ESA", "sensor": f"SLSTR {scheme}",
                             "lat": round(lat, 5), "lon": round(lon, 5),
                             "date": d.get("day"), "time": (d.get("time") or "0000").replace(":", "")[:4],
@@ -344,12 +435,25 @@ def fetch_esa_frp(client: CDSE, state: dict, lookback_days: int = 2) -> list[dic
                             "daynight": d.get("D/N", ""),
                             "satellite": d.get("satellite", "S3"),
                             "bt_k": round(num("MWIR_BT(K)"), 1),
-                        })
+                        }
+                        # identitatea observatiei: acelasi pixel, acelasi minut
+                        key = (round(lat, 5), round(lon, 5), row["date"], row["time"])
+                        rank = PRIORITY.get(scheme, 9)
+                        prev = best.get(key)
+                        if prev is None or rank < prev[0]:
+                            best[key] = (rank, row)
             done.add(p["Name"])
             log(f"   ESA FRP {p['Name'][:44]} -> produs nou procesat")
         except CDSEError as exc:
             log(f"   [!] ESA FRP {p['Name'][:40]}: {exc}")
     state["frp_products"] = sorted(done)[-400:]
+    rows = [r for _, r in best.values()]
+    if rows:
+        by_scheme: dict[str, int] = {}
+        for r in rows:
+            by_scheme[r["sensor"]] = by_scheme.get(r["sensor"], 0) + 1
+        log("   ESA FRP scheme folosite: "
+            + ", ".join(f"{k.replace('SLSTR ', '')}={v}" for k, v in sorted(by_scheme.items())))
     return rows
 
 
@@ -428,11 +532,51 @@ def fetch_imagery(client: CDSE, state: dict) -> int:
 
 
 # ------------------------------------------------------------------- 4. alerte
-def send_telegram(text: str) -> bool:
+def telegram_cfg() -> tuple[str, str]:
+    """Token si chat_id, dintr-o singura sursa de adevar.
+
+    Inainte, collector.py citea TELEGRAM_CHAT_ID si harness.py
+    DOMOGLED_TELEGRAM_CHAT (cu un chat hardcodat ca implicit). Niciuna nu era
+    in .env, deci collector.py nu putea trimite niciodata alerte, in timp ce
+    harness.py raporta "trimisa" - doua sisteme de alerta cu configurari
+    diferite care pareau sa functioneze.
+
+    Ordinea: variabila de mediu, apoi .env. Niciun chat hardcodat in cod.
+    """
     import os
-    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
-    chat = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    from pathlib import Path
+
+    def from_env_file(key: str) -> str:
+        p = Path.home() / ".hermes" / ".env"
+        if not p.exists():
+            return ""
+        try:
+            for line in p.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line.startswith("#") or "=" not in line:
+                    continue
+                k, _, v = line.partition("=")
+                if k.strip() == key:
+                    return v.strip().strip('"').strip("'")
+        except OSError:
+            pass
+        return ""
+
+    def get(key: str) -> str:
+        return (os.getenv(key) or "").strip() or from_env_file(key)
+
+    token = get("TELEGRAM_BOT_TOKEN")
+    # acceptam ambele nume, ca o instalare veche sa nu rupa dupa upgrade
+    chat = get("TELEGRAM_CHAT_ID") or get("DOMOGLED_TELEGRAM_CHAT")
+    return token, chat
+
+
+def send_telegram(text: str) -> bool:
+    token, chat = telegram_cfg()
     if not token or not chat:
+        log("[!] alerte Telegram neconfigurate "
+            f"(token: {'da' if token else 'LIPSA'}, chat: {'da' if chat else 'LIPSA'}) "
+            "- alerta ramane doar in state.json")
         return False
     try:
         data = json.dumps({"chat_id": chat, "text": text, "parse_mode": "HTML"}).encode()
@@ -452,7 +596,11 @@ def raise_alerts(state: dict, new_dets: list[dict]) -> None:
     dets = strong or new_dets
     d = max(dets, key=lambda x: x["frp"])
     ce = "focar puternic" if d["frp"] >= 20 else ("focar moderat" if d["frp"] >= 5 else "detecție slabă")
-    text = (f"🔥 {ZONE['name']}: {len(new_dets)} detecție/detecții noi\n"
+    # Acordul gramatical: "1 detecție nouă" / "7 detecții noi". Textul vechi
+    # scria "1 detecție/detecții noi", care se citeste ca un sablon nereparat.
+    n = len(new_dets)
+    substantiv = "detecție nouă" if n == 1 else "detecții noi"
+    text = (f"🔥 {ZONE['name']}: {n} {substantiv}\n"
             f"cea mai puternică: {d['frp']:.1f} MW ({ce})\n"
             f"la {d['lat']:.4f}, {d['lon']:.4f} — {d['date']} {d['time']} UTC\n"
             f"sursa: {d['src']} {d['sensor']}")
@@ -498,19 +646,36 @@ def update_burn(client: CDSE, state: dict) -> None:
 
 # ------------------------------------------------- 6. focare si meteo
 def load_park_geojson() -> dict | None:
-    p = WEB / (AOI.get("park_file") or "")
-    if not p or not p.exists():
-        return None
-    try:
-        return json.loads(p.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
-        return None
+    """Geometria primului parc. Pastrat pentru apelurile care vor una singura."""
+    for p in (AOI.get("parks") or []):
+        g = p.get("_geom")
+        if g:
+            return g
+    return None
 
 
 def update_fires(state: dict, dets: dict) -> None:
     """Grupeaza detectiile in focare distincte, cu tendinta pe 24 h."""
     import fires as fires_mod
-    found = fires_mod.find_fires(dets, ZONE, load_park_geojson())
+    # TOATE parcurile regiunii, nu doar primul: un focar poate fi in Parcul
+    # Domogled sau in Portile de Fier, iar raportul trebuie sa spuna care.
+    found = fires_mod.find_fires(dets, ZONE, load_park_geojson(), parks=AOI.get("parks") or [])
+
+    # Doua focare care ard in acelasi ritm la cativa km nu sunt doua
+    # intamplari: e semnatura unei cauze comune. Marcam grupurile aici, ca
+    # sa ajunga si pe harta, si in raport, fara sa rearanjam geometria.
+    try:
+        import sync_fires as sync_mod
+        pts_by_fire = sync_mod.assign_points(found, list(dets.values()))
+        grupuri = sync_mod.find_sync_groups(found, pts_by_fire)
+        sync_mod.attach(found, grupuri)
+        if grupuri:
+            for g in grupuri:
+                log(f"   focare sincrone: {g['focare']} (vârf comun {g['varf_comun']}, "
+                    f"r={g['corelatie_min']}, {g['distanta_max_km']} km)")
+    except Exception as e:      # analiza e informativa: nu opreste colectarea
+        log(f"   [!] analiza de sincronism a esuat: {type(e).__name__}: {e}")
+
     state["fires"] = found
     if found:
         f = found[0]
@@ -691,8 +856,8 @@ def prune_detections(state: dict) -> int:
 def cycle(state: dict, client: CDSE, first: bool) -> None:
     """Un ciclu pentru toate zonele, apoi o singura scriere de stare."""
     zones = state.setdefault("zones", {})
-    state["zone_list"] = [{k: z.get(k) for k in ("id", "name", "short", "bbox", "center",
-                                                 "zoom", "places", "park")}
+    state["zone_list"] = [{k: z.get(k) for k in ("id", "name", "short", "bbox", "focus",
+                                                 "center", "zoom", "places", "parks", "park")}
                           for z in ZONES]
     state["default_zone"] = ZONE_CFG.get("default_zone") or ZONES[0]["id"]
     for z in ZONES:

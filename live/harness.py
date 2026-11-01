@@ -51,7 +51,9 @@ FRP_JUMP_PCT = 20.0        # crestere FRP 24h care merita alerta
 DET_JUMP_ABS = 25          # detectii noi in 24h peste media recenta
 QUIET_HOURS = 12           # rezumat de liniste la fiecare N ore
 
-TELEGRAM_CHAT = os.getenv("DOMOGLED_TELEGRAM_CHAT", "1284299504")
+# Configuratia Telegram vine din collector.telegram_cfg(), ca sa existe o
+# singura sursa de adevar. Inainte, chat-ul era hardcodat aici si lipsea in
+# collector.py, deci unul dintre cele doua sisteme de alerta tacea.
 
 
 def log(msg: str) -> None:
@@ -231,17 +233,16 @@ def should_alert(state: dict, cmp: dict, vd: str) -> tuple[bool, str]:
 
 def send_telegram(text: str) -> bool:
     """Trimite in Telegram. Folosim botul deja configurat pentru Hermes."""
-    env = {}
-    p = Path.home() / ".hermes" / ".env"
-    for line in p.read_text().splitlines():
-        if "=" in line and not line.startswith("#"):
-            k, _, v = line.partition("=")
-            env[k.strip()] = v.strip()
-    tok = env.get("TELEGRAM_BOT_TOKEN")
+    from collector import telegram_cfg
+    tok, chat = telegram_cfg()
     if not tok:
         log("[!] TELEGRAM_BOT_TOKEN lipseste - nu trimit alerta")
         return False
-    body = json.dumps({"chat_id": TELEGRAM_CHAT, "text": text,
+    if not chat:
+        log("[!] chat_id lipseste (TELEGRAM_CHAT_ID sau DOMOGLED_TELEGRAM_CHAT) "
+            "- nu trimit alerta")
+        return False
+    body = json.dumps({"chat_id": chat, "text": text,
                        "parse_mode": "Markdown",
                        "disable_web_page_preview": True}).encode()
     req = urllib.request.Request(

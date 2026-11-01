@@ -37,7 +37,9 @@ fi
 trap 'rm -f "$LOCK"' EXIT
 : > "$LOCK"
 
-# Token-ul sta in ~/.hermes/.env, nu in repo.
+# Token-ul sta in ~/.hermes/.env, nu in repo. Il folosim prin credential
+# helper-ul git (~/.git-credentials, permisiuni 600), nu scris in URL - asa
+# nu ajunge niciodata in .git/config sau in istoricul shell-ului.
 if [[ -f "$HOME/.hermes/.env" ]]; then
   set -a
   # shellcheck disable=SC1091
@@ -45,12 +47,7 @@ if [[ -f "$HOME/.hermes/.env" ]]; then
   set +a
 fi
 
-if [[ -z "${GITHUB_TOKEN:-}" ]]; then
-  log "FARA GITHUB_TOKEN - nu pot publica"
-  exit 1
-fi
-
-REMOTE="https://${GITHUB_TOKEN}@github.com/bunilastelian/domogled-live.git"
+REMOTE="https://github.com/bunilastelian/domogled-live.git"
 
 # Doar starea si ce produce colectorul. Nimic altceva nu intra in commit.
 git add -f \

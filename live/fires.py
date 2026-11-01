@@ -97,7 +97,7 @@ def cluster(dets: list[dict], radius_km: float = 2.0) -> list[list[dict]]:
 
 
 def describe(group: list[dict], zone: dict, park_geom: dict | None = None,
-             now: datetime | None = None) -> dict:
+             now: datetime | None = None, parks: list | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
     lats = [d["lat"] for d in group]
     lons = [d["lon"] for d in group]
@@ -148,7 +148,21 @@ def describe(group: list[dict], zone: dict, park_geom: dict | None = None,
 
     in_park = None
     if park_geom:
+        # Parc unic (compatibilitate) - pastrat pentru apelurile vechi.
         in_park = any(point_in_poly(d["lon"], d["lat"], park_geom) for d in group)
+
+    # Care parcuri ating focarul. Cu mai multe arii protejate in aceeasi
+    # regiune, un focar poate sta in unul, in amandoua sau in niciunul -
+    # raportam lista, nu un boolean care ascunde cazul "in amandoua".
+    park_names: list[str] = []
+    for p in (parks or []):
+        geom = p.get("_geom")
+        if not geom:
+            continue
+        if any(point_in_poly(d["lon"], d["lat"], geom) for d in group):
+            park_names.append(p.get("name") or "?")
+    if parks and in_park is None:
+        in_park = bool(park_names)
 
     return {
         "id": f"{zone['id']}-{round(clat, 3)}-{round(clon, 3)}",
@@ -171,6 +185,7 @@ def describe(group: list[dict], zone: dict, park_geom: dict | None = None,
         "nasa": sum(1 for d in group if d.get("src") == "NASA"),
         "esa": sum(1 for d in group if d.get("src") == "ESA"),
         "in_park": in_park,
+        "parks": park_names,
         "nearest_place": nearest,
         "nearest_km": round(nearest_km, 2) if nearest_km is not None else None,
         "elev_span_m": None,
@@ -178,17 +193,24 @@ def describe(group: list[dict], zone: dict, park_geom: dict | None = None,
 
 
 def find_fires(detections: dict | list, zone: dict, park_geom: dict | None = None,
-               radius_km: float = 2.0, min_points: int = 3) -> list[dict]:
-    """Detectiile zonei -> lista de focare, cele mai intense primele.
+               radius_km: float = 2.0, min_points: int = 3,
+               parks: list | None = None) -> list[dict]:
+    """Detectiile regiunii -> lista de focare, cele mai intense primele.
 
-    Filtram intai pe bbox-ul zonei: altfel fiecare zona ar raporta focarele
-    tuturor celorlalte.
+    Fara filtru pe bbox: regiunea e una singura, iar detectiile primite sunt
+    deja cele ale regiunii. Filtrul vechi pe bbox-ul zonei taia focarele de
+    la marginea a doua zone vecine si le raporta de doua ori, cu centre
+    diferite (media doar a punctelor din interiorul bbox-ului).
+
+    Daca totusi primesti un set mai larg decat regiunea, taie-l inainte de a
+    ajunge aici.
     """
     dets = list(detections.values()) if isinstance(detections, dict) else list(detections)
-    w, s, e, n = zone["bbox"]
-    dets = [d for d in dets if w <= d["lon"] <= e and s <= d["lat"] <= n]
+    if zone.get("bbox") and zone.get("clip_detections"):
+        w, s, e, n = zone["bbox"]
+        dets = [d for d in dets if w <= d["lon"] <= e and s <= d["lat"] <= n]
     groups = cluster(dets, radius_km)
-    fires = [describe(g, zone, park_geom) for g in groups if len(g) >= min_points]
+    fires = [describe(g, zone, park_geom, parks=parks) for g in groups if len(g) >= min_points]
     fires.sort(key=lambda f: (f["frp_last24"], f["frp_sum"]), reverse=True)
     for i, f in enumerate(fires, 1):
         f["rank"] = i

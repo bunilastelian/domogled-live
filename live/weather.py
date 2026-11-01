@@ -29,6 +29,7 @@ from __future__ import annotations
 import json
 import math
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -49,10 +50,33 @@ HOURLY = ("temperature_2m,relative_humidity_2m,wind_speed_10m,wind_direction_10m
           "wind_gusts_10m,precipitation,vapour_pressure_deficit,soil_moisture_0_to_7cm")
 
 
-def _get(url: str, timeout: int = 45) -> dict:
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.load(r)
+def _get(url: str, timeout: int = 45, attempts: int = 4) -> dict:
+    """GET cu retry exponential.
+
+    Open-Meteo intoarce 503/429 ocazional (cateva zeci pe zi la noi). Fara
+    retry, un singur 503 pierde tot ciclul de meteo - si cu el indicele de
+    pericol, vantul de propagare si precipitatille din 48h. Reincercam de
+    4 ori cu pauze 2/4/8s: acopera varfurile scurte de incarcare fara sa
+    blocheze colectorul.
+    """
+    import time as _time
+
+    last: Exception | None = None
+    for i in range(attempts):
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            last = e
+            # 4xx in afara de 429 = cerere gresita, retry-ul nu ajuta.
+            if e.code != 429 and 400 <= e.code < 500:
+                raise
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+            last = e
+        if i < attempts - 1:
+            _time.sleep(2 ** (i + 1))
+    raise last if last is not None else RuntimeError("_get: esec fara exceptie")
 
 
 def compass(deg: float | None) -> str:
