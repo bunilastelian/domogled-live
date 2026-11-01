@@ -1,6 +1,6 @@
 {
  "version": 3,
- "cycles": 1634,
+ "cycles": 1636,
  "zones": {
   "cernei-dunarii": {
    "detections": {
@@ -1010,11 +1010,11 @@
    ],
    "weather": {
     "source": "Open-Meteo",
-    "updated": "2026-11-01T19:43:31+00:00",
-    "time": "2026-11-01T19:30",
-    "temp_c": 9.0,
-    "humidity_pct": 86,
-    "wind_kmh": 15.1,
+    "updated": "2026-11-01T19:53:31+00:00",
+    "time": "2026-11-01T19:45",
+    "temp_c": 8.9,
+    "humidity_pct": 85,
+    "wind_kmh": 15.5,
     "gust_kmh": 37.8,
     "wind_from_deg": 90,
     "wind_from_compass": "E",
@@ -1022,11 +1022,11 @@
     "downwind_compass": "V",
     "precip_now_mm": 0.3,
     "precip_next48_mm": 36.9,
-    "vpd_kpa": 0.16,
+    "vpd_kpa": 0.17,
     "soil_moisture": 0.29,
     "elevation_m": 321.0,
     "danger": {
-     "index": 6.1,
+     "index": 6.06,
      "name": "Angström",
      "class": "fără pericol semnificativ",
      "color": "#3b82f6",
@@ -1323,7 +1323,7 @@
     "S3B_SL_2_FRP____20261030T083103_20261030T083403_20261030T103342_0179_126_178______MAR_O_NR_003.SEN3",
     "S3B_SL_2_FRP____20261030T195358_20261030T195658_20261030T220730_0180_126_185______MAR_O_NR_003.SEN3"
    ],
-   "cycles": 1649,
+   "cycles": 1651,
    "aoi": {
     "name": "Domogled – Porțile de Fier · regiunea Cernei și Dunării",
     "bbox": [
@@ -6227,7 +6227,7 @@
      "satellite": "N20",
      "first_seen": "2026-10-20T21:15:59+00:00"
     },
-    "updated": "2026-11-01T19:43:31+00:00"
+    "updated": "2026-11-01T19:53:31+00:00"
    }
   }
  },
@@ -6301,7 +6301,7 @@
   }
  ],
  "default_zone": "cernei-dunarii",
- "updated": "2026-11-01T19:43:31+00:00",
+ "updated": "2026-11-01T19:53:31+00:00",
  "zones_legacy": {
   "domogled": {
    "detections": {
