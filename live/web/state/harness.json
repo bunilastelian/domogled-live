@@ -1,54 +1,23 @@
 {
-  "generated": "2026-11-01T18:04:16+00:00",
-  "verdict": "ESCALADARE",
+  "generated": "2026-11-01T19:08:00+00:00",
+  "verdict": "STAGNARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-11-01T17:58:26+00:00",
-    "hours_elapsed": 0.09,
+    "since": "2026-11-01T18:04:16+00:00",
+    "hours_elapsed": 1.06,
     "zones": {
       "cernei-dunarii": {
-        "total": -816.0,
-        "last24_count": -3.0,
-        "last24_frp": -4.1,
-        "last24_max": -1.6,
-        "burn_ha": 6206.7,
-        "burn_ha_mod": 614.9,
-        "new_fires": [
-          {
-            "id": "cernei-dunarii-44.77-22.33",
-            "lat": 44.7698,
-            "lon": 22.3304,
-            "frp_24h": 0.0,
-            "points": 16
-          },
-          {
-            "id": "cernei-dunarii-44.889-22.492",
-            "lat": 44.8886,
-            "lon": 22.4918,
-            "frp_24h": 0.0,
-            "points": 15
-          },
-          {
-            "id": "cernei-dunarii-44.882-22.43",
-            "lat": 44.8822,
-            "lon": 22.4296,
-            "frp_24h": 0.0,
-            "points": 7
-          }
-        ],
-        "gone_fires": [
-          {
-            "id": "cernei-dunarii-44.898-22.479",
-            "last_frp": 4.2
-          },
-          {
-            "id": "cernei-dunarii-44.768-22.324",
-            "last_frp": 0.0
-          }
-        ],
+        "total": 0.0,
+        "last24_count": 0.0,
+        "last24_frp": 0.0,
+        "last24_max": 0.0,
+        "burn_ha": 0.0,
+        "burn_ha_mod": 0.0,
+        "new_fires": [],
+        "gone_fires": [],
         "frp_changes": [],
-        "new_scene": true,
-        "prev_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261019T092031_N0513_R093_T34TFQ_20261019T125357.png",
+        "new_scene": false,
+        "prev_scene": "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png",
         "cur_scene": "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png"
       }
     }
@@ -58,17 +27,17 @@
       "zone": "cernei-dunarii",
       "ok": true,
       "errors": [],
-      "current": "1. FUM: Nu se distinge niciun panou de fum, nici dens, nici subtire. Norii albi si umbrele lor domina imaginea.\n2. CICATRICE DE ARDERE: Nu se distinge nicio zona arsa (maro-inchis, cenusiu, negru). Zonele maro din nord-vest par a fi stancarie sau vegetatie uscata, nu arsuri.\n3. VEGETATIE: Padure densa verde inchis acopera aproximativ 60-70% din suprafata vizibila, in special pe versanti. Restul este stancarie cenusie-maro, pajisti uscate si zone agricole in lunca Dunarii.\n4. RELIEF: Se disting clar vai adanci (Valea Cernei), creste montane si defilee spectaculoase ale Dunarii.",
+      "current": "1. FUM: Nu se distinge niciun panou de fum activ. Norii albi și umbrele lor proiectate pe versanți domină imaginea și împiedică identificarea clară a unor coloane subțiri de fum.\n\n2. CICATRICE DE ARDERE: Nu se distinge o zonă arsă proaspătă. Există pete maronii pe versanții abrupti, dar acestea par a fi stâncărie expusă sau vegetație uscată, nu urme de combustie.\n\n3. VEGETATIE: Pădure densă de conifere și foioase acoperă aproximativ 70-80% din suprafața vizibilă neacoperită de nori. Restul este reprezentat de pajiști alpine, stâncărie și zone agricole în lunca Dunării.\n\n4. RELIEF: Relief muntos cu creste și văi adânci, cu un platou mai jos în partea de sud-est. Fluviul Dunărea străbate zona printr-un defileu spectaculos, cu meandre largi.",
       "current_scene": "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png",
       "current_date": "2026-10-27T09:30:59.024000Z",
-      "comparison": "fara schimbare relevanta. \n\nDiferentele majore dintre cele doua imagini sunt cauzate exclusiv de acoperirea masiva cu nori din Imaginea 2 (24 octombrie), care ascunde o mare parte a terenului. Nu se distinge nicio evolutie a fumului, nicio extindere a cicatricei de ardere si nicio schimbare reala a starii vegetatiei (care apare doar intunecata de umbrele norilor).",
+      "comparison": "Fara schimbare relevanta. \n\nDiferentele dintre cele doua imagini sunt cauzate exclusiv de prezenta norilor masivi si a umbrelor acestora in IMAGINEA 2 (2026-10-24), care acopera o mare parte din zona de nord si centru. \n\nNu se poate observa nicio modificare a fumului, nicio extindere a cicatricei de ardere si nicio schimbare a starii de uscare a vegetatiei, intrucat comparatia este blocata de acoperirea noroasa.",
       "compared": [
         "cernei-dunarii_s2_S2A_MSIL2A_20261024T093141_N0513_R136_T34TFQ_20261024T143804.png",
         "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png"
       ],
-      "burn_scar": "Aproximativ 5-10% din imagine pare arsă, concentrată în principal în jumătatea dreaptă-superioară (nord-est) și în câteva pete izolate pe flancurile vestice și sudice."
+      "burn_scar": "Aproximativ 5-10% din imagine pare arsă, concentrată în principal în partea de nord-est și în câteva pete izolate în vestul și sud-vestul regiunii."
     }
   },
-  "report": "**RAPORT ANALIZĂ INCENDII – Domogled/Porțile de Fier**\n**Data: 2026-11-01 18:04 UTC**\n\n**EVOLUTIE: STAGNARE**\nFață de rularea de acum 0,09h, FRP24h a scăzut de la 4,1 la 0 MW (-4,1), detecțiile 24h de la 3 la 0 (-3), iar totalul de detecții a scăzut cu 816 (recalculare a ferestrei, nu eveniment real). Cei trei „focare noi\" raportați au FRP 0,0 MW și 0 detecții în 24h — sunt foste focare reindexate, nu incendii active. Două focare au dispărut din listă. Toate cele trei focare curente au trend staționar, cu 0 MW în ultimele 48h. Concluzie: nu există incendiu activ; cifrele reflectă cicatrici vechi din 30 septembrie.\n\n**CE ARATA IMAGINILE**\nAnaliza vizuală (scena 27 oct) nu arată fum și nici zone arse proaspete — confirmă senzorii (0 MW). Contradicție importantă: citirea vizuală dNBR sugerează 5-10% din imagine „arsă\", dar cifrele dNBR dau doar 8,2 ha moderat-ridicat și 0 ha sever, cu dNBR mediu pe focar negativ (-0,0083). Semnalul vizual este probabil stâncărie/vegetație uscată, nu ardere. Cifrele primează.\n\n**RISC (24-48h)**\nMeteo actual: 9°C, RH 86%, vânt E 14,8 km/h (rafale 36,4), VPD 0,16 kPa, sol umed (0,29), precipitații 36,9 mm prognozate în 48h. Pericol Angström 6,1 (scăzut). Riscul de aprindere și propagare este **redus**. Dacă totuși apare un focar, vântul din E ar împinge focul spre V — spre versantul cu pante abrupte spre 269,5° și spre localitățile din Valea Cernei (Băile Herculane, la 1,27 km de focarul rank 3; Colțu Pietrii, la 2,03 km de rank 2). Precipitațiile prognozate reduc semnificativ această expunere.\n\n**PREDICTIE (24h)**\nFRP24h va **stagna la 0 MW** — probabilitate ~85%. Estimare bazată pe trend (0 MW în 48h) și precipitații, NU pe model fizic de propagare.\n\n**SEMNALE**\n- Detecții istorice fără focar activ (38 total, toate vechi).\n- Focar dispărut cu ultim FRP 4,2 MW — posibil artefact de fereastră.\n- Scenă din 24 oct acoperită masiv cu nori — comparabilitate redusă.\n- dNBR vizual vs. numeric discordant (vezi mai sus).\n- Lipsesc date despre cauza focarelor din 30 sept.",
-  "state_updated": "2026-11-01T18:03:30+00:00"
+  "report": "# Raport de analiză – Domogled & Porțile de Fier\n**Data: 2026-11-01 19:07 UTC**\n\n## EVOLUȚIE: STAGNARE\nFață de istoricul imediat anterior (2026-11-01 17:58 → 18:04), FRP24h a scăzut de la 4.1 la **0 MW**, iar detecțiile 24h de la 3 la **0**. Numărul de focare a crescut de la 2 la **3** – dar fără detecții noi asociate, deci este o re-clasificare a unor clustere vechi, nu un focar activ nou. Toate cele 3 focare au trend staționar, cu 0 MW și 0 detecții în ultimele 24h și în cele anterioare. Delta FRP = 0, delta detecții = 0. **Nu există escaladare.**\n\n## CE ARATĂ IMAGINILE\nAnaliza vizuală (2026-10-27) **nu confirmă** nicio ardere activă: fără panou de fum, fără cicatrice proaspătă. Petele maronii par stâncărie/vegetație uscată. Comparația 24 vs 27 octombrie este blocată de nori masivi. Cifrele (0 MW/24h) sunt **coerente** cu lipsa fumului – dar atenție: cei 38 de detectori totali și vârful istoric de 101 MW (30 sept) reflectă un eveniment trecut, nu activ. Citirea vizuală dNBR (5-10% „ars\") contrazice ușor cifra de 876 ha moderat+ (≈0.08% din AOI) – posibilă supraestimare vizuală din cauza norilor/umbrelor.\n\n## RISC (24-48h)\n- **Precipitații: 36.9 mm** în 48h – factor major de reducere a riscului.\n- RH 86%, VPD 0.16 kPa (foarte umed), sol 0.29 – **nu susține propagare**.\n- Vânt 14.4 km/h din E (rafale 36.4) – direcție de extindere teoretică spre **V**, dar umiditatea o contracarează.\n- Pericol Angström 6.1 (scăzut).\n- Zone teoretic expuse la V: **Orșova** (7.4 km), **Băile Herculane** (1.3 km), **Colțu Pietrii** (2 km) – risc practic minim dat fiind contextul umed.\n\n## PREDICȚIE (24h)\n**FRP va stagna la 0 MW** – probabilitate ~85%. Estimare bazată pe trend (3 rulări consecutive cu 0 MW) și pe precipitațiile prognozate, **NU pe un model fizic de propagare**.\n\n## SEMNALE\n1. **Focare fără detecții noi** (3 focare, 0 MW/24h) – probabil reziduale/mascate de nori.\n2. **Norii din 2026-10-27 și 10-24** împiedică verificarea vizuală – acoperire semnificativă.\n3. **Discrepanță** între citirea vizuală dNBR (5-10%) și cifrele ha – de reținut.\n4. **Lipsesc date**: AOI km² = None; fără imagini recente fără nori.",
+  "state_updated": "2026-11-01T19:03:30+00:00"
 }
