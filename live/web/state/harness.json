@@ -1,38 +1,74 @@
 {
-  "generated": "2026-11-01T17:58:26+00:00",
-  "verdict": "STAGNARE",
+  "generated": "2026-11-01T18:04:16+00:00",
+  "verdict": "ESCALADARE",
   "comparison": {
     "first_run": false,
-    "since": "2026-10-20T21:21:01+00:00",
-    "hours_elapsed": 284.62,
+    "since": "2026-11-01T17:58:26+00:00",
+    "hours_elapsed": 0.09,
     "zones": {
       "cernei-dunarii": {
-        "total": 0.0,
-        "last24_count": 0.0,
-        "last24_frp": 0.0,
-        "last24_max": 0.0,
-        "burn_ha": 0.0,
-        "burn_ha_mod": 0.0,
-        "new_fires": [],
-        "gone_fires": [],
+        "total": -816.0,
+        "last24_count": -3.0,
+        "last24_frp": -4.1,
+        "last24_max": -1.6,
+        "burn_ha": 6206.7,
+        "burn_ha_mod": 614.9,
+        "new_fires": [
+          {
+            "id": "cernei-dunarii-44.77-22.33",
+            "lat": 44.7698,
+            "lon": 22.3304,
+            "frp_24h": 0.0,
+            "points": 16
+          },
+          {
+            "id": "cernei-dunarii-44.889-22.492",
+            "lat": 44.8886,
+            "lon": 22.4918,
+            "frp_24h": 0.0,
+            "points": 15
+          },
+          {
+            "id": "cernei-dunarii-44.882-22.43",
+            "lat": 44.8822,
+            "lon": 22.4296,
+            "frp_24h": 0.0,
+            "points": 7
+          }
+        ],
+        "gone_fires": [
+          {
+            "id": "cernei-dunarii-44.898-22.479",
+            "last_frp": 4.2
+          },
+          {
+            "id": "cernei-dunarii-44.768-22.324",
+            "last_frp": 0.0
+          }
+        ],
         "frp_changes": [],
-        "new_scene": false,
+        "new_scene": true,
         "prev_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261019T092031_N0513_R093_T34TFQ_20261019T125357.png",
-        "cur_scene": "cernei-dunarii_s2_S2C_MSIL2A_20261019T092031_N0513_R093_T34TFQ_20261019T125357.png"
+        "cur_scene": "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png"
       }
     }
   },
   "vision": {
     "cernei-dunarii": {
       "zone": "cernei-dunarii",
-      "ok": false,
-      "errors": [
-        "scena curenta: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
-        "comparatie: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>",
-        "dNBR: URLError: <urlopen error [Errno -3] Temporary failure in name resolution>"
-      ]
+      "ok": true,
+      "errors": [],
+      "current": "1. FUM: Nu se distinge niciun panou de fum, nici dens, nici subtire. Norii albi si umbrele lor domina imaginea.\n2. CICATRICE DE ARDERE: Nu se distinge nicio zona arsa (maro-inchis, cenusiu, negru). Zonele maro din nord-vest par a fi stancarie sau vegetatie uscata, nu arsuri.\n3. VEGETATIE: Padure densa verde inchis acopera aproximativ 60-70% din suprafata vizibila, in special pe versanti. Restul este stancarie cenusie-maro, pajisti uscate si zone agricole in lunca Dunarii.\n4. RELIEF: Se disting clar vai adanci (Valea Cernei), creste montane si defilee spectaculoase ale Dunarii.",
+      "current_scene": "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png",
+      "current_date": "2026-10-27T09:30:59.024000Z",
+      "comparison": "fara schimbare relevanta. \n\nDiferentele majore dintre cele doua imagini sunt cauzate exclusiv de acoperirea masiva cu nori din Imaginea 2 (24 octombrie), care ascunde o mare parte a terenului. Nu se distinge nicio evolutie a fumului, nicio extindere a cicatricei de ardere si nicio schimbare reala a starii vegetatiei (care apare doar intunecata de umbrele norilor).",
+      "compared": [
+        "cernei-dunarii_s2_S2A_MSIL2A_20261024T093141_N0513_R136_T34TFQ_20261024T143804.png",
+        "cernei-dunarii_s2_S2B_MSIL2A_20261027T093059_N0513_R136_T34TFQ_20261027T133811.png"
+      ],
+      "burn_scar": "Aproximativ 5-10% din imagine pare arsă, concentrată în principal în jumătatea dreaptă-superioară (nord-est) și în câteva pete izolate pe flancurile vestice și sudice."
     }
   },
-  "report": "",
-  "state_updated": "2026-10-20T22:45:56+00:00"
+  "report": "**RAPORT ANALIZĂ INCENDII – Domogled/Porțile de Fier**\n**Data: 2026-11-01 18:04 UTC**\n\n**EVOLUTIE: STAGNARE**\nFață de rularea de acum 0,09h, FRP24h a scăzut de la 4,1 la 0 MW (-4,1), detecțiile 24h de la 3 la 0 (-3), iar totalul de detecții a scăzut cu 816 (recalculare a ferestrei, nu eveniment real). Cei trei „focare noi\" raportați au FRP 0,0 MW și 0 detecții în 24h — sunt foste focare reindexate, nu incendii active. Două focare au dispărut din listă. Toate cele trei focare curente au trend staționar, cu 0 MW în ultimele 48h. Concluzie: nu există incendiu activ; cifrele reflectă cicatrici vechi din 30 septembrie.\n\n**CE ARATA IMAGINILE**\nAnaliza vizuală (scena 27 oct) nu arată fum și nici zone arse proaspete — confirmă senzorii (0 MW). Contradicție importantă: citirea vizuală dNBR sugerează 5-10% din imagine „arsă\", dar cifrele dNBR dau doar 8,2 ha moderat-ridicat și 0 ha sever, cu dNBR mediu pe focar negativ (-0,0083). Semnalul vizual este probabil stâncărie/vegetație uscată, nu ardere. Cifrele primează.\n\n**RISC (24-48h)**\nMeteo actual: 9°C, RH 86%, vânt E 14,8 km/h (rafale 36,4), VPD 0,16 kPa, sol umed (0,29), precipitații 36,9 mm prognozate în 48h. Pericol Angström 6,1 (scăzut). Riscul de aprindere și propagare este **redus**. Dacă totuși apare un focar, vântul din E ar împinge focul spre V — spre versantul cu pante abrupte spre 269,5° și spre localitățile din Valea Cernei (Băile Herculane, la 1,27 km de focarul rank 3; Colțu Pietrii, la 2,03 km de rank 2). Precipitațiile prognozate reduc semnificativ această expunere.\n\n**PREDICTIE (24h)**\nFRP24h va **stagna la 0 MW** — probabilitate ~85%. Estimare bazată pe trend (0 MW în 48h) și precipitații, NU pe model fizic de propagare.\n\n**SEMNALE**\n- Detecții istorice fără focar activ (38 total, toate vechi).\n- Focar dispărut cu ultim FRP 4,2 MW — posibil artefact de fereastră.\n- Scenă din 24 oct acoperită masiv cu nori — comparabilitate redusă.\n- dNBR vizual vs. numeric discordant (vezi mai sus).\n- Lipsesc date despre cauza focarelor din 30 sept.",
+  "state_updated": "2026-11-01T18:03:30+00:00"
 }
