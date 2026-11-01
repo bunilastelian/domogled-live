@@ -425,24 +425,21 @@
       "datetime": "2026-09-27T09:30:29.024000Z",
       "id": "S2B_MSIL2A_20260927T093029_N0513_R136_T34TER_20260927T133323",
       "cloud": 2.13,
-      "platform": "sentinel-2b",
-      "file": "s2hist_cernei-dunarii_20260927.jpg"
+      "platform": "sentinel-2b"
     },
     {
       "date": "2026-09-29",
       "datetime": "2026-09-29T09:20:31.025000Z",
       "id": "S2C_MSIL2A_20260929T092031_N0513_R093_T34TER_20260929T125156",
       "cloud": 0.81,
-      "platform": "sentinel-2c",
-      "file": "s2hist_cernei-dunarii_20260929.jpg"
+      "platform": "sentinel-2c"
     },
     {
       "date": "2026-10-01",
       "datetime": "2026-10-01T09:20:41.024000Z",
       "id": "S2A_MSIL2A_20261001T092041_N0513_R093_T34TER_20261001T124507",
       "cloud": 0.0,
-      "platform": "sentinel-2a",
-      "file": "s2hist_cernei-dunarii_20261001.jpg"
+      "platform": "sentinel-2a"
     },
     {
       "date": "2026-10-02",
